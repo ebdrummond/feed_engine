@@ -24,6 +24,8 @@ group :test, :development do
   gem 'better_errors'
   gem 'binding_of_caller'
   gem 'capybara'
+  gem 'dotenv-rails'
+  gem 'pry'
 end
 
 group :test do

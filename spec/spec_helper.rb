@@ -8,6 +8,15 @@ require 'rspec/autorun'
 # in spec/support/ and its subdirectories.
 Dir[Rails.root.join("spec/support/**/*.rb")].each {|f| require f}
 
+# Short-circuits omniauth for testing purposes
+OmniAuth.config.test_mode = true
+
+OmniAuth.config.mock_auth[:twitter] = OmniAuth::AuthHash.new({
+  :credentials => { :token => '123', :secret => 'abc' },
+  :info => { :nickname => 'nick' },
+  :uid => 'abc123'
+})
+
 RSpec.configure do |config|
   # ## Mock Framework
   #
