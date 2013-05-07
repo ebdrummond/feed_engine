@@ -3,6 +3,10 @@ source 'https://rubygems.org'
 gem 'rails', '3.2.13'
 gem 'resque', '~>1.24.0'
 gem 'jquery-rails'
+gem 'omniauth'
+gem 'omniauth-twitter'
+gem 'twitter'
+gem 'twitter-text'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
