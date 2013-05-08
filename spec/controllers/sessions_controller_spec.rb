@@ -2,7 +2,6 @@ require 'spec_helper'
 
 describe SessionsController do
   describe 'GET #create' do
-
     it 'hits CreateUser.from_unknown_auth_source' do
       pending 'how do we hit this?'
     end
