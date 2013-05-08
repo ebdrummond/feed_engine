@@ -1,12 +1,12 @@
 class SessionsController < ApplicationController
   def create
-    @user = CreateUser.from_unknown_auth_source(auth_hash)
+    user = CreateUser.from_unknown_auth_source(auth_hash)
 
-    if @user.valid?
-      auto_login(@user)
+    if user.valid?
+      auto_login(user)
       redirect_to dashboard_path, :notice => "Signed in"
     else
-      redirect_to root_path, :notice => "Failure"
+      redirect_to root_path, :notice => "Failed to sign in."
     end
   end
 

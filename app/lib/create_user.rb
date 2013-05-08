@@ -1,7 +1,8 @@
 class CreateUser
   def self.from_unknown_auth_source(auth_hash)
     normalized_hash = parse_hash(auth_hash)
-    auth_source = AuthSource.where(:uid => normalized_hash[:uid], :provider => normalized_hash[:provider]).first
+    auth_source = AuthSource.where(:uid => normalized_hash[:uid],
+                    :provider => normalized_hash[:provider]).first
 
     if auth_source
       User.find(auth_source.user_id)
@@ -22,6 +23,7 @@ class CreateUser
 
 private
 
+  # TODO: This is of the OAth doman (normalizing the oauth hash). Should it be moved elsewhere?
   def self.parse_hash(auth_hash)
     {:provider => auth_hash[:provider],
      :token => auth_hash[:credentials][:token],
