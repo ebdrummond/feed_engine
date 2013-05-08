@@ -3,7 +3,7 @@ class SessionsController < ApplicationController
     @user = CreateUser.from_unknown_auth_source(auth_hash)
 
     if @user.valid?
-      login_user(@user)
+      auto_login(@user)
       redirect_to dashboard_path, :notice => "Signed in"
     else
       redirect_to root_path, :notice => "Failure"
