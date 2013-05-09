@@ -1,0 +1,1 @@
+workers: rake resque:scheduler
