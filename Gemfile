@@ -1,7 +1,8 @@
 source 'https://rubygems.org'
 
 gem 'rails', '3.2.13'
-gem 'resque', '~>1.24.0'
+gem 'resque', '~>1.24.0', require: "resque/server"
+gem 'resque-scheduler'
 gem 'jquery-rails'
 
 group :assets do

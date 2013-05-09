@@ -1,0 +1,13 @@
+example:
+  # executes on the hour, every hour
+  cron: * 0 * * * 
+  class: Example
+  queue: example_queue
+  description: Breakfast
+
+# class Example
+#   @queue = :example_queue
+#   def self.perform
+#     puts "Hello every minute!"
+#   end
+# end
