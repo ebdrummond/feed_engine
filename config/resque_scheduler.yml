@@ -1,10 +1,13 @@
-# example:
-#   # executes on the hour, every hour
-#   cron: * 0 * * * 
-#   class: Example
-#   queue: example_queue
-#   description: It does some things
+example:
+  # executes on the hour, every hour
+  every: 30s
+  #cron: * 0 * * * 
+  class: Example
+  queue: example_queue
+  args:
+  description: It does some things
 
+# An example of the class that houses the job
 # class Example
 #   @queue = :example_queue
 #   def self.perform
