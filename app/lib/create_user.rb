@@ -1,44 +1,64 @@
 class CreateUser
   def self.from_unknown_auth_source(auth_hash)
-    normalized_hash = parse_hash(auth_hash)
-    auth_source = AuthSource.where(:uid => normalized_hash[:uid],
-                    :provider => normalized_hash[:provider]).first
+    auth_source_params, user_params = parse_hash(auth_hash)
+
+    auth_source = AuthSource.where(:uid => auth_source_params['uid'],
+                    :provider => auth_source_params['provider']).first
 
     if auth_source
-      User.find(auth_source.user_id)
+      auth_source.user
     else
-      create_with_provider_transaction(normalized_hash)
-    end
-  end
-
-  def self.create_with_provider_transaction(args)
-    nickname = args[:nickname]
-
-    User.transaction do
-      user = create_with_username(nickname)
-      user.auth_sources.create!(args)
-      user
+      create_user_and_auth_source(auth_source_params, user_params)
     end
   end
 
 private
 
-  # TODO: This is of the OAth doman (normalizing the oauth hash). Should it be moved elsewhere?
-  def self.parse_hash(auth_hash)
-    {:provider => auth_hash[:provider],
-     :token => auth_hash[:credentials][:token],
-     :secret => auth_hash[:credentials][:secret],
-     :nickname => auth_hash[:info][:nickname],
-     :uid => auth_hash[:uid]}
+  # TODO: HOLY CLEAN THIS SHIT UP
+  def self.create_user_and_auth_source(auth_source_params, user_params)
+    User.transaction do
+      user = create_with_username(user_params)
+      user.auth_sources.create!(auth_source_params)
+      user
+    end
   end
 
-  def self.create_with_username(nickname)
+  # TODO: This is of the OAth domain (normalizing the oauth hash). Should it be moved elsewhere?
+  def self.parse_hash(auth_hash)
+    auth_source_params = {'provider' => auth_hash['provider'],
+                          'token' => auth_hash['credentials']['token'],
+                          'uid' => auth_hash['uid']}
+
+    user_params = {'image_href' => auth_hash['info']['image']}
+
+    case auth_source_params['provider']
+    when 'twitter'
+      auth_source_params.merge!('secret' => auth_hash['credentials']['secret'])
+      user_params.merge!('nickname' => auth_hash['info']['nickname'])
+
+      return auth_source_params, user_params
+    when 'foursquare'
+      user_params.merge!({'nickname' => auth_hash['info']['first_name'] +
+                                       auth_hash['info']['last_name']})
+
+      return auth_source_params, user_params
+    else
+      raise "Unrecognized OmniAuth provider: #{provider}"
+    end
+  end
+
+  def self.create_with_username(params)
     i = 0
     begin
       i += 1
-      User.create!({username: iterate_nickname(nickname, i)})
-    rescue
-      retry
+      User.create!({username: iterate_nickname(params['nickname'], i),
+                    avatar: params['image_href']})
+    rescue => e
+      if i == 10
+        raise e
+      else
+        retry
+      end
     end
   end
 

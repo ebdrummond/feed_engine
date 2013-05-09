@@ -3,7 +3,6 @@ class CreateAuthSources < ActiveRecord::Migration
     create_table :auth_sources do |t|
       t.string :token
       t.string :secret
-      t.string :nickname
       t.string :uid
       t.string :provider
 

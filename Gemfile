@@ -6,6 +6,8 @@ gem 'jquery-rails'
 gem 'sorcery'
 gem 'omniauth'
 gem 'omniauth-twitter'
+gem 'omniauth-instagram'
+gem 'omniauth-foursquare'
 gem 'twitter'
 gem 'twitter-text'
 

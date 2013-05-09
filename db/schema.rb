@@ -16,7 +16,6 @@ ActiveRecord::Schema.define(:version => 20130508021101) do
   create_table "auth_sources", :force => true do |t|
     t.string   "token"
     t.string   "secret"
-    t.string   "nickname"
     t.string   "uid"
     t.string   "provider"
     t.integer  "user_id"
@@ -30,6 +29,7 @@ ActiveRecord::Schema.define(:version => 20130508021101) do
 
   create_table "users", :force => true do |t|
     t.string   "username"
+    t.string   "avatar"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
