@@ -2701,8 +2701,8 @@ form.custom {
     margin: 0; }
   .top-bar-section .divider,
   .top-bar-section [role="separator"] {
-    border-bottom: solid 1px #00FFFF;
-    border-top: solid 1px #00FFFF;
+    border-bottom: solid 1px #000000;
+    border-top: solid 1px #000000;
     clear: both;
     height: 1px;
     width: 100%; }
@@ -2735,7 +2735,7 @@ form.custom {
       .top-bar-section ul li > a.button.alert:hover {
         background: #970b0e; }
   .top-bar-section ul li.active > a {
-    background: #777777; }
+    background: #666666; }
   .top-bar-section .has-form {
     padding: 15px; }
   .top-bar-section .has-dropdown {
