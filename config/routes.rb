@@ -27,4 +27,8 @@ FeedEngine::Application.routes.draw do
   get '/manage_kreepings',
     to: 'erin_layouts/layouts#manage_kreepings',
     as: 'manage_kreepings'
+
+  get '/account_settings',
+    to: 'erin_layouts/layouts#account_settings',
+    as: 'account_settings'
 end
