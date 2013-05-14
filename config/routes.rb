@@ -7,4 +7,5 @@ FeedEngine::Application.routes.draw do
 
   get '/dashboard', to: 'feeds#index', as: 'dashboard'
   resources :feeds
+  resources :trips
 end

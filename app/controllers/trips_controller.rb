@@ -14,6 +14,10 @@ class TripsController < ApplicationController
     end
   end
 
+  def show
+    @feed = Feed.find_by_trip(params[:id])
+  end
+
   private
 
   def trip_params
