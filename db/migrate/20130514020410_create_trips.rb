@@ -5,6 +5,7 @@ class CreateTrips < ActiveRecord::Migration
       t.string :destination
       t.date :start
       t.date :end
+      t.boolean :visible, :default => false, :null => false
 
       t.references :user
 

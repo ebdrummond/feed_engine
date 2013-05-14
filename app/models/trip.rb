@@ -2,7 +2,8 @@ class Trip < ActiveRecord::Base
   attr_accessible :name,
                   :destination,
                   :start,
-                  :end
+                  :end,
+                  :visible
 
   belongs_to :owner, :foreign_key => 'user_id', class_name: 'User'
 
