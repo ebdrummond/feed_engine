@@ -27,4 +27,28 @@ FeedEngine::Application.routes.draw do
   get '/manage_kreepings',
     to: 'erin_layouts/layouts#manage_kreepings',
     as: 'manage_kreepings'
+
+  get '/home',
+    to: 'phil_layouts/layouts#home',
+    as: 'home'
+
+  get '/login',
+    to: 'phil_layouts/layouts#login',
+    as: 'login'
+
+  get '/signup',
+    to: 'phil_layouts/layouts#signup',
+    as: 'signup'
+
+  get '/trip_feed',
+    to: 'phil_layouts/layouts#trip_feed',
+    as: 'trip_feed'
+
+  get '/user_dashboard',
+    to: 'phil_layouts/layouts#user_dashboard',
+    as: 'user_dashboard'
+
+  get '/user_trips',
+    to: 'phil_layouts/layouts#user_trips',
+    as: 'user_trips'
 end
