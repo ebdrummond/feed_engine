@@ -842,7 +842,7 @@ div.progress.round .meter { -webkit-border-radius: 1000px; -moz-border-radius: 1
 .sticky.fixed { float: none; }
 
 /* <nav> */
-.top-bar { background: black; min-height: 45px; line-height: 45px; margin: 0 0 30px 0; padding: 0; width: 100%; position: relative; /* Contain width to .row width */ /* First <ul> for branding, title, name, etc */ /* topbar global <ul> styles */ }
+.top-bar { background: black; min-height: 45px; line-height: 45px; margin: 0 0 0px 0; padding: 0; width: 100%; position: relative; /* Contain width to .row width */ /* First <ul> for branding, title, name, etc */ /* topbar global <ul> styles */ }
 .contain-to-grid .top-bar { max-width: 940px; margin: 0 auto; }
 .top-bar > ul .name h1 { line-height: 45px; margin: 0; }
 .top-bar > ul .name h1 a { font-weight: bold; padding: 0 22.5px; font-size: 17px !important; }
@@ -1259,3 +1259,21 @@ table.show-for-xlarge, table.show-for-large, table.hide-for-small, table.hide-fo
                padding-bottom: 50px;
                padding-top: 20px; }
 body{ padding-bottom: 50px; }
+#tweet{ border: 1px solid;
+        padding-top: 5px;
+        padding-bottom: 5px;
+        padding-left: 15px;
+        padding-right: 15px;
+        -webkit-border-radius: 10px;
+        -moz-border-radius: 10px;
+        border-radius: 10px;
+        font-size: 15px;
+        font-weight: bold;}
+#feed_item{ -webkit-border-radius: 5px;
+            -moz-border-radius: 5px;
+            border-radius: 10px;
+            padding: 15px;
+            border: 1px solid;
+            border-color: gray;}
+#page_headline{ font-family: 'Oleo Script Swash Caps', cursive;
+                font-size: 50px;}
