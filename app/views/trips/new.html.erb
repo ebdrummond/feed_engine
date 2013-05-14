@@ -1,0 +1,8 @@
+<%= form_for @trip do |f| %>
+  <%= f.text_field :name %>
+  <%= f.text_field :destination %>
+  <%= f.text_field :start %>
+  <%= f.text_field :end %>
+  <%= f.check_box :visible %>
+  <%= f.button :submit %>
+<% end %>
