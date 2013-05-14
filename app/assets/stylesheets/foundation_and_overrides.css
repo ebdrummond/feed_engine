@@ -1252,6 +1252,12 @@ table.show-for-xlarge, table.show-for-large, table.hide-for-small, table.hide-fo
 /*CUSTOM*/
 #user_info{ margin-top: 20px; font-size: 20px; }
 .kreepr_request a.button{ margin-right: 20px; }
+#kreepr_request{ -webkit-border-radius: 5px;
+                 -moz-border-radius: 5px;
+                 border-radius: 10px;
+                 padding: 15px;
+                 border: 1px solid;
+                 border-color: gray;}
 #private_trip{ background-color: #ababab;
                -webkit-border-radius: 10px;
                -moz-border-radius: 10px;
