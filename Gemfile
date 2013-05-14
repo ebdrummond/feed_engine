@@ -34,4 +34,5 @@ end
 group :test do
   gem 'guard-rspec'
   gem 'launchy'
+  gem 'database_cleaner'
 end
