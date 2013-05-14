@@ -51,4 +51,8 @@ FeedEngine::Application.routes.draw do
   get '/user_trips',
     to: 'phil_layouts/layouts#user_trips',
     as: 'user_trips'
+
+  get '/account_settings',
+    to: 'erin_layouts/layouts#account_settings',
+    as: 'account_settings'
 end

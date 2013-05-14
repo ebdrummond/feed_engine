@@ -13,4 +13,7 @@ class ErinLayouts::LayoutsController < ApplicationController
 
   def manage_kreepings
   end
+
+  def account_settings
+  end
 end
