@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130514020410) do
+ActiveRecord::Schema.define(:version => 20130515124056) do
 
   create_table "auth_sources", :force => true do |t|
     t.string   "token"
@@ -37,6 +37,18 @@ ActiveRecord::Schema.define(:version => 20130514020410) do
     t.datetime "created_at",                     :null => false
     t.datetime "updated_at",                     :null => false
   end
+
+  create_table "tweets", :force => true do |t|
+    t.datetime "tweeted_at", :null => false
+    t.string   "tweet_id",   :null => false
+    t.string   "text"
+    t.integer  "user_id",    :null => false
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "tweets", ["tweet_id"], :name => "index_tweets_on_tweet_id", :unique => true
+  add_index "tweets", ["user_id"], :name => "index_tweets_on_user_id"
 
   create_table "users", :force => true do |t|
     t.string   "username"
