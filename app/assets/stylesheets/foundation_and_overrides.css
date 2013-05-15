@@ -166,7 +166,7 @@ textarea { height: auto; }
 select { width: 100%; }
 
 /* Fieldsets */
-fieldset { border: solid 1px #ddd; -webkit-border-radius: 3px; -moz-border-radius: 3px; -ms-border-radius: 3px; -o-border-radius: 3px; border-radius: 3px; padding: 12px; margin: 18px 0; }
+fieldset { border: solid 7px #ddd; -webkit-border-radius: 3px; -moz-border-radius: 3px; -ms-border-radius: 3px; -o-border-radius: 3px; border-radius: 10px; padding: 12px; margin: 18px 0; }
 fieldset legend { font-weight: bold; background: white; padding: 0 3px; margin: 0; margin-left: -3px; }
 
 /* Errors */
@@ -1282,11 +1282,17 @@ body{ padding-bottom: 50px;
             -moz-border-radius: 5px;
             border-radius: 10px;
             padding: 15px;
-            border: 1px solid;
-            border-color: gray; }
+            border: 15px solid;
+            border-color: gray;}
 #page_headline{ font-family: 'Raleway', cursive;
                 font-size: 50px;
                 color: #63aa9c; }
 .sub_body{ background-color: #eceae0; }
 #site_header{ color: #63aa9c;
               font-size: 80px; }
+#banner{ background-color: #dddddd;
+         -webkit-border-radius: 5px;
+         -moz-border-radius: 5px;
+         padding: 15px;
+         border-color: gray;}
+
