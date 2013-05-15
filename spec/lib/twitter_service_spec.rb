@@ -15,14 +15,21 @@ describe TwitterService do
     end
 
     context 'with a valid token/secret' do
-      it 'retrieves tweets from twitter and saves them to the database' do
+      before(:each) do
         user = User.create!(username: 'Phil')
         user.auth_sources.create!(:provider => 'twitter',
                                   :uid => 'abc123',
                                   :token => '57272421-DdrlGSaASFZj1qjoqYqiSo4YDmJkDkaZOBVE5rSV4',
                                   :secret => 'INXG4Rg7mgtTr2oZQhgjf6O9UJPSPqtv4HbFWsnMg')
+      end
 
+      it 'retrieves tweets from twitter and saves them to the database' do
         expect { TwitterService.update }.to change { Tweet.count }.by 1
+      end
+
+      it "only retrieves tweets that don't exist in database yet" do
+        TwitterService.update
+        expect { TwitterService.update }.to change { Tweet.count }.by 0
       end
     end
   end
