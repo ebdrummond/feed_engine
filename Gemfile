@@ -34,5 +34,5 @@ end
 group :test do
   gem 'guard-rspec'
   gem 'launchy'
-  gem 'database_cleaner'
+  gem 'database_cleaner', "~> 1.0.1"
 end
