@@ -9,7 +9,7 @@ body { background: white; font-family: "Helvetica Neue", "Helvetica", Helvetica,
 /* Links ---------------------- */
 a img { border: none; }
 
-a { color: #2ba6cb; text-decoration: none; line-height: inherit; }
+a { color: #63aa9c; text-decoration: none; line-height: inherit; }
 
 a:hover { color: #2795b6; }
 
@@ -1264,7 +1264,10 @@ table.show-for-xlarge, table.show-for-large, table.hide-for-small, table.hide-fo
                border-radius: 10px;
                padding-bottom: 50px;
                padding-top: 20px; }
-body{ padding-bottom: 50px; }
+body{ padding-bottom: 50px;
+      background-color: #eceae0;
+      border: 50px solid;
+      border-color: #221e1d; }
 #tweet{ border: 1px solid;
         padding-top: 5px;
         padding-bottom: 5px;
@@ -1274,12 +1277,15 @@ body{ padding-bottom: 50px; }
         -moz-border-radius: 10px;
         border-radius: 10px;
         font-size: 15px;
-        font-weight: bold;}
+        font-weight: bold; }
 #feed_item{ -webkit-border-radius: 5px;
             -moz-border-radius: 5px;
             border-radius: 10px;
             padding: 15px;
             border: 1px solid;
-            border-color: gray;}
+            border-color: gray; }
 #page_headline{ font-family: 'Oleo Script Swash Caps', cursive;
-                font-size: 50px;}
+                font-size: 50px;
+                color: #63aa9c; }
+.sub_body{ background-color: #eceae0; }
+#site_header{ color: #63aa9c; }
