@@ -166,8 +166,8 @@ textarea { height: auto; }
 select { width: 100%; }
 
 /* Fieldsets */
-fieldset { border: solid 7px #ddd; -webkit-border-radius: 3px; -moz-border-radius: 3px; -ms-border-radius: 3px; -o-border-radius: 3px; border-radius: 10px; padding: 12px; margin: 18px 0; }
-fieldset legend { font-weight: bold; background: white; padding: 0 3px; margin: 0; margin-left: -3px; }
+fieldset { border: solid 5px #63aa9c; -webkit-border-radius: 3px; -moz-border-radius: 3px; -ms-border-radius: 3px; -o-border-radius: 3px; border-radius: 10px; padding: 12px; margin: 18px 0; }
+fieldset legend { font-weight: bold; background: #eceae0; padding: 0 3px; margin: 0; margin-left: -3px; }
 
 /* Errors */
 .error input, input.error, .error textarea, textarea.error, .error input:focus, input.error:focus, .error textarea:focus, textarea.error:focus { border-color: #c60f13; background-color: rgba(198, 15, 19, 0.1); }
@@ -1293,10 +1293,17 @@ body{ padding-bottom: 50px;
 .sub_body{ background-color: #eceae0; }
 #site_header{ color: #63aa9c;
               font-size: 80px; }
-#banner{ background-color: #dddddd;
+#banner{ background-color: #EED5B7;
          -webkit-border-radius: 5px;
          -moz-border-radius: 5px;
+         border-radius: 20px;
          padding: 15px;
          border-color: gray;}
 #signup_font{ font-family: "Shadows Into Light Two";}
+#side_bar{ -webkit-border-radius: 5px;
+            -moz-border-radius: 5px;
+            border-radius: 10px;
+            padding: 15px;
+            border: 2px solid;
+            border-color: #black;}
 
