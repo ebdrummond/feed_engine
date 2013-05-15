@@ -9,8 +9,9 @@ describe TwitterService do
                                   :uid => 'abc123',
                                   :token => 'abc',
                                   :secret => '123')
-
-        expect { TwitterService.update }.to raise_error Twitter::Error::Unauthorized
+        VCR.use_cassette('twitter_service_unauthenticated') do
+          expect { TwitterService.update }.to raise_error Twitter::Error::Unauthorized
+        end
       end
     end
 
@@ -24,12 +25,19 @@ describe TwitterService do
       end
 
       it 'retrieves tweets from twitter and saves them to the database' do
-        expect { TwitterService.update }.to change { Tweet.count }.by 1
+        VCR.use_cassette('twitter_service_one_new_tweet') do
+          expect { TwitterService.update }.to change { Tweet.count }.by 1
+        end
       end
 
       it "only retrieves tweets that don't exist in database yet" do
-        TwitterService.update
-        expect { TwitterService.update }.to change { Tweet.count }.by 0
+        VCR.use_cassette('twitter_service_one_new_tweet') do
+          TwitterService.update
+        end
+
+        VCR.use_cassette('twitter_service_no_new_tweets') do
+          expect { TwitterService.update }.to change { Tweet.count }.by 0
+        end
       end
     end
   end

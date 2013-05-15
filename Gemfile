@@ -14,7 +14,7 @@ gem 'twitter-text'
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
   gem 'coffee-rails', '~> 3.2.1'
-  gem 'uglifier', '>= 1.0.3'
+  gem 'uglifier',     '>= 1.0.3'
 end
 
 group :production do
@@ -34,5 +34,7 @@ end
 group :test do
   gem 'guard-rspec'
   gem 'launchy'
-  gem 'database_cleaner', "~> 1.0.1"
+  gem 'database_cleaner', '~> 1.0.1'
+  gem 'vcr', '~> 2.4.0'
+  gem 'webmock', '~> 1.9.0'
 end

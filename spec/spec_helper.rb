@@ -11,6 +11,12 @@ Dir[Rails.root.join("spec/support/**/*.rb")].each {|f| require f}
 # Short-circuits omniauth for testing purposes
 OmniAuth.config.test_mode = true
 
+# Configure VCR for HTTP playback
+VCR.configure do |c|
+  c.cassette_library_dir = 'fixtures/vcr_cassettes'
+  c.hook_into :webmock
+end
+
 RSpec.configure do |config|
   # ## Mock Framework
   #

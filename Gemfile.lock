@@ -51,6 +51,7 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.6.2)
+    crack (0.3.2)
     database_cleaner (1.0.1)
     debug_inspector (0.0.2)
     diff-lcs (1.2.2)
@@ -218,8 +219,12 @@ GEM
     unf (0.0.5)
       unf_ext
     unf_ext (0.0.6)
+    vcr (2.4.0)
     vegas (0.1.11)
       rack (>= 1.0.0)
+    webmock (1.9.3)
+      addressable (>= 2.2.7)
+      crack (>= 0.3.2)
     xpath (2.0.0)
       nokogiri (~> 1.3)
 
@@ -251,3 +256,5 @@ DEPENDENCIES
   twitter
   twitter-text
   uglifier (>= 1.0.3)
+  vcr (~> 2.4.0)
+  webmock (~> 1.9.0)
