@@ -2,52 +2,103 @@
 
   <div class="row">
     <div class="site-header ui-helper-clearfix">
-      <div class="ten columns">
-        <h1>Kreepr [user_trips]</h1>
+      <div class="nine columns">
+        <h1>Kreepr</h1>
       </div>
-      <div class="two columns" id="user_info">
-        Signed in as <a href="user">eebee</a>
+      <div class="three columns" id="user_info">
+        signed in as <a href="user">eebee</a>
       </div>
     </div>
   </div>
 
-  <div class="row">
-    <div class="twelve columns">
-      <dl class="tabs five-up">
-        <dd><a href="#simple1">My Feed</a></dd>
-        <dd><a href="#simple2">My Trips</a></dd>
-        <dd><a href="#simple3">Kreepr Requests (3)</a></dd>
-        <dd><a href="#simple2">Manage Kreepings</a></dd>
-        <dd><a href="#simple2">Account Settings</a></dd>
-      </dl>
-    </div>
-  </div>
+  <nav class="top-bar">
+
+    <section class="top-bar-section">
+      <!-- Left Nav Section -->
+      <div class="row">
+      <div class="twelve columns">
+      <ul class="left">
+        <li class="divider"></li>
+        <li><a href="#">My Feed</a></li>
+        <li class="divider"></li>
+        <li class="active"><a href="#">My Trips</a></li>
+        <li class="divider"></li>
+        <li><a href="#">Kreepr Requests (3)</a></li>
+        <li class="divider"></li>
+        <li><a href="#">Manage Kreepings</a></li>
+        <li class="divider"></li>
+        <li><a href="#">Account Settings</a></li>
+        <li class="divider"></li>
+      </ul>
+      </div>
+      </div>
+    </section>
+  </nav>
 
 <!-- End Header and Nav -->
 
 
 <!-- Main Body -->
+<br>
 
-  <div class="row">
+<div class="row">
+  <div class="four columns">
+    <%= image_tag("Overly-attached-girlfriend-meme.png", :size => "400x400", :alt => "profile") %>
+  </div>
+  <div class="eight columns">
+    <h1>klabnickers</h1>
+  </div>
+</div>
+
+<br>
+
+<div class="row" id="feed_item">
+  <div class="twelve columns">
+    <h2>Current Trips</h2>
+
+      <div class="row">
+        <div class="one column">
+          <img src="http://drupal.org/files/profile_default.png" height="30" width="30" align="right">
+        </div>
+        <div class="eleven columns">
+          <h4><a href="#">La Conf Paris</a> May 7 - May 11, 2013</h4>
+        </div>
+      </div>
+
+      <div class="twelve columns">
+        <h6><a href="#">5 fellow travelers</a> | <a href>3 kreepers</a></h6>
+      </div>
+
     <div class="twelve columns">
-      <h2>What Happens in Vegas...</h2>
+      <h4><a href="#">One Night in Bangkok</a> May 9 - May 18, 2013</h4>
+      <h6><a href="#">1 fellow travelers</a> | <a href>4 kreepers</a></h6>
     </div>
-  </div>
-  <br>
-  <br>
-  <br>
 
-  <div class="row">
-    <div class="five columns centered">
-      <center><h4>Oh noes!  This trip is private.</h4>
-      <br>
-      <br>
-      <a class="radius button">Request to kreep on this trip</a>
-      <br>
-      <br>
-      <br>
-      <a class="radius button">Request to be added as a traveler on this trip</a></center>
+  </div>
+</div>
+
+<br>
+
+<div class="row" id="feed_item">
+  <div class="twelve columns">
+    <h2>Upcoming Trips</h2>
+    <div class="twelve columns">
+      <h4><a href="#">Nordic Ruby</a> June 5 - June 10, 2013</h4>
+      <h6><a href="#">3 fellow travelers</a> | <a href>7 kreepers</a></h6>
     </div>
   </div>
+</div>
+
+<br>
+
+<div class="row" id="feed_item">
+  <div class="twelve columns">
+    <h2>Past Trips</h2>
+    <div class="twelve columns">
+      <h4><a href="#">Ruby Midwest</a> April 4 - April 6, 2013</h4>
+      <h6><a href="#">8 fellow travelers</a> | <a href>14 kreepers</a></h6>
+    </div>
+  </div>
+</div>
 
 <!-- End Main Body -->

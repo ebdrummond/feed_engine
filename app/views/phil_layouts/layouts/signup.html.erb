@@ -41,7 +41,8 @@
 <!-- Main Body -->
 
   <div class="row">
-    <div class="five columns"><img src="http://placehold.it/300x300/aaddaa/000000&text=[logo/image]">
+    <div class="five columns">
+      <img src="http://placehold.it/300x300/aaddaa/000000&text=[logo/image]">
     </div>
     <div class="seven columns">
         <h2>Powering Your Best Memories</h2>
@@ -55,27 +56,68 @@
   <br>
 
   <div class="row">
-    <div class="eight columns centered">
+    <div class="twelve columns centered">
       <center>
       <h2>Ready to get your kreep on?</h2>
       <h3>Link your accounts</h3>
-        <%= image_tag("twitter_logo.svg", :size => "40x40", :alt => "twitter logo") %>
-        <!-- <a href="http://twitter.com"><img src="images/twitter_icon.jpeg">[twitter_icon]</a> -->
-        <a href="login" class="radius button">Twitter</a>
+
+      <br>
+
+      <div class="row">
+        <div class="four columns">
+          <a href="http://twitter.com"><%= image_tag "twitter_icon.jpeg", :size => "50x50", :align => "right", :alt => "twitter logo" %></a>
+        </div>
+        <div class="four columns" align="center">
+          <a href="login" class="radius button large expand">Login with Twitter</a>
+        </div>
+        <div class="four columns">
+        </div>
+      </div>
+
       <br>
       <br>
       <br>
-        <%= image_tag("instagram_logo.jpg", :size => "45x45", :alt => "instagram logo") %>
-        <a href="login" class="radius button">Instagram</a>
+
+      <div class="row">
+        <div class="four columns">
+          <a href="http://instagram.com"><%= image_tag("instagram_logo.jpg", :size => "50x50", :align => "right", :alt => "instagram logo") %>
+        </div>
+        <div class="four columns" align="center">
+          <a href="login" class="radius button large expand">Login with Instagram</a>
+        </div>
+        <div class="four columns">
+        </div>
+      </div>
+
       <br>
       <br>
       <br>
-        <%= image_tag("foursquare_logo.jpg", :size => "40x40", :alt => "foursquare logo") %>
-        <a href="login" class="radius button">Foursquare</a>
+
+      <div class="row">
+        <div class="four columns">
+          <a href="http://foursquare.com"><%= image_tag("foursquare_logo.jpg", :size => "45x45", :align => "right", :alt => "foursquare logo") %>
+        </div>
+        <div class="four columns" align="center">
+          <a href="login" class="radius button large expand">Login with Foursquare</a>
+        </div>
+        <div class="four columns">
+        </div>
+      </div>
+
       <br>
       <br>
       <br>
-      <a href="signup" class="radius button">Sign me up!</a>
+
+      <div class="row">
+        <div class="four columns" align="center">
+        </div>
+        <div class="four columns" align="center">
+          <a href="signup" class="radius button large expand">Sign up</a>
+        </div>
+        <div class="four columns" align="center">
+        </div>
+      </div>
+
       <br>
       <br>
       <br>
@@ -83,6 +125,13 @@
       <br>
       <br>
       <br>
+
+
+        <br>
+        <br>
+        <br>
+
+
       </center>
     </div>
   </div>
