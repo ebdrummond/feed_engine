@@ -26,7 +26,10 @@ private
   end
 
   def self.latest_tweet_id(user_id)
-    latest_tweet = Tweet.where(:user_id => user_id).limit(1).first
+    # user = User.find(user_id)
+    latest_tweet = Tweet.where(user_id: user_id).limit(1).first
+    # latest_tweet = user.tweets.order(:tweeted_at).limit(1).pluck(:tweet_id).first
+    # where(:user_id => user.id).limit(1).first
     latest_tweet ? latest_tweet.tweet_id : 1
   end
 
