@@ -1,0 +1,69 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.twitter.com/1.1/statuses/user_timeline.json?count=200&exclude_replies=true&since_id=332126241945702401&trim_user=true
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      User-Agent:
+      - Twitter Ruby Gem 4.6.2
+      Authorization:
+      - OAuth oauth_consumer_key="ATWnDZ0CeEHpqrPMtyXaig", oauth_nonce="35ae70e3bfe675a3b6bf89889d991ddc",
+        oauth_signature="tvY7yOCkSFwn9ujXhgcasqIuzhk%3D", oauth_signature_method="HMAC-SHA1",
+        oauth_timestamp="1368638443", oauth_token="57272421-DdrlGSaASFZj1qjoqYqiSo4YDmJkDkaZOBVE5rSV4",
+        oauth_version="1.0"
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - no-cache, no-store, must-revalidate, pre-check=0, post-check=0
+      Content-Length:
+      - '28'
+      Content-Type:
+      - application/json;charset=utf-8
+      Date:
+      - Wed, 15 May 2013 17:20:41 GMT
+      Expires:
+      - Tue, 31 Mar 1981 05:00:00 GMT
+      Last-Modified:
+      - Wed, 15 May 2013 17:20:41 GMT
+      Pragma:
+      - no-cache
+      Server:
+      - tfe
+      Set-Cookie:
+      - guest_id=v1%3A136863844138908309; Domain=.twitter.com; Path=/; Expires=Fri,
+        15-May-2015 17:20:41 UTC
+      - lang=en
+      Status:
+      - 200 OK
+      Strict-Transport-Security:
+      - max-age=631138519
+      X-Access-Level:
+      - read
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Rate-Limit-Limit:
+      - '180'
+      X-Rate-Limit-Remaining:
+      - '175'
+      X-Rate-Limit-Reset:
+      - '1368638576'
+      X-Transaction:
+      - 069ff03ff1a79c9d
+      X-Xss-Protection:
+      - 1; mode=block
+    body:
+      encoding: UTF-8
+      string: '[]'
+    http_version: 
+  recorded_at: Wed, 15 May 2013 17:20:43 GMT
+recorded_with: VCR 2.4.0
