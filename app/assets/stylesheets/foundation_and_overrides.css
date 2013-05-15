@@ -1277,9 +1277,8 @@ body{ padding-bottom: 50px; }
             border-color: gray;}
 #page_headline{ font-family: 'Oleo Script Swash Caps', cursive;
                 font-size: 50px;}
-#banner{ -webkit-border-radius: 5px;
-            -moz-border-radius: 5px;
-            border-radius: 10px;
-            padding: 15px;
-            border: 1px solid;
-            border-color: gray;}
+#banner{ background-color: #dddddd;
+         -webkit-border-radius: 5px;
+         -moz-border-radius: 5px;
+         padding: 15px;
+         border-color: gray;}
