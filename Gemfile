@@ -12,6 +12,8 @@ gem 'omniauth-instagram'
 gem 'omniauth-foursquare'
 gem 'twitter'
 gem 'twitter-text'
+gem 'chronic', '~> 0.9.1'
+gem 'simple_form', '~> 2.1.0'
 
 group :assets do
   gem 'sass-rails',      '~> 3.2.3'

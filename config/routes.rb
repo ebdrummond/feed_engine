@@ -19,10 +19,6 @@ FeedEngine::Application.routes.draw do
     to: 'erin_layouts/layouts#kreepr_requests',
     as: 'kreepr_requests'
 
-  get '/new_trip',
-    to: 'erin_layouts/layouts#new_trip',
-    as: 'new_trip'
-
   get '/manage_trip',
     to: 'erin_layouts/layouts#manage_trip',
     as: 'manage_trip'

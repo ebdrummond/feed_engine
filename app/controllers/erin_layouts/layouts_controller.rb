@@ -5,9 +5,6 @@ class ErinLayouts::LayoutsController < ApplicationController
   def kreepr_requests
   end
 
-  def new_trip
-  end
-
   def manage_trip
   end
 

@@ -1,103 +1,21 @@
-<!-- Header and Nav -->
-
-  <div class="row">
-    <div class="site-header ui-helper-clearfix">
-      <div class="nine columns">
-        <h1 id="site_header">kreepr</h1>
-      </div>
-      <div class="three columns" id="user_info">
-        signed in as <a href="user">eebee</a>
-      </div>
-    </div>
-  </div>
-
-  <nav class="top-bar">
-
-    <section class="top-bar-section">
-      <!-- Left Nav Section -->
-      <div class="row">
-      <div class="twelve columns">
-      <ul class="left">
-        <li class="divider"></li>
-        <li><a href="home">Home</a></li>
-        <li class="divider"></li>
-        <li><a href="user_dashboard">My Feed</a></li>
-        <li class="divider"></li>
-        <li><a href="user_trips">My Trips</a></li>
-        <li class="divider"></li>
-        <li><a href="kreepr_requests">Kreepr Requests (3)</a></li>
-        <li class="divider"></li>
-        <li class="active"><a href="manage_kreepings">Manage Kreepings</a></li>
-        <li class="divider"></li>
-        <li><a href="account_settings">Account Settings</a></li>
-        <li class="divider"></li>
-      </ul>
-      </div>
-      </div>
-    </section>
-  </nav>
-
-<!-- End Header and Nav -->
-
-
-<!-- Main Body -->
-
 <div class="row">
   <div class="twelve columns">
     <h3 id="page_headline">manage kreepings</h3>
   </div>
 </div>
 
-  <div class="row">
-    <div class="eleven columns offset-by-one">
-      <h3>Current Trips</h3>
-    </div>
+<div class="row">
+  <div class="eleven columns offset-by-one">
+    <h3>Current Trips</h3>
   </div>
-
-    <div class="row kreepr_request">
-      <div class="two columns offset-by-one">
-        <center><%= image_tag("Overly-attached-girlfriend-meme.png", :size => "100x100", :alt => "kreepr") %></center>
-      </div>
-      <div class="nine columns">
-        <h5><a href="profile">gravy</a>'s trip to Ankara
-        <br>
-        <br>
-        <a class="radius button">unsubscribe</a>
-      </div>
-    </div>
-
-    <br>
-    <br>
-
-    <div class="row kreepr_request">
-      <div class="two columns offset-by-one">
-        <center><%= image_tag("Overly-attached-girlfriend-meme.png", :size => "100x100", :alt => "kreepr") %></center>
-      </div>
-      <div class="nine columns">
-        <h5><a href="profile">frodo</a>'s trip to Waitomo
-        <br>
-        <br>
-        <a class="radius button">unsubscribe</a>
-      </div>
-
-  </div>
-
-  <br>
-  <br>
-  <br>
-
-  <div class="row">
-    <div class="eleven columns offset-by-one">
-      <h3>Past Trips</h3>
-    </div>
-  </div>
+</div>
 
   <div class="row kreepr_request">
     <div class="two columns offset-by-one">
       <center><%= image_tag("Overly-attached-girlfriend-meme.png", :size => "100x100", :alt => "kreepr") %></center>
     </div>
     <div class="nine columns">
-      <h5><a href="profile">denboy</a>'s trip to Kabul
+      <h5><a href="profile">gravy</a>'s trip to Ankara
       <br>
       <br>
       <a class="radius button">unsubscribe</a>
@@ -112,11 +30,47 @@
       <center><%= image_tag("Overly-attached-girlfriend-meme.png", :size => "100x100", :alt => "kreepr") %></center>
     </div>
     <div class="nine columns">
-      <h5><a href="profile">bbq</a>'s trip to Mongolia
+      <h5><a href="profile">frodo</a>'s trip to Waitomo
       <br>
       <br>
       <a class="radius button">unsubscribe</a>
     </div>
-  </div>
 
-<!-- End Main Body
+</div>
+
+<br>
+<br>
+<br>
+
+<div class="row">
+  <div class="eleven columns offset-by-one">
+    <h3>Past Trips</h3>
+  </div>
+</div>
+
+<div class="row kreepr_request">
+  <div class="two columns offset-by-one">
+    <center><%= image_tag("Overly-attached-girlfriend-meme.png", :size => "100x100", :alt => "kreepr") %></center>
+  </div>
+  <div class="nine columns">
+    <h5><a href="profile">denboy</a>'s trip to Kabul
+    <br>
+    <br>
+    <a class="radius button">unsubscribe</a>
+  </div>
+</div>
+
+<br>
+<br>
+
+<div class="row kreepr_request">
+  <div class="two columns offset-by-one">
+    <center><%= image_tag("Overly-attached-girlfriend-meme.png", :size => "100x100", :alt => "kreepr") %></center>
+  </div>
+  <div class="nine columns">
+    <h5><a href="profile">bbq</a>'s trip to Mongolia
+    <br>
+    <br>
+    <a class="radius button">unsubscribe</a>
+  </div>
+</div>

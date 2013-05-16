@@ -1,18 +1,19 @@
 $(document).ready(function() {
-  $( "input[name=start_date]" ).datepicker({
+  $( "input[id=trip_start]" ).datepicker({
     defaultDate: "+1w",
     changeMonth: true,
-    numberOfMonths: 3,
+    numberOfMonths: 1,
     onClose: function( selectedDate ) {
-      $( "input[name=end_date]" ).datepicker( "option", "minDate", selectedDate );
+      $( "input[id=trip_end]" ).datepicker( "option", "minDate", selectedDate );
     }
   });
-  $( "input[name=end_date]" ).datepicker({
+
+  $( "input[id=trip_end]" ).datepicker({
     defaultDate: "+1w",
     changeMonth: true,
-    numberOfMonths: 3,
+    numberOfMonths: 1,
     onClose: function( selectedDate ) {
-      $( "input[name=start_date]" ).datepicker( "option", "maxDate", selectedDate );
+      $( "input[id=trip_start]" ).datepicker( "option", "maxDate", selectedDate );
     }
   });
 });

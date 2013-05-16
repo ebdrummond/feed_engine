@@ -21,7 +21,7 @@ class TripsController < ApplicationController
   private
 
   def trip_params
-    params[:trip].merge(:start => Date.parse(params[:trip][:start]),
-                        :end => Date.parse(params[:trip][:end]))
+    params[:trip].merge(:start => Chronic.parse(params[:trip][:start]),
+                        :end => Chronic.parse(params[:trip][:end]))
   end
 end
