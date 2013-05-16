@@ -6,6 +6,10 @@ class Trip < ActiveRecord::Base
                   :visible
 
   belongs_to :owner, :foreign_key => 'user_id', :class_name => 'User'
+  has_many :users, through: :traveler_trips
+  has_many :users, through: :kreepr_trips
+  has_many :traveler_trips, dependent: :destroy
+  has_many :kreepr_trips
 
   validate :end_date_cannot_be_earlier_than_start_date
 
