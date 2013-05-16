@@ -14,13 +14,18 @@ class CreateUser
 
 private
 
-  # TODO: HOLY CLEAN THIS SHIT UP
+  # TODO: HOLY CLEAN THIS SHIT UP & TAKE OUT FOURSQUARE STUFF?
   def self.create_user_and_auth_source(auth_source_params, user_params)
+    binding.pry
     User.transaction do
       user = create_with_username(user_params)
       user.auth_sources.create!(auth_source_params)
       user
     end
+  end
+
+  def self.create_service
+
   end
 
   # TODO: This is of the OAth domain (normalizing the oauth hash). Should it be moved elsewhere?
