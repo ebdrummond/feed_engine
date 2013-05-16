@@ -15,7 +15,8 @@ class TripsController < ApplicationController
   end
 
   def show
-    @feed = Feed.find_by_trip(params[:id])
+    @trip = current_user.trips.find(params[:id])
+    @tweets = current_user.tweets.where("? >= ? AND ? <= ?", :created_at, @trip.start, :created_at, @trip.end)
   end
 
   private
