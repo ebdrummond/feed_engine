@@ -23,10 +23,6 @@ FeedEngine::Application.routes.draw do
     to: 'erin_layouts/layouts#manage_kreepings',
     as: 'manage_kreepings'
 
-  get '/home',
-    to: 'phil_layouts/layouts#home',
-    as: 'home'
-
   get '/login',
     to: 'phil_layouts/layouts#login',
     as: 'login'

@@ -1,7 +1,4 @@
 class PhilLayouts::LayoutsController < ApplicationController
-  def home
-  end
-
   def login
   end
 
