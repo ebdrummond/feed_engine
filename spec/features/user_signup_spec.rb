@@ -41,7 +41,7 @@ describe 'User signup' do
   end
 
   describe 'clicking Login with Foursquare' do
-    it 'as an existing user, redirects to dashboard' do
+    xit 'as an existing user, redirects to dashboard' do
       OmniAuth.config.mock_auth[:foursquare] = valid_foursquare_credentials
 
       visit root_path
@@ -49,7 +49,7 @@ describe 'User signup' do
       expect(current_path).to eq dashboard_path
     end
 
-    it 'redirects to failure path with invalid credentials' do
+    xit 'redirects to failure path with invalid credentials' do
       OmniAuth.config.mock_auth[:foursquare] = :invalid_credentials
 
       visit root_path
