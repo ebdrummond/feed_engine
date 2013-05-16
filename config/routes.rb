@@ -15,10 +15,6 @@ FeedEngine::Application.routes.draw do
     to: 'erin_layouts/layouts#request_to_view_private_trip',
     as: 'request_to_view_private_trip'
 
-  get '/kreepr_requests',
-    to: 'erin_layouts/layouts#kreepr_requests',
-    as: 'kreepr_requests'
-
   get '/manage_trip',
     to: 'erin_layouts/layouts#manage_trip',
     as: 'manage_trip'
