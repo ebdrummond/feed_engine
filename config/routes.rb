@@ -5,7 +5,8 @@ FeedEngine::Application.routes.draw do
 
   # OmniAuth
   get '/auth/twitter/callback', to: 'sessions#create', as: 'callback'
-  get '/auth/instagram/callback', to: 'sessions#create', as: 'callback'
+  # change services to auth_sources#create
+  get '/auth/instagram/callback', to: 'services#create', as: 'callback'
   get '/auth/failure', to: 'sessions#error', as: 'failure'
 
   get '/dashboard', to: 'feeds#index', as: 'dashboard'

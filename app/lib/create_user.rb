@@ -29,6 +29,7 @@ private
   end
 
   # TODO: This is of the OAth domain (normalizing the oauth hash). Should it be moved elsewhere?
+  # Move this into it's own module/class Authentication that knows about parsing the hash
   def self.parse_hash(auth_hash)
     auth_source_params = {'provider' => auth_hash['provider'],
                           'token' => auth_hash['credentials']['token'],
@@ -47,6 +48,7 @@ private
                                        auth_hash['info']['last_name']})
 
       return auth_source_params, user_params
+    # when instagram
     else
       raise "Unrecognized OmniAuth provider: #{provider}"
     end
