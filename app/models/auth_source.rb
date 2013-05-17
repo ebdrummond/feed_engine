@@ -12,4 +12,8 @@ class AuthSource < ActiveRecord::Base
                      :if => lambda { |auth_source| auth_source.provider == 'twitter' }
   validates :uid, :presence => true
   validates :user_id, :presence => true
+
+  def self.accounts_by_provider
+    all.group_by { |auth_source| auth_source.provider }
+  end
 end

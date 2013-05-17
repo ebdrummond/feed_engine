@@ -1,12 +1,9 @@
 class TwitterService
-  def self.update
-    accounts = AuthSource.where(:provider => 'twitter').all
-    accounts.each do |account|
-      client = client_for_user(account.token, account.secret)
-      tweets = request_tweets_for_user(client, account.user_id)
+  def self.retrieve_and_store_tweets_for_user(params)
+    client = client_for_user(params['token'], params['secret'])
+    tweets = request_tweets_for_user(client, params['user_id'])
 
-      store_tweets(account.user_id, tweets)
-    end
+    store_tweets(params['user_id'], tweets)
   end
 
 private
@@ -26,19 +23,16 @@ private
   end
 
   def self.latest_tweet_id(user_id)
-    # user = User.find(user_id)
-    latest_tweet = Tweet.where(user_id: user_id).limit(1).first
-    # latest_tweet = user.tweets.order(:tweeted_at).limit(1).pluck(:tweet_id).first
-    # where(:user_id => user.id).limit(1).first
-    latest_tweet ? latest_tweet.tweet_id : 1
+    user = User.find(user_id)
+    user.tweets.order(:tweeted_at).limit(1).pluck(:tweet_id).first || 1
   end
 
   def self.store_tweets(user_id, tweets)
     tweets.each do |tweet|
-      Tweet.create!(:tweeted_at => DateTime.parse(tweet.created_at.to_s),
-                    :tweet_id   => tweet.id,
-                    :text       => tweet.text,
-                    :user_id    => user_id)
+      Tweet.create(:tweeted_at => DateTime.parse(tweet.created_at.to_s),
+                   :tweet_id   => tweet.id,
+                   :text       => tweet.text,
+                   :user_id    => user_id)
     end
   end
 end
