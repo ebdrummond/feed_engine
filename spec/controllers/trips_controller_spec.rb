@@ -68,4 +68,8 @@ describe TripsController do
       end
     end
   end
+
+  describe 'GET #dashboard' do
+    it 'does something'
+  end
 end

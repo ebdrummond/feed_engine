@@ -10,15 +10,6 @@ describe 'User signup' do
     })
   end
 
-  # let(:valid_foursquare_credentials) do
-  #   OmniAuth::AuthHash.new({
-  #     :provider => 'foursquare',
-  #     :credentials => { :token => '123' },
-  #     :info => {:first_name => 'nick', :last_name => 'drake' },
-  #     :uid => 'abc123'
-  #   })
-  # end
-
   describe 'clicking Login with Twitter' do
     it 'as an existing user, redirects to dashboard' do
       OmniAuth.config.mock_auth[:twitter] = valid_twitter_credentials

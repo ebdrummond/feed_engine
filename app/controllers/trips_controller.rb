@@ -15,13 +15,23 @@ class TripsController < ApplicationController
   end
 
   def show
-    @feed = Feed.find_by_trip(params[:id])
+    @trip = current_user.trips.find(params[:id])
+    @tweets = current_user.tweets.where("? >= ? AND ? <= ?", :created_at,
+                                                             @trip.start,
+                                                             :created_at,
+                                                             @trip.end)
+  end
+
+  def dashboard
+    @trips = current_user.trips
+    @kreepings = []
+    @feeds = Tweet.all
   end
 
   private
 
   def trip_params
-    params[:trip].merge(:start => Date.parse(params[:trip][:start]),
-                        :end => Date.parse(params[:trip][:end]))
+    params[:trip].merge(:start => Chronic.parse(params[:trip][:start]),
+                        :end => Chronic.parse(params[:trip][:end]))
   end
 end

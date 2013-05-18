@@ -4,6 +4,8 @@ class Tweet < ActiveRecord::Base
                   :user_id,
                   :text
 
+  belongs_to :user
+
   validates :tweet_id, :presence => true,
                        :uniqueness => true
   validates :tweeted_at, :presence => true
