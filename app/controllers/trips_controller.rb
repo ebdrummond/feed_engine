@@ -19,6 +19,12 @@ class TripsController < ApplicationController
     @tweets = current_user.tweets.where("? >= ? AND ? <= ?", :created_at, @trip.start, :created_at, @trip.end)
   end
 
+  def dashboard
+    @trips = current_user.trips
+    @kreepings = []
+    @feeds = Tweet.all
+  end
+
   private
 
   def trip_params

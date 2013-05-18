@@ -4,12 +4,11 @@ FeedEngine::Application.routes.draw do
   mount Resque::Server, at: "/resque"
 
   # OmniAuth
-  get '/auth/:provider/callback', to: 'sessions#create', as: 'callback'
-  get '/auth/failure', to: 'sessions#error', as: 'failure'
+  get '/auth/:provider/callback', to: 'sessions#create', as: :callback
+  get '/auth/failure', to: 'sessions#error', as: :failure
 
-  get '/dashboard', to: 'feeds#index', as: 'dashboard'
-  resources :feeds
   resources :trips
+  get '/dashboard', to: 'trips#dashboard', as: :dashboard
 
   get '/request_to_view_private_trip',
     to: 'erin_layouts/layouts#request_to_view_private_trip',
@@ -34,10 +33,6 @@ FeedEngine::Application.routes.draw do
   get '/trip_feed',
     to: 'phil_layouts/layouts#trip_feed',
     as: 'trip_feed'
-
-  get '/user_dashboard',
-    to: 'phil_layouts/layouts#user_dashboard',
-    as: 'user_dashboard'
 
   get '/user_trips',
     to: 'phil_layouts/layouts#user_trips',

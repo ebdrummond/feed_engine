@@ -19,7 +19,7 @@ describe 'User creates trip' do
 
     it 'from dashboard' do
       visit dashboard_path
-      click_link 'Create Trip'
+      click_link 'Add Trip'
       fill_in 'trip[name]', with: "Phil's birthday getaway"
       fill_in 'trip[destination]', with: 'Sau Paulo, Brazil'
       fill_in 'trip[start]', with: '2013-07-15'

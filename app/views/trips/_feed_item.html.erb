@@ -1,0 +1,13 @@
+<% feeds.each do |feed| %>
+<div class="row" id="feed_item">
+  <div class="two columns">
+    <%= image_tag(feed.user.avatar) %>
+  </div>
+  <div class="ten columns">
+    <div>"<%= feed.text %>"</div>
+    <div>
+    <%= link_to feed.user.username, root_path %> posted to trip <a href="#">Bangkok</a> <%= time_ago_in_words(feed.tweeted_at) %> ago
+    </div>
+  </div>
+</div>
+<% end %>
