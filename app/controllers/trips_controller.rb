@@ -1,5 +1,5 @@
 class TripsController < ApplicationController
-  before_filter :require_login
+  before_filter :require_login, only: [ :new, :create, :dashboard ]
 
   def new
     @trip = Trip.new
@@ -15,11 +15,11 @@ class TripsController < ApplicationController
   end
 
   def show
-    @trip = current_user.trips.find(params[:id])
-    @tweets = current_user.tweets.where("? >= ? AND ? <= ?", :created_at,
-                                                             @trip.start,
-                                                             :created_at,
-                                                             @trip.end)
+    @trip = Trip.find(params[:id])
+    # @tweets = Tweet.where("? >= ? AND ? <= ?", :created_at,
+    #                                            @trip.start,
+    #                                            :created_at,
+    #                                            @trip.end)
   end
 
   def dashboard

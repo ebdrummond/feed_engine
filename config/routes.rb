@@ -8,6 +8,7 @@ FeedEngine::Application.routes.draw do
   get '/auth/failure', to: 'sessions#error', as: :failure
 
   resources :trips
+
   get '/dashboard', to: 'trips#dashboard', as: :dashboard
   get '/account', to: 'users#account', as: :account
   put '/account', to: 'users#update', as: :update_account
