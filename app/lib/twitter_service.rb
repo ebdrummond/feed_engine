@@ -17,14 +17,14 @@ private
 
   def self.request_tweets_for_user(client, user_id)
     client.user_timeline(:count           => 200,
-                         :since_id        => latest_tweet_id(user_id),
+                         :since_id        => latest_tweet_id(user_id) || 1,
                          :trim_user       => true,
                          :exclude_replies => true)
   end
 
   def self.latest_tweet_id(user_id)
     user = User.find(user_id)
-    user.tweets.order(:tweeted_at).limit(1).pluck(:tweet_id).first || 1
+    user.tweets.order('tweeted_at DESC').limit(1).pluck(:tweet_id).first
   end
 
   def self.store_tweets(user_id, tweets)
