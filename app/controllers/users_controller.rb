@@ -12,8 +12,7 @@ class UsersController < ApplicationController
       redirect_to account_path,
                   :notice => "Updated username to #{@user.username}"
     else
-      render :account,
-             :notice => "Update failed"
+      render :account
     end
   end
 end
