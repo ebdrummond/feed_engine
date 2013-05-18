@@ -9,6 +9,8 @@ FeedEngine::Application.routes.draw do
 
   resources :trips
   get '/dashboard', to: 'trips#dashboard', as: :dashboard
+  get '/account', to: 'users#account', as: :account
+  put '/account', to: 'users#update', as: :update_account
 
   get '/request_to_view_private_trip',
     to: 'erin_layouts/layouts#request_to_view_private_trip',
@@ -37,8 +39,4 @@ FeedEngine::Application.routes.draw do
   get '/user_trips',
     to: 'phil_layouts/layouts#user_trips',
     as: 'user_trips'
-
-  get '/account_settings',
-    to: 'erin_layouts/layouts#account_settings',
-    as: 'account_settings'
 end

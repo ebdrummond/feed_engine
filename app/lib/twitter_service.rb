@@ -6,7 +6,7 @@ class TwitterService
     store_tweets(params['user_id'], tweets)
   end
 
-private
+  private
 
   def self.client_for_user(token, secret)
     Twitter::Client.new(:oauth_token        => token,

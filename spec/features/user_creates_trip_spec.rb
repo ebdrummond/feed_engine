@@ -3,18 +3,8 @@ require 'spec_helper'
 describe 'User creates trip' do
   context 'after logging in' do
     before(:all) do
-      # TODO: Way too much setup!  Isolate this somewhere so it's not duplicated everywhere
-      OmniAuth.config.mock_auth[:twitter] = OmniAuth::AuthHash.new({
-        :provider => 'twitter',
-        :credentials => { :token => '123', :secret => 'abc' },
-        :info => { :nickname => 'nick' },
-        :uid => 'abc123'
-      })
-
       user = User.create!(username: 'nick')
-      user.auth_sources.create!(provider: 'twitter', token: 'abc', secret: '123', uid: 'abc123')
-      visit root_path
-      click_link 'Login with Twitter'
+      login(user)
     end
 
     it 'from dashboard' do
