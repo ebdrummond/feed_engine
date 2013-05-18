@@ -5,15 +5,10 @@ class CreateUser
     auth_source = AuthSource.where(:uid => auth_source_params['uid'],
                     :provider => auth_source_params['provider']).first
 
-    if user_params
-      if auth_source
-        auth_source.user
-      else
-        create_user_and_auth_source(auth_source_params, user_params)
-      end
+    if auth_source
+      auth_source.user
     else
-      # create the linked service
-      Authentication.link_service_to_user(auth_source_params)
+      create_user_and_auth_source(auth_source_params, user_params)
     end
   end
 

@@ -40,4 +40,5 @@ group :test do
   gem 'database_cleaner', '~> 1.0.1'
   gem 'vcr', '~> 2.4.0'
   gem 'webmock', '~> 1.9.0'
+  gem 'simplecov'
 end

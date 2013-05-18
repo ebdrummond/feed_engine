@@ -4,7 +4,7 @@ class Authentication
     case auth_hash['provider']
     when 'twitter'
       parse_twitter(auth_hash)
-    when 'instagram' || 'foursquare'
+    when 'instagram'
       parse_secondary_service(auth_hash)
     when 'foursquare'
       parse_secondary_service(auth_hash)
