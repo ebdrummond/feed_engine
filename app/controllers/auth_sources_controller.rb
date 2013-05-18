@@ -5,7 +5,8 @@ class AuthSourcesController < ApplicationController
     new_auth_source = Authentication.parse_hash(auth_hash)
     new_auth_source.user_id = current_user.id
     new_auth_source.save
-    redirect_to root_path, :notice => "#{new_auth_source.provider.titleize} account connected!"
+    redirect_to account_settings_path,
+      :notice => "#{new_auth_source.provider.titleize} account connected!"
   end
 
 private

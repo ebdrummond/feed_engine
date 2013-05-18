@@ -10,6 +10,7 @@ FeedEngine::Application.routes.draw do
   get '/auth/failure', to: 'sessions#error', as: 'failure'
 
   get '/dashboard', to: 'feeds#index', as: 'dashboard'
+  get '/account_settings', to: 'users#show', as: 'account_settings'
   resources :feeds
   resources :trips
 
@@ -57,7 +58,7 @@ FeedEngine::Application.routes.draw do
     to: 'phil_layouts/layouts#user_trips',
     as: 'user_trips'
 
-  get '/account_settings',
-    to: 'erin_layouts/layouts#account_settings',
-    as: 'account_settings'
+  # get '/account_settings',
+  #   to: 'erin_layouts/layouts#account_settings',
+  #   as: 'account_settings'
 end

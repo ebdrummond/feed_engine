@@ -14,7 +14,6 @@ class CreateUser
 
 private
 
-  # TODO: HOLY CLEAN THIS SHIT UP & TAKE OUT FOURSQUARE STUFF?
   def self.create_user_and_auth_source(auth_source_params, user_params)
     User.transaction do
       user = create_with_username(user_params)

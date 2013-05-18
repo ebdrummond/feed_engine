@@ -36,15 +36,16 @@ describe "Linking Instagram" do
     user.auth_sources.create!(provider: 'twitter', token: 'abc', secret: '123', uid: 'abc123')
     visit root_path
     click_link "Login with Twitter"
+    visit account_settings_path
   end
 
   it "connects to an instagram account" do
-    click_link "Link your Instagram"
+    click_link "connect-instagram"
     expect(page).to have_content("Instagram account connected!")
   end
 
   it "connects to a foursquare account" do
-    click_link "Link your Foursquare"
+    click_link "connect-foursquare"
     expect(page).to have_content("Foursquare account connected!")
   end
 end

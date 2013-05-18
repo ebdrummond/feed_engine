@@ -662,6 +662,7 @@
         2,
         null,
         null,
+        null,
         1,
         null,
         1,
@@ -815,6 +816,36 @@
         null,
         null
       ],
+      "/Users/erindrummond/projects/feed_engine/app/controllers/users_controller.rb": [
+        1,
+        null,
+        1,
+        null,
+        null,
+        null
+      ],
+      "/Users/erindrummond/projects/feed_engine/app/models/user.rb": [
+        1,
+        1,
+        null,
+        1,
+        null,
+        null,
+        1,
+        1,
+        null,
+        1,
+        null,
+        null,
+        1,
+        10,
+        null,
+        null,
+        1,
+        10,
+        null,
+        null
+      ],
       "/Users/erindrummond/projects/feed_engine/app/controllers/welcome_controller.rb": [
         1,
         1,
@@ -878,7 +909,6 @@
         null,
         null,
         1,
-        null,
         null,
         1,
         5,
@@ -967,21 +997,6 @@
         1,
         null
       ],
-      "/Users/erindrummond/projects/feed_engine/app/models/user.rb": [
-        1,
-        1,
-        null,
-        1,
-        null,
-        null,
-        1,
-        1,
-        null,
-        1,
-        null,
-        null,
-        null
-      ],
       "/Users/erindrummond/projects/feed_engine/config/routes.rb": [
         1,
         1,
@@ -997,6 +1012,7 @@
         1,
         1,
         1,
+        1,
         null,
         1,
         null,
@@ -1042,12 +1058,12 @@
         null,
         null,
         null,
-        1,
+        null,
         null,
         null,
         null
       ]
     },
-    "timestamp": 1368909913
+    "timestamp": 1368913075
   }
 }
