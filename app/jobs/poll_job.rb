@@ -13,9 +13,9 @@ private
 
   def self.poll_tweets(twitter_accounts)
     twitter_accounts.each do |twitter_account|
-      Resque.enqueue(TwitterJob, { :token => twitter_account.token,
-                                   :secret => twitter_account.secret,
-                                   :user_id => twitter_account.user_id })
+      Resque.enqueue(TwitterJob, { 'token' => twitter_account.token,
+                                   'secret' => twitter_account.secret,
+                                   'user_id' => twitter_account.user_id })
     end
   end
 end
