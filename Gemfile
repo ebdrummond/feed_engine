@@ -11,6 +11,7 @@ gem 'omniauth-twitter'
 gem 'omniauth-instagram'
 gem 'omniauth-foursquare'
 gem 'twitter'
+gem 'instagram'
 gem 'twitter-text'
 
 group :assets do
