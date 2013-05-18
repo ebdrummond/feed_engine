@@ -16,7 +16,10 @@ class TripsController < ApplicationController
 
   def show
     @trip = current_user.trips.find(params[:id])
-    @tweets = current_user.tweets.where("? >= ? AND ? <= ?", :created_at, @trip.start, :created_at, @trip.end)
+    @tweets = current_user.tweets.where("? >= ? AND ? <= ?", :created_at,
+                                                             @trip.start,
+                                                             :created_at,
+                                                             @trip.end)
   end
 
   def dashboard
