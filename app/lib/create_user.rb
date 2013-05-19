@@ -29,11 +29,7 @@ class CreateUser
       User.create!({username: iterate_nickname(params['nickname'], i),
                     avatar: params['image_href']})
     rescue => e
-      if i == 10
-        raise e
-      else
-        retry
-      end
+      i == 10 ? raise(e) : retry
     end
   end
 
