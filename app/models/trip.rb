@@ -6,6 +6,7 @@ class Trip < ActiveRecord::Base
                   :visible
 
   belongs_to :owner, :foreign_key => 'user_id', :class_name => 'User'
+  has_many :notes
 
   validate :end_date_cannot_be_earlier_than_start_date
 

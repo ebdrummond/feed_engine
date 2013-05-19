@@ -1,16 +1,23 @@
 class NotesController < ApplicationController
   before_filter :require_login
+  before_filter :find_trip
 
   def create
-    trip_id = params[:note] ? params[:note][:trip_id] : nil
-    trip = current_user.trips.find(trip_id)
-    note = current_user.notes.build(params[:note].merge(:trip_id => trip.id))
+    note = @trip.notes.build(params[:note])
+    note.user = current_user
 
     if note.save
-      redirect_to trip_path(note.trip),
-                  notice: 'New note created'
+      redirect_to trip_path(@trip),
+        :notice => 'New note created'
     else
-      redirect_to trip_path(trip_id)
+      redirect_to trip_path(@trip),
+        :error => 'Note creation failed'
     end
+  end
+
+  private
+
+  def find_trip
+    @trip = current_user.trips.find(params[:trip_id])
   end
 end

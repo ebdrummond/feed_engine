@@ -16,8 +16,9 @@ FeedEngine::Application.routes.draw do
   put '/account', to: 'users#update', as: :update_account
 
   resources :feeds
-  resources :trips
-  resources :notes, only: [ :create, :destroy ]
+  resources :trips do
+    resources :notes, only: [ :create, :destroy ]
+  end
 
   get '/request_to_view_private_trip',
     to: 'erin_layouts/layouts#request_to_view_private_trip',

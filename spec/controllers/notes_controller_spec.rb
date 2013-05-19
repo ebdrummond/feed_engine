@@ -10,16 +10,15 @@ describe NotesController do
       end
 
       context 'with corrects params' do
-        let(:params) { {:note => {:trip_id => @trip.id, :text => 'Oh hai'}} }
+        let(:params) { {:trip_id => @trip.id, :note => { :text => 'Oh hai'} } }
 
         it 'creates a new note' do
-          request.env["HTTP_REFERER"] = '/'
           expect { post :create, params }.to change { @user.notes.count }.by 1
         end
       end
 
-      context 'without text' do
-        let(:params) { {:note => {:trip_id => @trip.id, :text => nil}} }
+      context 'without a note' do
+        let(:params) { {:trip_id => @trip.id } }
 
         it 'redirects back to trip if exists given' do
           post :create, params
@@ -28,18 +27,17 @@ describe NotesController do
       end
 
       context 'with a missing or invalid trip' do
-        let(:params) { {:note => {:trip_id => 2, :text => 'Oh hai'}} }
+        let(:params) { {:note => {:trip_id => 2, :text => nil}} }
 
-        it 'raises an error' do
-          expect { post :create }.to raise_error ActiveRecord::RecordNotFound
+        it 'raises a routing error' do
+          expect { post :create }.to raise_error ActionController::RoutingError
         end
       end
     end
 
     context 'as an anonymous user' do
-      it 'returns forbidden' do
-        post :create
-        expect(response).to redirect_to root_path
+      it 'raises a routing error' do
+        expect { post :create }.to raise_error ActionController::RoutingError
       end
     end
   end
