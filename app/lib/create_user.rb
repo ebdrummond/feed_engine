@@ -1,12 +1,14 @@
 class CreateUser
   def self.from_unknown_auth_source(auth_hash)
-    auth_source_params, user_params = Authentication.parse_hash(auth_hash)
+    auth_params = AuthParams.new(auth_hash)
+    auth_source_params = auth_params.auth_source_params
+    user_params = auth_params.user_params
 
-    auth_source = AuthSource.where(:uid => auth_source_params['uid'],
-                    :provider => auth_source_params['provider']).first
+    existing_auth_source = AuthSource.where(:uid => auth_source_params['uid'],
+                            :provider => auth_source_params['provider']).first
 
-    if auth_source
-      auth_source.user
+    if existing_auth_source
+      existing_auth_source.user
     else
       create_user_and_auth_source(auth_source_params, user_params)
     end

@@ -42,34 +42,25 @@ describe CreateUser do
       'image_href' => 'http://blah.com' }
   end
 
-  context 'normalizes the auth_hash' do
-    it 'for twitter' do
-      expect(Authentication.parse_hash(twitter_omniauth_params)).to eq [twitter_auth_params, twitter_user_params]
-    end
-  end
+  describe '.from_unknown_auth_source' do
+    context 'with a known user' do
+      before do
+        @user = CreateUser.create_user_and_auth_source(twitter_auth_params, twitter_user_params)
+      end
 
-  it '.create_user_and_auth_source creates a user' do
-    expect{ CreateUser.create_user_and_auth_source(twitter_auth_params, twitter_user_params) }.to change { User.count }.by 1
-    expect{ CreateUser.create_user_and_auth_source(twitter_auth_params, twitter_user_params) }.to change { AuthSource.count }.by 1
-  end
-
-  context '.from_unknown_auth_source with a known user' do
-    before do
-      @user = CreateUser.create_user_and_auth_source(twitter_auth_params, twitter_user_params)
+      it 'returns the user' do
+        expect(CreateUser.from_unknown_auth_source(twitter_omniauth_params)).to eq @user
+      end
     end
 
-    it 'returns the user' do
-      expect(CreateUser.from_unknown_auth_source(twitter_omniauth_params)).to eq @user
-    end
-  end
+    context 'with a new user' do
+      it 'creates a new user' do
+        expect{ CreateUser.from_unknown_auth_source(twitter_omniauth_params) }.to change { User.count }.by 1
+      end
 
-  context '.from_unknown_auth_source with a new user' do
-    it 'creates a new user' do
-      expect{ CreateUser.from_unknown_auth_source(twitter_omniauth_params) }.to change { User.count }.by 1
-    end
-
-    it 'creates and associates a new service object with that user' do
-      expect{ CreateUser.from_unknown_auth_source(twitter_omniauth_params) }.to change { AuthSource.count }.by 1
+      it 'creates and associates a new service object with that user' do
+        expect{ CreateUser.from_unknown_auth_source(twitter_omniauth_params) }.to change { AuthSource.count }.by 1
+      end
     end
   end
 end

@@ -29,7 +29,7 @@ class TwitterService
 
   def self.store_tweets(user_id, tweets)
     tweets.each do |tweet|
-      Tweet.create(:tweeted_at => DateTime.parse(tweet.created_at.to_s),
+      Tweet.create(:tweeted_at => Chronic.parse(tweet.created_at.to_s),
                    :tweet_id   => tweet.id,
                    :text       => tweet.text,
                    :user_id    => user_id)
