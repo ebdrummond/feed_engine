@@ -12,9 +12,9 @@ http_interactions:
       User-Agent:
       - Twitter Ruby Gem 4.6.2
       Authorization:
-      - OAuth oauth_consumer_key="ATWnDZ0CeEHpqrPMtyXaig", oauth_nonce="b47f0035490566794982bd42e393af00",
-        oauth_signature="hW8oIk9U5dCXbXFB4omzqK4MaSc%3D", oauth_signature_method="HMAC-SHA1",
-        oauth_timestamp="1368839190", oauth_token="57272421-DdrlGSaASFZj1qjoqYqiSo4YDmJkDkaZOBVE5rSV4",
+      - OAuth oauth_consumer_key="ATWnDZ0CeEHpqrPMtyXaig", oauth_nonce="119d4c80904f3ead8f4e60fe528b0f64",
+        oauth_signature="LRICArQL2wXy9e28c2edMEOfM1U%3D", oauth_signature_method="HMAC-SHA1",
+        oauth_timestamp="1369002514", oauth_token="57272421-DdrlGSaASFZj1qjoqYqiSo4YDmJkDkaZOBVE5rSV4",
         oauth_version="1.0"
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
@@ -26,22 +26,22 @@ http_interactions:
       Cache-Control:
       - no-cache, no-store, must-revalidate, pre-check=0, post-check=0
       Content-Length:
-      - '597'
+      - '636'
       Content-Type:
       - application/json;charset=utf-8
       Date:
-      - Sat, 18 May 2013 01:06:30 GMT
+      - Sun, 19 May 2013 22:28:33 GMT
       Expires:
       - Tue, 31 Mar 1981 05:00:00 GMT
       Last-Modified:
-      - Sat, 18 May 2013 01:06:30 GMT
+      - Sun, 19 May 2013 22:28:33 GMT
       Pragma:
       - no-cache
       Server:
       - tfe
       Set-Cookie:
-      - guest_id=v1%3A136883919094026117; Domain=.twitter.com; Path=/; Expires=Mon,
-        18-May-2015 01:06:30 UTC
+      - guest_id=v1%3A136900251350651706; Domain=.twitter.com; Path=/; Expires=Tue,
+        19-May-2015 22:28:33 UTC
       - lang=en
       Status:
       - 200 OK
@@ -56,14 +56,16 @@ http_interactions:
       X-Rate-Limit-Remaining:
       - '179'
       X-Rate-Limit-Reset:
-      - '1368840090'
+      - '1369003413'
       X-Transaction:
-      - 04c60864e875564e
+      - 6ba0dc6770306203
       X-Xss-Protection:
       - 1; mode=block
     body:
       encoding: UTF-8
-      string: '[{"created_at":"Sat May 18 00:31:14 +0000 2013","id":335553128403443713,"id_str":"335553128403443713","text":"is
+      string: '[{"created_at":"Sun May 19 18:48:37 +0000 2013","id":336191679927287808,"id_str":"336191679927287808","text":"testing
+        again","source":"web","truncated":false,"in_reply_to_status_id":null,"in_reply_to_status_id_str":null,"in_reply_to_user_id":null,"in_reply_to_user_id_str":null,"in_reply_to_screen_name":null,"user":{"id":57272421,"id_str":"57272421"},"geo":null,"coordinates":null,"place":null,"contributors":null,"retweet_count":0,"favorite_count":0,"entities":{"hashtags":[],"symbols":[],"urls":[],"user_mentions":[]},"favorited":false,"retweeted":false,"lang":"en"},{"created_at":"Sat
+        May 18 00:31:14 +0000 2013","id":335553128403443713,"id_str":"335553128403443713","text":"is
         that how you spell it?","source":"web","truncated":false,"in_reply_to_status_id":null,"in_reply_to_status_id_str":null,"in_reply_to_user_id":null,"in_reply_to_user_id_str":null,"in_reply_to_screen_name":null,"user":{"id":57272421,"id_str":"57272421"},"geo":null,"coordinates":null,"place":null,"contributors":null,"retweet_count":0,"favorite_count":0,"entities":{"hashtags":[],"symbols":[],"urls":[],"user_mentions":[]},"favorited":false,"retweeted":false,"lang":"en"},{"created_at":"Sat
         May 18 00:31:05 +0000 2013","id":335553089887141888,"id_str":"335553089887141888","text":"magical,
         even","source":"web","truncated":false,"in_reply_to_status_id":null,"in_reply_to_status_id_str":null,"in_reply_to_user_id":null,"in_reply_to_user_id_str":null,"in_reply_to_screen_name":null,"user":{"id":57272421,"id_str":"57272421"},"geo":null,"coordinates":null,"place":null,"contributors":null,"retweet_count":0,"favorite_count":0,"entities":{"hashtags":[],"symbols":[],"urls":[],"user_mentions":[]},"favorited":false,"retweeted":false,"lang":"en"},{"created_at":"Sat
@@ -78,5 +80,5 @@ http_interactions:
         hai","source":"web","truncated":false,"in_reply_to_status_id":null,"in_reply_to_status_id_str":null,"in_reply_to_user_id":null,"in_reply_to_user_id_str":null,"in_reply_to_screen_name":null,"user":{"id":57272421,"id_str":"57272421"},"geo":null,"coordinates":null,"place":null,"contributors":null,"retweet_count":0,"favorite_count":0,"entities":{"hashtags":[],"symbols":[],"urls":[],"user_mentions":[]},"favorited":false,"retweeted":false,"lang":"id"},{"created_at":"Wed
         May 08 13:34:01 +0000 2013","id":332126241945702401,"id_str":"332126241945702401","text":"Testing.","source":"web","truncated":false,"in_reply_to_status_id":null,"in_reply_to_status_id_str":null,"in_reply_to_user_id":null,"in_reply_to_user_id_str":null,"in_reply_to_screen_name":null,"user":{"id":57272421,"id_str":"57272421"},"geo":null,"coordinates":null,"place":null,"contributors":null,"retweet_count":0,"favorite_count":0,"entities":{"hashtags":[],"symbols":[],"urls":[],"user_mentions":[]},"favorited":false,"retweeted":false,"lang":"en"}]'
     http_version: 
-  recorded_at: Sat, 18 May 2013 01:06:30 GMT
+  recorded_at: Sun, 19 May 2013 22:28:35 GMT
 recorded_with: VCR 2.4.0
