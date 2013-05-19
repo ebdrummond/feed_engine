@@ -1,13 +1,15 @@
 # This file is copied to spec/ when you run 'rails generate rspec:install'
 ENV["RAILS_ENV"] ||= 'test'
 
+require 'coveralls'
 require 'simplecov'
+Coveralls.wear!('rails')
+
+# SimpleCov.formatter = Coveralls::SimpleCov::Formatter
 SimpleCov.start do
   add_filter '/spec'
 end
 
-require 'coveralls'
-Coveralls.wear!
 
 require File.expand_path("../../config/environment", __FILE__)
 require 'rspec/rails'
