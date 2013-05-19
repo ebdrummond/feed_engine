@@ -6,7 +6,7 @@ class PollJob
 
     poll_tweets(accounts_by_provider['twitter'] || [])
     poll_photos(accounts_by_provider['instagram'] || [])
-    # poll_checkins(accounts_by_provider['foursquare'] || [])
+    poll_check_ins(accounts_by_provider['foursquare'] || [])
   end
 
 private
@@ -24,6 +24,14 @@ private
       Resque.enqueue(InstagramJob, { 'token' => instagram_account.token,
                                      'user_id' => instagram_account.user_id,
                                      'uid' => instagram_account.uid })
+    end
+  end
+
+  def self.poll_check_ins(foursquare_accounts)
+    foursquare_accounts.each do |foursquare_account|
+      Resque.enqueue(FoursquareJob, { 'token' => foursquare_account.token,
+                                      'user_id' => foursquare_account.user_id,
+                                      'uid' => foursquare_account.uid })
     end
   end
 end
