@@ -7,6 +7,8 @@ class User < ActiveRecord::Base
   has_many :auth_sources
   has_many :trips
   has_many :tweets
+  has_many :photos
+  has_many :check_ins
 
   validates :username, :presence => true,
                        :uniqueness => true

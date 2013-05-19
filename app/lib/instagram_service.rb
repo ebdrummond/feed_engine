@@ -1,5 +1,3 @@
-require 'time'
-
 class InstagramService
   def self.retrieve_and_store_photos_for_user(params)
     client = client_for_user(params['token'])
