@@ -1,0 +1,101 @@
+<!-- Header and Nav -->
+
+  <div class="row">
+    <div class="site-header ui-helper-clearfix">
+      <div class="nine columns">
+        <h1 id="site_header">kreepr</h1>
+      </div>
+      <div class="three columns" id="user_info">
+        signed in as <a href="user">eebee</a>
+      </div>
+    </div>
+  </div>
+
+  <nav class="top-bar">
+
+    <section class="top-bar-section">
+      <!-- Left Nav Section -->
+      <div class="row">
+      <div class="twelve columns">
+      <ul class="left">
+        <li class="divider"></li>
+        <li><a href="home">Home</a></li>
+        <li class="divider"></li>
+        <li><a href="user_dashboard">My Feed</a></li>
+        <li class="divider"></li>
+        <li><a href="user_trips">My Trips</a></li>
+        <li class="divider"></li>
+        <li><a href="kreepr_requests">Kreepr Requests (3)</a></li>
+        <li class="divider"></li>
+        <li><a href="manage_kreepings">Manage Kreepings</a></li>
+        <li class="divider"></li>
+        <li class="active"><a href="account_settings">Account Settings</a></li>
+        <li class="divider"></li>
+      </ul>
+      </div>
+      </div>
+    </section>
+  </nav>
+
+<!-- End Header and Nav -->
+
+<!-- Main Body -->
+
+  <div class="row">
+    <div class="twelve columns">
+      <h3 id="page_headline">account settings</h3>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="two columns offset-by-one">
+      <%= image_tag("Overly-attached-girlfriend-meme.png", :size => "150x150", :alt => "kreepr") %>
+    </div>
+    <div class="nine columns">
+      <h2>eebee</h2>
+    </div>
+  </div>
+
+  <br>
+  <br>
+
+  <div class="row">
+    <div class="eleven columns offset-by-one">
+      <h3>Linked Services</h3>
+      <div class="row">
+        <div class="one column">
+          <%= image_tag("twitter_logo.svg", :size => "40x40", :alt => "twitter logo") %><br><br>
+        </div>
+        <div class="eleven columns">
+          <h4>Twitter</h4><br>
+        </div>
+      </div>
+      <div class="row">
+        <div class="one column">
+          <%= image_tag("instagram_logo.jpg", :size => "45x45", :alt => "instagram logo") %><br><br>
+        </div>
+        <div class="eleven columns">
+          <h4>Instagram</h4><br>
+          <%= link_to "Connect", "/auth/instagram" %>
+        </div>
+      </div>
+      <div class="row">
+        <div class="one column">
+           <%= image_tag("foursquare_logo.jpg", :size => "40x40", :alt => "foursquare logo") %><br><br>
+           <br>
+        <br>
+        <br>
+        <br>
+        <a class="radius button alert">Delete Account</a>
+        </div>
+        <div class="eleven columns">
+          <h4>Foursquare</h4><br>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+
+
+<!-- End Main Body

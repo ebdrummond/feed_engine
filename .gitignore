@@ -19,3 +19,6 @@
 
 # Ignore VCR cassettes
 /fixtures/vcr_cassettes
+
+# Simplecov coverage
+/coverage

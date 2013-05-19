@@ -4,8 +4,15 @@ FeedEngine::Application.routes.draw do
   mount Resque::Server, at: "/resque"
 
   # OmniAuth
-  get '/auth/:provider/callback', to: 'sessions#create', as: :callback
-  get '/auth/failure', to: 'sessions#error', as: :failure
+
+  get '/auth/twitter/callback', to: 'sessions#create', as: 'callback'
+  get '/auth/instagram/callback', to: 'auth_sources#create', as: 'callback'
+  get '/auth/foursquare/callback', to: 'auth_sources#create', as: 'callback'
+  get '/auth/failure', to: 'sessions#error', as: 'failure'
+
+  get '/dashboard', to: 'feeds#index', as: 'dashboard'
+  get '/account_settings', to: 'users#show', as: 'account_settings'
+  resources :feeds
 
   resources :trips
 
