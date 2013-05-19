@@ -21,6 +21,6 @@ class PollJob
   end
 
   def self.job_for_provider(provider)
-    "#{provider}_job".classify.contantize
+    "#{provider}_job".classify.constantize
   end
 end

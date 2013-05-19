@@ -1,7 +1,8 @@
 class SessionsController < ApplicationController
   def create
-    user = CreateUser.from_unknown_auth_source(auth_hash)
+    user = FindOrCreateUser.from_auth_source(auth_hash)
 
+    # TODO: user.new?
     if user.valid?
       auto_login(user)
       redirect_to dashboard_path, :notice => "Signed in"

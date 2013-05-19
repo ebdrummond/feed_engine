@@ -6,15 +6,15 @@ class AuthParams
   end
 
   def auth_source_params
-    auth_source_params = {'provider' => auth_hash['provider'],
-                          'token' => auth_hash['credentials']['token'],
-                          'uid' => auth_hash['uid']}
+    {}.tap do |params|
+      params['provider'] = auth_hash['provider']
+      params['token']    = auth_hash['credentials']['token']
+      params['uid']      = auth_hash['uid']
 
-    if auth_hash['provider'] == 'twitter'
-      auth_source_params.merge!('secret' => auth_hash['credentials']['secret'])
+      if auth_hash['provider'] == 'twitter'
+        params['secret'] = auth_hash['credentials']['secret']
+      end
     end
-
-    auth_source_params
   end
 
   def user_params

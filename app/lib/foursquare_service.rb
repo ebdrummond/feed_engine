@@ -1,4 +1,18 @@
 class FoursquareService
+
+  def initialize(params)
+    @params = params
+    @client = client_for_user(params['token'])
+  end
+
+  def retrieve_and_store_check_ins
+    store_check_ins fetch_check_ins
+  end
+
+  def fetch_check_ins
+    @client.recent_checkins(:limit => 100)
+  end
+
   def self.retrieve_and_store_check_ins_for_user(params)
     client = client_for_user(params['token'])
     check_ins = request_check_ins_for_user(client, params['uid'])
