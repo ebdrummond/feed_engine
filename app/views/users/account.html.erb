@@ -30,6 +30,9 @@
       </div>
       <div class="eleven columns">
         <h4>Instagram</h4><br>
+        <% unless current_user.instagram_connected? %>
+          <%= link_to "Connect", "/auth/instagram", :id => "connect-instagram" %>
+        <% end %>
       </div>
     </div>
     <div class="row">
@@ -43,6 +46,9 @@
       </div>
       <div class="eleven columns">
         <h4>Foursquare</h4><br>
+        <% unless current_user.foursquare_connected? %>
+          <%= link_to "Connect", "/auth/foursquare", :id => "connect-foursquare" %>
+        <% end %>
       </div>
 
     </div>

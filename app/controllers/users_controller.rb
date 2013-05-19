@@ -5,10 +5,6 @@ class UsersController < ApplicationController
     @user = current_user
   end
 
-  def show
-
-  end
-
   def update
     @user = current_user
 

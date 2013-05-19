@@ -8,18 +8,15 @@ FeedEngine::Application.routes.draw do
   get '/auth/twitter/callback', to: 'sessions#create', as: 'callback'
   get '/auth/instagram/callback', to: 'auth_sources#create', as: 'callback'
   get '/auth/foursquare/callback', to: 'auth_sources#create', as: 'callback'
+
   get '/auth/failure', to: 'sessions#error', as: 'failure'
-
-  get '/dashboard', to: 'feeds#index', as: 'dashboard'
-  get '/account_settings', to: 'users#show', as: 'account_settings'
-  resources :feeds
-
-  resources :trips
 
   get '/dashboard', to: 'trips#dashboard', as: :dashboard
   get '/account', to: 'users#account', as: :account
   put '/account', to: 'users#update', as: :update_account
 
+  resources :feeds
+  resources :trips
   resources :notes, only: [ :create, :destroy ]
 
   get '/request_to_view_private_trip',

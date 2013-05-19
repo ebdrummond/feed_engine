@@ -36,7 +36,7 @@ describe "Linking Instagram" do
     user.auth_sources.create!(provider: 'twitter', token: 'abc', secret: '123', uid: 'abc123')
     visit root_path
     click_link "Login with Twitter"
-    visit account_settings_path
+    visit account_path
   end
 
   it "connects to an instagram account" do
