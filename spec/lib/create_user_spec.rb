@@ -44,11 +44,7 @@ describe CreateUser do
 
   context 'normalizes the auth_hash' do
     it 'for twitter' do
-      expect(CreateUser.parse_hash(twitter_omniauth_params)).to eq [twitter_auth_params, twitter_user_params]
-    end
-
-    it 'for foursquare' do
-      expect(CreateUser.parse_hash(foursquare_omniauth_params)).to eq [foursquare_auth_params, foursquare_user_params]
+      expect(Authentication.parse_hash(twitter_omniauth_params)).to eq [twitter_auth_params, twitter_user_params]
     end
   end
 

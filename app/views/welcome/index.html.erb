@@ -1,2 +1,32 @@
-<%= link_to 'Login with Twitter', '/auth/twitter' %>
-<%= link_to 'Login with Foursquare', '/auth/foursquare' %>
+<div class="row">
+  <div class="twelve columns">
+    <center>
+    <br>
+    <br>
+    <h2>Powering Your Best Memories</h2>
+    <br>
+    <h4>And Letting Your Friends Live Vicariously</h4>
+    <br>
+    <h1>Get Your Kreep On</h1>
+    </center>
+  </div>
+</div>
+<br>
+<br>
+<br>
+
+<div class="row">
+  <div class="twelve columns">
+
+    <div class="row">
+      <div class="four columns">
+        <a href="http://twitter.com"><%= image_tag "twitter_icon.jpeg", :size => "50x50", :align => "right" %></a>
+      </div>
+      <div class="four columns" align="center">
+        <%= link_to 'Login with Twitter', '/auth/twitter', class: 'radius button large expand' %>
+      </div>
+      <div class="four columns">
+      </div>
+    </div>
+  </div>
+</div>

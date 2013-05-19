@@ -1,0 +1,17 @@
+<div class="row">
+  <h2 id="page_headline_dashboard">dashboard</h2>
+  <div class="three columns">
+    <br>
+    <div class="eleven columns offset-by-one">
+      <%= render partial: 'trips_sidebar',
+                 locals: { trips: @trips } %>
+      <br>
+      <%= render partial: 'kreepings_sidebar',
+                 locals: { kreepings: @kreepings } %>
+    </div>
+  </div>
+  <div class="nine columns">
+    <%= render partial: 'feed_item',
+               locals: { feeds: @feeds } %>
+  </div>
+</div>

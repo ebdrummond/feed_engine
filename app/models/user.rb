@@ -5,12 +5,21 @@ class User < ActiveRecord::Base
                   :avatar
 
   has_many :auth_sources
-  has_many :trips, through: :traveler_trips
-  has_many :trips, through: :kreepr_trips
-  has_many :traveler_trips
-  has_many :kreepr_trips
+  has_many :tweets
+  has_many :notes
+  has_many :photos
+  has_many :check_ins
+  has_many :user_trips
+  has_many :trips, through: :user_trips
 
   validates :username, :presence => true,
                        :uniqueness => true
 
+  def instagram_connected?
+    auth_sources.collect{|a| a.provider}.include?("instagram")
+  end
+
+  def foursquare_connected?
+    auth_sources.collect{|a| a.provider}.include?("foursquare")
+  end
 end

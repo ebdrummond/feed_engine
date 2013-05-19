@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130516000904) do
+ActiveRecord::Schema.define(:version => 20130519190540) do
 
   create_table "auth_sources", :force => true do |t|
     t.string   "token"
@@ -27,25 +27,39 @@ ActiveRecord::Schema.define(:version => 20130516000904) do
   add_index "auth_sources", ["uid"], :name => "index_auth_sources_on_uid"
   add_index "auth_sources", ["user_id", "provider"], :name => "index_auth_sources_on_user_id_and_provider", :unique => true
 
-  create_table "kreepr_trips", :force => true do |t|
+  create_table "check_ins", :force => true do |t|
+    t.datetime "checked_in_at"
+    t.string   "check_in_id"
+    t.text     "text"
+    t.string   "location"
     t.integer  "user_id"
-    t.integer  "trip_id"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+  end
+
+  add_index "check_ins", ["check_in_id"], :name => "index_check_ins_on_check_in_id", :unique => true
+  add_index "check_ins", ["user_id"], :name => "index_check_ins_on_user_id"
+
+  create_table "notes", :force => true do |t|
+    t.string   "text",       :null => false
+    t.integer  "trip_id",    :null => false
+    t.integer  "user_id",    :null => false
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
 
-  add_index "kreepr_trips", ["trip_id"], :name => "index_kreepr_trips_on_trip_id"
-  add_index "kreepr_trips", ["user_id"], :name => "index_kreepr_trips_on_user_id"
-
-  create_table "traveler_trips", :force => true do |t|
+  create_table "photos", :force => true do |t|
+    t.datetime "taken_at"
+    t.string   "photo_id"
+    t.string   "url"
+    t.text     "caption"
     t.integer  "user_id"
-    t.integer  "trip_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
 
-  add_index "traveler_trips", ["trip_id"], :name => "index_traveler_trips_on_trip_id"
-  add_index "traveler_trips", ["user_id"], :name => "index_traveler_trips_on_user_id"
+  add_index "photos", ["photo_id"], :name => "index_photos_on_photo_id", :unique => true
+  add_index "photos", ["user_id"], :name => "index_photos_on_user_id"
 
   create_table "trips", :force => true do |t|
     t.string   "name"
@@ -57,6 +71,29 @@ ActiveRecord::Schema.define(:version => 20130516000904) do
     t.datetime "created_at",                     :null => false
     t.datetime "updated_at",                     :null => false
   end
+
+  create_table "tweets", :force => true do |t|
+    t.datetime "tweeted_at", :null => false
+    t.string   "tweet_id",   :null => false
+    t.string   "text"
+    t.integer  "user_id",    :null => false
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "tweets", ["tweet_id"], :name => "index_tweets_on_tweet_id", :unique => true
+  add_index "tweets", ["user_id"], :name => "index_tweets_on_user_id"
+
+  create_table "user_trips", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "trip_id"
+    t.string   "trip_role"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "user_trips", ["trip_id"], :name => "index_user_trips_on_trip_id"
+  add_index "user_trips", ["user_id"], :name => "index_user_trips_on_user_id"
 
   create_table "users", :force => true do |t|
     t.string   "username"

@@ -1,0 +1,5 @@
+example:
+  every: 30s
+  class: PollJob
+  queue: poll
+  description: Poll external service providers

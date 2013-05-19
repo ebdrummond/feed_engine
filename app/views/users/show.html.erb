@@ -6,7 +6,7 @@
         <h1 id="site_header">kreepr</h1>
       </div>
       <div class="three columns" id="user_info">
-        signed in as <a href="user">eebee</a>
+        signed in as <a href="user"><%= current_user.username %></a>
       </div>
     </div>
   </div>
@@ -49,10 +49,10 @@
 
   <div class="row">
     <div class="two columns offset-by-one">
-      <%= image_tag("Overly-attached-girlfriend-meme.png", :size => "150x150", :alt => "kreepr") %>
+      <%= image_tag(current_user.avatar, :size => "100x100", :alt => "kreepr") %>
     </div>
     <div class="nine columns">
-      <h2>eebee</h2>
+      <h2><%= current_user.username %></h2>
     </div>
   </div>
 
@@ -74,27 +74,37 @@
         <div class="one column">
           <%= image_tag("instagram_logo.jpg", :size => "45x45", :alt => "instagram logo") %><br><br>
         </div>
-        <div class="eleven columns">
-          <h4>Instagram</h4><br>
+        <div class="two columns">
+          <h4>Instagram</h4>
+        </div>
+        <div class="nine columns">
+          <br>
+          <% unless current_user.instagram_connected? %>
+            <%= link_to "Connect", "/auth/instagram", :id => "connect-instagram" %>
+          <% end %>
         </div>
       </div>
       <div class="row">
         <div class="one column">
-           <%= image_tag("foursquare_logo.jpg", :size => "40x40", :alt => "foursquare logo") %><br><br>
-           <br>
-        <br>
-        <br>
-        <br>
-        <a class="radius button alert">Delete Account</a>
+           <%= image_tag("foursquare_logo.jpg", :size => "40x40", :alt => "foursquare logo") %><br>
         </div>
-        <div class="eleven columns">
+        <div class="two columns">
           <h4>Foursquare</h4><br>
         </div>
-
+        <div class="nine columns">
+          <br>
+          <% unless current_user.foursquare_connected? %>
+            <%= link_to "Connect", "/auth/foursquare", :id => "connect-foursquare" %>
+          <% end %>
+        </div>
+      </div>
+        <br>
+        <br>
+        <br>
+      <div class="row">
+        <a class="radius button alert">Delete Account</a>
       </div>
     </div>
   </div>
-
-
 
 <!-- End Main Body

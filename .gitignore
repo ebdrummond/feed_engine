@@ -16,3 +16,9 @@
 
 # ENV variables
 /.env
+
+# Ignore VCR cassettes
+/fixtures/vcr_cassettes
+
+# Simplecov coverage
+/coverage

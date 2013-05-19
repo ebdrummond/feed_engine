@@ -68,4 +68,31 @@ describe TripsController do
       end
     end
   end
+
+  describe 'GET #dashboard' do
+    xit 'does something' do
+    end
+  end
+
+  describe 'GET #show' do
+    before(:each) do
+      @user = User.create!(:username => 'kyle')
+      @trip = @user.trips.create!(:name => "Phil's Getaway", :destination => 'Munich, Germany', :start => Date.parse('2013-02-20'), :end => Date.parse('2013-02-25'))
+    end
+
+    it 'renders the show template' do
+      get :show, {'id' => @trip.id}
+      expect(response).to render_template :show
+    end
+
+    it 'assigns the trip variable' do
+      get :show, {'id' => @trip.id}
+      expect(assigns(:trip)).to eq @trip
+    end
+
+    it 'assigns a new note variable' do
+      get :show, {'id' => @trip.id}
+      expect(assigns(:note)).to be_an_instance_of Note
+    end
+  end
 end

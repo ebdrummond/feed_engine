@@ -1,5 +1,16 @@
 # This file is copied to spec/ when you run 'rails generate rspec:install'
 ENV["RAILS_ENV"] ||= 'test'
+
+require 'coveralls'
+require 'simplecov'
+Coveralls.wear!('rails')
+
+# SimpleCov.formatter = Coveralls::SimpleCov::Formatter
+SimpleCov.start do
+  add_filter '/spec'
+end
+
+
 require File.expand_path("../../config/environment", __FILE__)
 require 'rspec/rails'
 require 'rspec/autorun'
@@ -11,6 +22,12 @@ Dir[Rails.root.join("spec/support/**/*.rb")].each {|f| require f}
 # Short-circuits omniauth for testing purposes
 OmniAuth.config.test_mode = true
 
+# Configure VCR for HTTP playback
+VCR.configure do |c|
+  c.cassette_library_dir = 'fixtures/vcr_cassettes'
+  c.hook_into :webmock
+end
+
 RSpec.configure do |config|
   # ## Mock Framework
   #
@@ -19,6 +36,8 @@ RSpec.configure do |config|
   # config.mock_with :mocha
   # config.mock_with :flexmock
   # config.mock_with :rr
+
+  config.include AuthenticationForFeatureRequest, type: :feature
 
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
