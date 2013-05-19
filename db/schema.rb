@@ -27,16 +27,6 @@ ActiveRecord::Schema.define(:version => 20130518231330) do
   add_index "auth_sources", ["uid"], :name => "index_auth_sources_on_uid"
   add_index "auth_sources", ["user_id", "provider"], :name => "index_auth_sources_on_user_id_and_provider", :unique => true
 
-  create_table "kreepr_trips", :force => true do |t|
-    t.integer  "user_id"
-    t.integer  "trip_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
-  add_index "kreepr_trips", ["trip_id"], :name => "index_kreepr_trips_on_trip_id"
-  add_index "kreepr_trips", ["user_id"], :name => "index_kreepr_trips_on_user_id"
-
   create_table "notes", :force => true do |t|
     t.string   "text",       :null => false
     t.integer  "trip_id",    :null => false
@@ -57,16 +47,6 @@ ActiveRecord::Schema.define(:version => 20130518231330) do
 
   add_index "photos", ["photo_id"], :name => "index_photos_on_photo_id", :unique => true
   add_index "photos", ["user_id"], :name => "index_photos_on_user_id"
-
-  create_table "traveler_trips", :force => true do |t|
-    t.integer  "user_id"
-    t.integer  "trip_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
-  add_index "traveler_trips", ["trip_id"], :name => "index_traveler_trips_on_trip_id"
-  add_index "traveler_trips", ["user_id"], :name => "index_traveler_trips_on_user_id"
 
   create_table "trips", :force => true do |t|
     t.string   "name"

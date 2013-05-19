@@ -25,10 +25,11 @@ private
 
   def self.store_photos(user_id, photos)
     photos.each do |photo|
-      Photo.create(:taken_at => Time.at(photo.caption.created_time.to_i),
+      caption = photo.caption.text if photo.caption
+      Photo.create(:taken_at => Time.at(photo.created_time.to_i),
                    :photo_id => photo.id,
                    :url      => photo.images.standard_resolution.url,
-                   :caption  => photo.caption.text,
+                   :caption  => caption,
                    :user_id  => user_id)
     end
   end
