@@ -1,0 +1,12 @@
+<% if current_user.trips.include?(trip) %>
+  <%= simple_form_for note do |f| %>
+    <fieldset>
+      <legend>What's up?</legend>
+      <%= f.input :text, :placeholder => "Write something" %>
+      <%= f.hidden_field :trip_id, :value => trip.id %>
+      <div class="row" align="right">
+        <%= f.submit 'Post Note', :class => 'radius button' %>
+      </div>
+    </fieldset>
+  <% end %>
+<% end %>

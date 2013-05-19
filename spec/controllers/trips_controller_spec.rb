@@ -92,7 +92,7 @@ describe TripsController do
 
     it 'assigns a new note variable' do
       get :show, {'id' => @trip.id}
-      expect(assigns(:note)).to instance_of Note
+      expect(assigns(:note)).to be_an_instance_of Note
     end
   end
 end

@@ -16,6 +16,7 @@ class TripsController < ApplicationController
 
   def show
     @trip = Trip.find(params[:id])
+    @note = Note.new
     # @tweets = Tweet.where("? >= ? AND ? <= ?", :created_at,
     #                                            @trip.start,
     #                                            :created_at,

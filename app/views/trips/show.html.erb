@@ -36,20 +36,8 @@
   </div>
 
   <div class="nine columns">
-    <br>
-    <br>
-
-    <%= simple_form_for @trip do |f| %>
-      <fieldset>
-        <legend>What's up?</legend>
-        <div class="row">
-          <textarea rows="3" placeholder="Write something"></textarea>
-        </div>
-        <div class="row" align="right">
-          <a href="#" class="radius button">Post Note</a>
-        </div>
-      </fieldset>
-      <% end %>
+    <%= render :partial => 'post_note',
+               :locals => {:trip => @trip, :note => @note } %>
 
     <div class="row" id="feed_item">
       <div class="two columns">
