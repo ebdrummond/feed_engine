@@ -6,7 +6,7 @@ class InstagramService
     store_photos(params['user_id'], photos)
   end
 
-private
+  private
 
   def self.client_for_user(token)
     Instagram.client(:access_token => token)

@@ -6,7 +6,8 @@ class FoursquareService
     store_check_ins(params['user_id'], check_ins)
   end
 
-private
+  private
+
   def self.client_for_user(token)
     Foursquare2::Client.new(:oauth_token => token)
   end
@@ -22,7 +23,7 @@ private
 
   def self.store_check_ins(user_id, check_ins)
     check_ins.each do |check_in|
-      CheckIn.create(:checked_in_at => Time.at(check_in.createdAt),
+      CheckIn.create(:checked_in_at => Chronic.parse(check_in.createdAt),
                      :check_in_id => check_in.id,
                      :text => check_in.shout,
                      :location => check_in.venue.name,

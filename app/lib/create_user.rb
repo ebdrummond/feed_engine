@@ -12,7 +12,7 @@ class CreateUser
     end
   end
 
-private
+  private
 
   def self.create_user_and_auth_source(auth_source_params, user_params)
     User.transaction do

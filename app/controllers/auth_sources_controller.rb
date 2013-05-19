@@ -13,7 +13,7 @@ class AuthSourcesController < ApplicationController
     end
   end
 
-private
+  private
 
   def auth_hash
     request.env['omniauth.auth']

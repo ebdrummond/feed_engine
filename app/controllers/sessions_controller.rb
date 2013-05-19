@@ -14,7 +14,7 @@ class SessionsController < ApplicationController
     redirect_to root_path, :notice => "Error"
   end
 
-private
+  private
 
   def auth_hash
     request.env['omniauth.auth']

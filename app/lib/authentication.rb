@@ -1,5 +1,4 @@
 class Authentication
-
   def self.parse_hash(auth_hash)
     case auth_hash['provider']
     when 'twitter'
