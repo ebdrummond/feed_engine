@@ -1,5 +1,3 @@
-require 'time'
-
 class InstagramService
   def self.retrieve_and_store_photos_for_user(params)
     client = client_for_user(params['token'])
@@ -25,7 +23,7 @@ private
 
   def self.store_photos(user_id, photos)
     photos.each do |photo|
-      Photo.create(:taken_at => Time.at(photo.caption.created_time.to_i),
+      Photo.create(:taken_at => Chronic.parse(photo.caption.created_time),
                    :photo_id => photo.id,
                    :url      => photo.images.standard_resolution.url,
                    :caption  => photo.caption.text,
