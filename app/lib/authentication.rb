@@ -3,9 +3,7 @@ class Authentication
     case auth_hash['provider']
     when 'twitter'
       parse_twitter(auth_hash)
-    when 'instagram'
-      parse_secondary_service(auth_hash)
-    when 'foursquare'
+    when 'instagram', 'foursquare'
       parse_secondary_service(auth_hash)
     else
       raise "Unrecognized OmniAuth provider: #{provider}"
