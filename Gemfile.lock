@@ -293,11 +293,8 @@ DEPENDENCIES
   resque_spec (~> 0.13.0)
   rspec-rails (~> 2.13.0)
   sass-rails (~> 3.2.3)
-<<<<<<< HEAD
-  simplecov
-=======
   simple_form (~> 2.1.0)
->>>>>>> master
+  simplecov
   sorcery
   sqlite3
   twitter

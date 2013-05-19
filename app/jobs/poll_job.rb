@@ -5,7 +5,7 @@ class PollJob
     accounts_by_provider = AuthSource.accounts_by_provider
 
     poll_tweets(accounts_by_provider['twitter'] || [])
-    # poll_photos(accounts_by_provider['instagram'] || [])
+    poll_photos(accounts_by_provider['instagram'] || [])
     # poll_checkins(accounts_by_provider['foursquare'] || [])
   end
 
@@ -16,6 +16,14 @@ private
       Resque.enqueue(TwitterJob, { 'token' => twitter_account.token,
                                    'secret' => twitter_account.secret,
                                    'user_id' => twitter_account.user_id })
+    end
+  end
+
+  def self.poll_photos(instagram_accounts)
+    instagram_accounts.each do |instagram_account|
+      Resque.enqueue(InstagramJob, { 'token' => instagram_account.token,
+                                     'user_id' => instagram_account.user_id,
+                                     'uid' => instagram_account.uid })
     end
   end
 end

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130516000904) do
+ActiveRecord::Schema.define(:version => 20130518230827) do
 
   create_table "auth_sources", :force => true do |t|
     t.string   "token"
@@ -36,6 +36,19 @@ ActiveRecord::Schema.define(:version => 20130516000904) do
 
   add_index "kreepr_trips", ["trip_id"], :name => "index_kreepr_trips_on_trip_id"
   add_index "kreepr_trips", ["user_id"], :name => "index_kreepr_trips_on_user_id"
+
+  create_table "photos", :force => true do |t|
+    t.datetime "taken_at"
+    t.string   "photo_id"
+    t.string   "url"
+    t.text     "caption"
+    t.integer  "user_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "photos", ["photo_id"], :name => "index_photos_on_photo_id", :unique => true
+  add_index "photos", ["user_id"], :name => "index_photos_on_user_id"
 
   create_table "traveler_trips", :force => true do |t|
     t.integer  "user_id"
