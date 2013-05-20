@@ -21,4 +21,8 @@ class Trip < ActiveRecord::Base
       errors.add(:end, "can't be earlier than start")
     end
   end
+
+  def travelers
+    @travelers ||= [1, 2]
+  end
 end

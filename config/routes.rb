@@ -1,10 +1,16 @@
 FeedEngine::Application.routes.draw do
+
+  namespace :api, defaults: { format: 'json' } do
+    namespace :v1 do
+      resources :feeds, only: [ :show ]
+    end
+  end
+
   root :to => 'welcome#index'
 
   mount Resque::Server, at: "/resque"
 
   # OmniAuth
-
   get '/auth/twitter/callback', to: 'sessions#create', as: 'callback'
   get '/auth/instagram/callback', to: 'auth_sources#create', as: 'callback'
   get '/auth/foursquare/callback', to: 'auth_sources#create', as: 'callback'
