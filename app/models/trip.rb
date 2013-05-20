@@ -25,19 +25,17 @@ class Trip < ActiveRecord::Base
   end
 
   def travelers
-    user_trips = UserTrip.where(:trip_role => 'traveler', :trip_id => self)
-    user_trips.collect { |user_trip| user_trip.user }
+    UserTrip.where(:trip_role => 'traveler', :trip_id => self).map(&:user)
   end
 
   def kreeprs
-    user_trips = UserTrip.where(:trip_role => 'kreepr', :trip_id => self)
-    user_trips.collect{ |user_trip| user_trip.user }
+    UserTrip.where(:trip_role => 'kreepr', :trip_id => self).map(&:user)
   end
 
   def save_with_user_trip
     transaction do
       save
-      owner.user_trips.create!({:trip_id => self.id, :trip_role => 'traveler'})
+      owner.user_trips.create!(:trip_id => self.id, :trip_role => 'traveler')
       self
     end
   end
