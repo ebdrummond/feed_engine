@@ -6,7 +6,7 @@ class TripFeed
   end
 
   def feed
-    notes + tweets + photos + check_ins
+    @feed ||= aggregate.sort_by { |event| event.event_created_at }
   end
 
   def notes
@@ -14,6 +14,10 @@ class TripFeed
   end
 
   private
+
+  def aggregate
+    notes + tweets + photos + check_ins
+  end
 
   def tweets
     @tweets ||= Tweet.for_users(travelers).in_range(trip.start, trip.end)

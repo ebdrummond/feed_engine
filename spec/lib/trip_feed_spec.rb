@@ -50,7 +50,7 @@ describe TripFeed do
                               :user_id => @owner.id)
     end
 
-    it 'returns all notes, tweets, checkins, and photos for trip within date range' do
+    it 'returns sorted notes, tweets, checkins, and photos for trip within date range' do
       expect(@trip_feed.feed).to eq [@note, @tweet, @photo, @check_in]
     end
   end

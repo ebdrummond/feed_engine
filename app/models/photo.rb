@@ -18,4 +18,8 @@ class Photo < ActiveRecord::Base
   def self.event_created_at
     :taken_at
   end
+
+  def event_created_at
+    taken_at
+  end
 end

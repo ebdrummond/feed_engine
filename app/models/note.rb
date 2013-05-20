@@ -8,4 +8,12 @@ class Note < ActiveRecord::Base
   validates :text, :presence => true
   validates :user_id, :presence => true
   validates :trip_id, :presence => true
+
+  def self.event_created_at
+    :created_at
+  end
+
+  def event_created_at
+    created_at
+  end
 end

@@ -18,4 +18,8 @@ class CheckIn < ActiveRecord::Base
   def self.event_created_at
     :checked_in_at
   end
+
+  def event_created_at
+    checked_in_at
+  end
 end

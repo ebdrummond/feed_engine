@@ -16,4 +16,8 @@ class Tweet < ActiveRecord::Base
   def self.event_created_at
     :tweeted_at
   end
+
+  def event_created_at
+    tweeted_at
+  end
 end
