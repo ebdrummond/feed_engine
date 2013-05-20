@@ -1,6 +1,7 @@
 module Api
   module V1
     class FeedsController < ApplicationController
+      before_filter :require_api_key
       before_filter :find_trip
       respond_to :json
 
@@ -18,6 +19,14 @@ module Api
 
       def find_trip
         @trip = Trip.find(params[:id])
+      end
+
+      def require_api_key
+        user_id = ApiKey.where(:key => params[:api_key]).pluck(:user_id)
+        user = User.find(user_id)
+        if user.blank?
+          respond_with '{"errors":[{"message":"Bad Authentication data","code":215}]}'.to_json
+        end
       end
     end
   end
