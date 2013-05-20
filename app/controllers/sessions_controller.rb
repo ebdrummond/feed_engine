@@ -4,7 +4,9 @@ class SessionsController < ApplicationController
 
     # TODO: user.new?
     if user.valid?
+      ApiKey.create!(:user => user, :key => SecureRandom.uuid)
       auto_login(user)
+
       redirect_to dashboard_path, :notice => "Signed in"
     else
       redirect_to root_path, :error => "Failed to sign in."
