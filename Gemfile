@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
 
 gem 'rails', '3.2.13'
+gem 'redis'
 gem 'resque', '~>1.24.0', :require => 'resque/server'
 gem 'resque-scheduler', :require => 'resque_scheduler'
 gem 'foreman', '~> 0.63.0'

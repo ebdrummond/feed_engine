@@ -301,6 +301,7 @@ DEPENDENCIES
   pg
   pry
   rails (= 3.2.13)
+  redis
   resque (~> 1.24.0)
   resque-scheduler
   resque_spec (~> 0.13.0)
