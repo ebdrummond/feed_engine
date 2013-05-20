@@ -18,7 +18,7 @@ FeedEngine::Application.routes.draw do
   resources :feeds
 
   resources :user_trips
-  resources :notes, only: [ :create, :destroy ]
+
   resources :trips do
     resources :notes, only: [ :create, :destroy ]
   end

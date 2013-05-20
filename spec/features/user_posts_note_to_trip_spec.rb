@@ -9,14 +9,14 @@ describe 'user posts note to trip' do
 
     context 'who is a traveler on the trip' do
       before(:each) do
-        @trip = @user.trips.new(:name => "Phil's Getaway", :destination => 'Munich, Germany', :start => Date.parse('2013-02-20'), :end => Date.parse('2013-02-25'))
-        @trip.owner = @user
+        @trip = @user.trips.build(:name => "Phil's Getaway", :destination => 'Munich, Germany', :start => Date.parse('2013-02-20'), :end => Date.parse('2013-02-25'))
+
         @trip.save
       end
 
       it 'can post a new note' do
         visit trip_path(@trip)
-        fill_in 'text', :with => 'zomg, wiesn kicks ass this year!'
+        fill_in 'note_text', :with => 'zomg, wiesn kicks ass this year!'
         expect { click_button 'Post Note' }.to change { @user.notes.count }.by 1
       end
     end

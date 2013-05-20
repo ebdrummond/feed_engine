@@ -10,7 +10,8 @@ class User < ActiveRecord::Base
   has_many :photos
   has_many :check_ins
   has_many :user_trips
-  has_many :trips, through: :user_trips
+  has_many :trips
+  # , through: :user_trips
 
   validates :username, :presence => true,
                        :uniqueness => true

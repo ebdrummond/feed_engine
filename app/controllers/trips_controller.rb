@@ -7,9 +7,8 @@ class TripsController < ApplicationController
 
   def create
     @trip = current_user.trips.build(trip_params)
-    @trip.owner = current_user
+
     if @trip.save
-      UserTrip.create(user_id: current_user.id, trip_id: @trip.id, trip_role: "traveler")
       redirect_to dashboard_path
     else
       render :new, :notice => 'Error!'

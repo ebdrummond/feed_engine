@@ -2,28 +2,27 @@ require 'spec_helper'
 
 describe UserTrip do
   before do
-    @user = User.create(username: 'phil')
-    @trip = Trip.new(:name => "Phil's Getaway", :destination => 'Munich, Germany', :start => Date.parse('2013-02-20'), :end => Date.parse('2013-02-25'))
-    @trip.owner = @user
+    @owner = User.create!(username: 'phil')
+    @trip = @owner.trips.build(:name => "Phil's Getaway", :destination => 'Munich, Germany', :start => Date.parse('2013-02-20'), :end => Date.parse('2013-02-25'))
     @trip.save
-    @user_trip = UserTrip.create(user_id: @user.id, trip_id: @trip.id, trip_role: "traveler")
+
+    @user = User.create!(username: 'erin')
+    @user_trip = @user.user_trips.build(trip_id: @trip.id, trip_role: "traveler")
   end
 
-  it "references its user" do
-    expect(@user_trip.user).to eq(@user)
+  it "requires a user" do
+    expect { @user_trip.user = nil }.to change { @user_trip.valid? }.to false
   end
 
-  it "references its trip" do
-    expect(@user_trip.trip).to eq(@trip)
+  it "requires a trip" do
+    expect { @user_trip.trip = nil }.to change { @user_trip.valid? }.to false
   end
 
-  it "requires a user id" do
-    @user_trip.user_id = nil
-    expect(@user_trip.valid?).to be_false
+  it "requires a trip_role" do
+    expect { @user_trip.trip_role = nil }.to change { @user_trip.valid? }.to false
   end
 
-  it "requires a trip id" do
-    @user_trip.trip_id = nil
-    expect(@user_trip.valid?).to be_false
+  it "requires a trip_role that is either 'traveler' or 'kreepr'" do
+    expect { @user_trip.trip_role = 'planner' }.to change { @user_trip.valid? }.to false
   end
 end
