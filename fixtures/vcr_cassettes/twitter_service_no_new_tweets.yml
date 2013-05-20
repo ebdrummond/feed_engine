@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://api.twitter.com/1.1/statuses/user_timeline.json?count=200&exclude_replies=true&since_id=335553128403443713&trim_user=true
+    uri: https://api.twitter.com/1.1/statuses/user_timeline.json?count=200&exclude_replies=true&since_id=336191679927287808&trim_user=true
     body:
       encoding: US-ASCII
       string: ''
@@ -12,9 +12,9 @@ http_interactions:
       User-Agent:
       - Twitter Ruby Gem 4.6.2
       Authorization:
-      - OAuth oauth_consumer_key="ATWnDZ0CeEHpqrPMtyXaig", oauth_nonce="88b4a4c840112c9fb4e421aa6485d003",
-        oauth_signature="TMkwwOfkqkXAhvUo4DLigcb9HiM%3D", oauth_signature_method="HMAC-SHA1",
-        oauth_timestamp="1368839190", oauth_token="57272421-DdrlGSaASFZj1qjoqYqiSo4YDmJkDkaZOBVE5rSV4",
+      - OAuth oauth_consumer_key="ATWnDZ0CeEHpqrPMtyXaig", oauth_nonce="c784dbd9fb998b9d0b4e679d2d908ac5",
+        oauth_signature="8RNsMKxB1u0KVTDjnzyovs4M3F4%3D", oauth_signature_method="HMAC-SHA1",
+        oauth_timestamp="1369008272", oauth_token="57272421-DdrlGSaASFZj1qjoqYqiSo4YDmJkDkaZOBVE5rSV4",
         oauth_version="1.0"
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
@@ -30,18 +30,18 @@ http_interactions:
       Content-Type:
       - application/json;charset=utf-8
       Date:
-      - Sat, 18 May 2013 01:06:31 GMT
+      - Mon, 20 May 2013 00:04:30 GMT
       Expires:
       - Tue, 31 Mar 1981 05:00:00 GMT
       Last-Modified:
-      - Sat, 18 May 2013 01:06:31 GMT
+      - Mon, 20 May 2013 00:04:30 GMT
       Pragma:
       - no-cache
       Server:
       - tfe
       Set-Cookie:
-      - guest_id=v1%3A136883919136491849; Domain=.twitter.com; Path=/; Expires=Mon,
-        18-May-2015 01:06:31 UTC
+      - guest_id=v1%3A136900827062959765; Domain=.twitter.com; Path=/; Expires=Wed,
+        20-May-2015 00:04:30 UTC
       - lang=en
       Status:
       - 200 OK
@@ -54,16 +54,16 @@ http_interactions:
       X-Rate-Limit-Limit:
       - '180'
       X-Rate-Limit-Remaining:
-      - '178'
+      - '175'
       X-Rate-Limit-Reset:
-      - '1368840090'
+      - '1369009011'
       X-Transaction:
-      - b3904bddd6aee553
+      - 80078f5a03367b09
       X-Xss-Protection:
       - 1; mode=block
     body:
       encoding: UTF-8
       string: '[]'
     http_version: 
-  recorded_at: Sat, 18 May 2013 01:06:31 GMT
+  recorded_at: Mon, 20 May 2013 00:04:32 GMT
 recorded_with: VCR 2.4.0

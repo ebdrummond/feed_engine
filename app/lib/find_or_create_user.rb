@@ -1,14 +1,11 @@
-class CreateUser
-  def self.from_unknown_auth_source(auth_hash)
-    auth_source_params, user_params = Authentication.parse_hash(auth_hash)
-
-    auth_source = AuthSource.where(:uid => auth_source_params['uid'],
-                    :provider => auth_source_params['provider']).first
-
-    if auth_source
+class FindOrCreateUser
+  def self.from_auth_source(auth_hash)
+    if auth_source = AuthSource.where(:uid => auth_hash['uid'],
+                                      :provider => auth_hash['provider']).first
       auth_source.user
     else
-      create_user_and_auth_source(auth_source_params, user_params)
+      auth_params = AuthParams.new(auth_hash)
+      create_user_and_auth_source(auth_params.auth_source_params, auth_params.user_params)
     end
   end
 
@@ -29,11 +26,7 @@ class CreateUser
       User.create!({username: iterate_nickname(params['nickname'], i),
                     avatar: params['image_href']})
     rescue => e
-      if i == 10
-        raise e
-      else
-        retry
-      end
+      i == 10 ? raise(e) : retry
     end
   end
 
