@@ -28,7 +28,7 @@ class TripsController < ApplicationController
   def dashboard
     @trips = current_user.trips
     @kreepings = []
-    @feeds = Tweet.all
+    @feeds = []
   end
 
   private

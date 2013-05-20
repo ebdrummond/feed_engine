@@ -1,4 +1,6 @@
 class Tweet < ActiveRecord::Base
+  extend ::UsersDatesSearchable
+
   attr_accessible :tweeted_at,
                   :tweet_id,
                   :user_id,
@@ -11,4 +13,7 @@ class Tweet < ActiveRecord::Base
   validates :tweeted_at, :presence => true
   validates :user_id, :presence => true
 
+  def self.event_created_at
+    :tweeted_at
+  end
 end
