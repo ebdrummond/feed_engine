@@ -1,7 +1,7 @@
 class UserTripsController < ApplicationController
 
   def create
-    ut = UserTrip.create(:user_id => current_user.id,
+    ut = UserTrip.create(:user_id => params[:user_id],
                          :trip_id => params[:trip_id],
                          :trip_role => params[:trip_role])
     if ut.save
@@ -10,6 +10,7 @@ class UserTripsController < ApplicationController
     else
       redirect_to :back,
                   notice: "Sorry - something went wrong!"
+                  binding.pry
     end
   end
 
