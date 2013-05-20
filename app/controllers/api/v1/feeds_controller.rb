@@ -14,6 +14,8 @@ module Api
         end
       end
 
+      private
+
       def find_trip
         @trip = Trip.find(params[:id])
       end
