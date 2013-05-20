@@ -1,5 +1,9 @@
 class UsersController < ApplicationController
-  before_filter :require_login
+  before_filter :require_login, except: [ :show ]
+
+  def show
+    @user = User.find(params[:id])
+  end
 
   def account
     @user = current_user

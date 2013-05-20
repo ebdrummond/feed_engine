@@ -10,4 +10,5 @@ class Tweet < ActiveRecord::Base
                        :uniqueness => true
   validates :tweeted_at, :presence => true
   validates :user_id, :presence => true
+
 end

@@ -19,10 +19,7 @@ class TripsController < ApplicationController
   def show
     @trip = Trip.find(params[:id])
     @note = @trip.notes.build
-    # @tweets = Tweet.where("? >= ? AND ? <= ?", :created_at,
-    #                                            @trip.start,
-    #                                            :created_at,
-    #                                            @trip.end)
+    @tweets = @trip.tweets
   end
 
   def edit

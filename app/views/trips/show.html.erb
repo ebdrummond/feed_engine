@@ -42,37 +42,19 @@
       <%= render :partial => 'post_note',
                  :locals => {:trip => @trip, :note => @note } %>
 
+      <% @trip.tweets.each do |tweet| %>
       <div class="row" id="feed_item">
         <div class="two columns">
-          <%= image_tag("Overly-attached-girlfriend-meme.png", :size => "100x100", :alt => "profile") %>
+          <%= image_tag(tweet.user.avatar, :size => "100x100", :alt => "profile") %>
         </div>
         <div class="ten columns">
-          <img src="http://www.thailandvoyage.com/image/grandpalace/20050507eBangkok-GrosserPalast0446.jpg">
-          <h6><a href="#">a.hoy</a> posted to trip <a href="#">Bangkok</a> 1 day ago</h6>
+            <p><%= tweet.text %></p>
+          <h6><a href="#"><%= tweet.user.username %></a> posted to trip <%= link_to @trip.name, trip_path(@trip) %> <%= distance_of_time_in_words(tweet.tweeted_at, Time.now) %> ago</h6>
         </div>
       </div>
       <br>
       <br>
-      <div class="row" id="feed_item">
-        <div class="two columns">
-          <%= image_tag("Overly-attached-girlfriend-meme.png", :size => "100x100", :alt => "profile") %>
-        </div>
-        <div class="ten columns">
-          <p id="tweet">Team Mexico pork cloud</p>
-          <h6><a href="#">denboy</a> Tweeted to trip <a href="#">top secret</a> 1 day ago</h6>
-        </div>
-      </div>
-      <br>
-      <br>
-      <div class="row" id="feed_item">
-        <div class="two columns">
-          <%= image_tag("Overly-attached-girlfriend-meme.png", :size => "100x100", :alt => "profile") %>
-        </div>
-        <div class="ten columns">
-          <img src="http://www.absoluterights.com/wp-content/uploads/2012/09/eiffel-tower.jpeg">
-          <h6><a href="#">kytrinyx</a> posted to trip <a href="#">La France</a> 2 days ago</h6>
-        </div>
-      </div>
+      <% end %>
     </div>
   </div>
 <% else %>
