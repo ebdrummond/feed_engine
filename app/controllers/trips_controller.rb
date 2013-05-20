@@ -7,6 +7,7 @@ class TripsController < ApplicationController
 
   def create
     @trip = current_user.trips.build(trip_params)
+
     if @trip.save
       redirect_to dashboard_path
     else
@@ -17,10 +18,11 @@ class TripsController < ApplicationController
   def show
     @trip = Trip.find(params[:id])
     @note = @trip.notes.build
-    # @tweets = Tweet.where("? >= ? AND ? <= ?", :created_at,
-    #                                            @trip.start,
-    #                                            :created_at,
-    #                                            @trip.end)
+    @tweets = @trip.tweets
+  end
+
+  def edit
+    @trip = Trip.find(params[:id])
   end
 
   def dashboard

@@ -1,5 +1,3 @@
-TwitterService.new(params).fetch_and_store_tweets
-
 class TwitterService
   attr_reader :client, :user
 

@@ -9,7 +9,9 @@ describe 'user posts note to trip' do
 
     context 'who is a traveler on the trip' do
       before(:each) do
-        @trip = @user.trips.create!(:name => "Phil's Getaway", :destination => 'Munich, Germany', :start => Date.parse('2013-02-20'), :end => Date.parse('2013-02-25'))
+        @trip = @user.trips.build(:name => "Phil's Getaway", :destination => 'Munich, Germany', :start => Date.parse('2013-02-20'), :end => Date.parse('2013-02-25'))
+
+        @trip.save
       end
 
       it 'can post a new note' do
@@ -22,7 +24,9 @@ describe 'user posts note to trip' do
     context 'who is not traveler on the trip' do
       before(:each) do
         user = User.create!(:username => 'Someone else')
-        @trip = user.trips.create!(:name => "Phil's Getaway", :destination => 'Munich, Germany', :start => Date.parse('2013-02-20'), :end => Date.parse('2013-02-25'))
+        @trip = user.trips.new(:name => "Phil's Getaway", :destination => 'Munich, Germany', :start => Date.parse('2013-02-20'), :end => Date.parse('2013-02-25'))
+        @trip.owner = user
+        @trip.save
       end
 
       it 'is not presented with an opportunity to post' do

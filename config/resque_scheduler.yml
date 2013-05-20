@@ -1,5 +1,5 @@
-example:
+polling:
   every: 30s
   class: PollJob
-  queue: poll
+  queue: poll_queue
   description: Poll external service providers

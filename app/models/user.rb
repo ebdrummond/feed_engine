@@ -5,11 +5,13 @@ class User < ActiveRecord::Base
                   :avatar
 
   has_many :auth_sources
-  has_many :trips
   has_many :tweets
   has_many :notes
   has_many :photos
   has_many :check_ins
+  has_many :user_trips
+  has_many :trips
+  # , through: :user_trips
 
   validates :username, :presence => true,
                        :uniqueness => true

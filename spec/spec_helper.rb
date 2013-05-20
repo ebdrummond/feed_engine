@@ -5,7 +5,7 @@ require 'coveralls'
 require 'simplecov'
 Coveralls.wear!('rails')
 
-# SimpleCov.formatter = Coveralls::SimpleCov::Formatter
+SimpleCov.formatter = Coveralls::SimpleCov::Formatter
 SimpleCov.start do
   add_filter '/spec'
 end

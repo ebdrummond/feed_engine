@@ -6,6 +6,8 @@ class Trip < ActiveRecord::Base
                   :visible
 
   belongs_to :owner, :foreign_key => 'user_id', :class_name => 'User'
+  has_many :users, through: :user_trips
+  has_many :user_trips, dependent: :destroy
   has_many :notes
 
   validate :end_date_cannot_be_earlier_than_start_date
@@ -23,6 +25,28 @@ class Trip < ActiveRecord::Base
   end
 
   def travelers
-    @travelers ||= [1, 2]
+    uts = UserTrip.where(:trip_role => 'traveler', :trip_id => self.id)
+    uts.collect{|ut| ut.user}
+  end
+
+  def kreeprs
+    uts = UserTrip.where(:trip_role => 'kreepr', :trip_id => self.id)
+    uts.collect{|ut| ut.user}
+  end
+
+  def visibility_setting
+    self.visible == true ? "private" : "public"
+  end
+
+  def tweets
+    start = self.start
+    ending = self.end
+    trip_user_tweets.select do |tweet|
+      tweet.tweeted_at.to_date.between?(start, ending)
+    end
+  end
+
+  def trip_user_tweets
+    Tweet.where(:user_id => self.users)
   end
 end

@@ -12,9 +12,9 @@ http_interactions:
       User-Agent:
       - Twitter Ruby Gem 4.6.2
       Authorization:
-      - OAuth oauth_consumer_key="ATWnDZ0CeEHpqrPMtyXaig", oauth_nonce="c784dbd9fb998b9d0b4e679d2d908ac5",
-        oauth_signature="8RNsMKxB1u0KVTDjnzyovs4M3F4%3D", oauth_signature_method="HMAC-SHA1",
-        oauth_timestamp="1369008272", oauth_token="57272421-DdrlGSaASFZj1qjoqYqiSo4YDmJkDkaZOBVE5rSV4",
+      - OAuth oauth_consumer_key="ATWnDZ0CeEHpqrPMtyXaig", oauth_nonce="38a9c715c013eae0d324011488d2d2ee",
+        oauth_signature="xw855sn2tlWiFpvo3to%2F%2FU8vru0%3D", oauth_signature_method="HMAC-SHA1",
+        oauth_timestamp="1369065560", oauth_token="57272421-DdrlGSaASFZj1qjoqYqiSo4YDmJkDkaZOBVE5rSV4",
         oauth_version="1.0"
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
@@ -30,18 +30,18 @@ http_interactions:
       Content-Type:
       - application/json;charset=utf-8
       Date:
-      - Mon, 20 May 2013 00:04:30 GMT
+      - Mon, 20 May 2013 15:59:20 GMT
       Expires:
       - Tue, 31 Mar 1981 05:00:00 GMT
       Last-Modified:
-      - Mon, 20 May 2013 00:04:30 GMT
+      - Mon, 20 May 2013 15:59:20 GMT
       Pragma:
       - no-cache
       Server:
       - tfe
       Set-Cookie:
-      - guest_id=v1%3A136900827062959765; Domain=.twitter.com; Path=/; Expires=Wed,
-        20-May-2015 00:04:30 UTC
+      - guest_id=v1%3A136906556034541370; Domain=.twitter.com; Path=/; Expires=Wed,
+        20-May-2015 15:59:20 UTC
       - lang=en
       Status:
       - 200 OK
@@ -54,16 +54,16 @@ http_interactions:
       X-Rate-Limit-Limit:
       - '180'
       X-Rate-Limit-Remaining:
-      - '175'
+      - '178'
       X-Rate-Limit-Reset:
-      - '1369009011'
+      - '1369066459'
       X-Transaction:
-      - 80078f5a03367b09
+      - 618ba123bebceb0d
       X-Xss-Protection:
       - 1; mode=block
     body:
       encoding: UTF-8
       string: '[]'
     http_version: 
-  recorded_at: Mon, 20 May 2013 00:04:32 GMT
+  recorded_at: Mon, 20 May 2013 15:59:21 GMT
 recorded_with: VCR 2.4.0

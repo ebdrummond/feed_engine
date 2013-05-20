@@ -1,4 +1,4 @@
-<% if current_user.trips.include?(trip) %>
+<% if current_user && current_user.trips.include?(trip) %>
   <%= simple_form_for note, :url => trip_notes_path(trip) do |f| %>
     <fieldset>
       <legend>What's up?</legend>

@@ -5,7 +5,9 @@ describe NotesController do
     context 'as a logged in user' do
       before(:each) do
         @user = User.create!(:username => 'Phillimus')
-        @trip = @user.trips.create!(:name => "Phil's Getaway", :destination => 'Munich, Germany', :start => Date.parse('2013-02-20'), :end => Date.parse('2013-02-25'))
+        @trip = @user.trips.build(:name => "Phil's Getaway", :destination => 'Munich, Germany', :start => Date.parse('2013-02-20'), :end => Date.parse('2013-02-25'))
+        @trip.save
+
         controller.stub(:current_user).and_return(@user)
       end
 
