@@ -39,20 +39,4 @@ class Trip < ActiveRecord::Base
       self
     end
   end
-
-  # def visibility_setting
-  #   self.visible == true ? "private" : "public"
-  # end
-
-  # def tweets
-  #   start = self.start
-  #   ending = self.end
-  #   trip_user_tweets.select do |tweet|
-  #     tweet.tweeted_at.to_date.between?(start, ending)
-  #   end
-  # end
-
-  # def trip_user_tweets
-  #   Tweet.where(:user_id => self.users)
-  # end
 end

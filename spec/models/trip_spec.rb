@@ -70,16 +70,6 @@ describe Trip do
     end
   end
 
-  xit 'lists its visibility setting as public' do
-    expect(@trip.visibility_setting).to eq("public")
-  end
-
-  xit 'lists its visibility setting as private' do
-    @trip.visible = true
-    @trip.save
-    expect(@trip.visibility_setting).to eq("private")
-  end
-
   xit 'has tweets for trip users' do
     Tweet.create(:tweeted_at => Time.now,
                  :tweet_id => '12345',
