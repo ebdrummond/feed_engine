@@ -1,28 +1,57 @@
 require 'spec_helper'
 
 describe TripFeed do
+  before do
+    @owner = User.create!(:username => 'Bang it out')
+    @trip = @owner.trips.build(:name => "Phil's Getaway", :destination => 'Munich, Germany', :start => Date.parse('2013-02-20'), :end => Date.parse('2013-10-25'))
+    @trip.save_with_user_trip
 
-  xit 'has tweets for trip users' do
-    Tweet.create(:tweeted_at => Time.now,
-                 :tweet_id => '12345',
-                 :text => 'omg tweeting for teh win',
-                 :user_id => @user.id)
-    expect(@trip.trip_user_tweets.count).to eq(1)
+    @trip_feed = TripFeed.new(:trip => @trip)
   end
 
-  xit 'does not return trip tweets that werent tweeted during trip' do
-    Tweet.create(:tweeted_at => Time.now,
-                 :tweet_id => '12345',
-                 :text => 'omg tweeting for teh win',
-                 :user_id => @user.id)
-    expect(@trip.tweets.count).to eq(0)
+  describe '#notes' do
+    before do
+      @note = @trip.notes.build(text: 'Oh hello, is it me you are looking for?')
+      @note.user = @owner
+      @note.save
+    end
+
+    it 'returns all notes for trip' do
+      expect(@trip_feed.notes).to eq [@note]
+    end
   end
 
-  xit 'returns trip tweets that weren tweeted during trip' do
-    Tweet.create(:tweeted_at => Date.parse('2013-02-20'),
-                 :tweet_id => '12345',
-                 :text => 'omg tweeting for teh win',
-                 :user_id => @user.id)
-    expect(@trip.tweets.count).to eq(1)
+  describe '#feed' do
+    before do
+      @note = @trip.notes.build(text: 'Oh hello, is it me you are looking for?')
+      @note.user = @owner
+      @note.save
+
+      @tweet = Tweet.create!(:tweeted_at => Time.now,
+                            :tweet_id => '12345',
+                            :text => 'omg tweeting for teh win',
+                            :user_id => @owner.id)
+
+      @photo = Photo.create!(:taken_at => Time.now,
+                            :photo_id => '12345',
+                            :url => 'some photo url',
+                            :caption => 'caption eh',
+                            :user_id => @owner.id)
+
+      @check_in = CheckIn.create!(:checked_in_at => Time.now,
+                                 :text => '12345',
+                                 :check_in_id => '12345',
+                                 :location => 'omg tweeting for teh win',
+                                 :user_id => @owner.id)
+
+      @tweet2 = Tweet.create!(:tweeted_at => Time.now + 1.year ,
+                              :tweet_id => '12346',
+                              :text => 'omg tweeting for teh win',
+                              :user_id => @owner.id)
+    end
+
+    it 'returns all notes, tweets, checkins, and photos for trip within date range' do
+      expect(@trip_feed.feed).to eq [@note, @tweet, @photo, @check_in]
+    end
   end
 end

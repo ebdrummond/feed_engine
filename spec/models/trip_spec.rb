@@ -5,7 +5,6 @@ describe Trip do
     @owner = User.create!(username: 'phil')
     @trip = @owner.trips.build(:name => "Phil's Getaway", :destination => 'Munich, Germany', :start => Date.parse('2013-02-20'), :end => Date.parse('2013-02-25'))
     @trip.save_with_user_trip
-
   end
 
   it 'requires an owner' do
