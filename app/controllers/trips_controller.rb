@@ -18,7 +18,7 @@ class TripsController < ApplicationController
   def show
     @trip = Trip.find(params[:id])
     @note = @trip.notes.build
-    @tweets = @trip.tweets
+    @tweets = []
   end
 
   def edit

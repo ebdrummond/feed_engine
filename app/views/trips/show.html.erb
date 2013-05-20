@@ -42,7 +42,7 @@
       <%= render :partial => 'post_note',
                  :locals => {:trip => @trip, :note => @note } %>
 
-      <% @trip.tweets.each do |tweet| %>
+      <% @tweets.each do |tweet| %>
       <div class="row" id="feed_item">
         <div class="two columns">
           <%= image_tag(tweet.user.avatar, :size => "100x100", :alt => "profile") %>
