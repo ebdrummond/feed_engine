@@ -25,8 +25,13 @@ class Trip < ActiveRecord::Base
   end
 
   def travelers
-    user_trips = UserTrip.where(:trip_role => 'traveler', :trip_id => self.id)
-    user_trips.collect { |user_trip| user_trip.user }.append owner
+    user_trips = UserTrip.where(:trip_role => 'traveler', :trip_id => self)
+    user_trips.collect { |user_trip| user_trip.user }
+  end
+
+  def kreeprs
+    user_trips = UserTrip.where(:trip_role => 'kreepr', :trip_id => self)
+    user_trips.collect{ |user_trip| user_trip.user }
   end
 
   def save_with_user_trip
@@ -36,21 +41,6 @@ class Trip < ActiveRecord::Base
       self
     end
   end
-
-  # def self.create_user_and_auth_source(auth_source_params, user_params)
-  #   User.transaction do
-  #     user = create_with_username(user_params)
-  #     user.auth_sources.create!(auth_source_params)
-  #     user
-  #   end
-  # end
-
-
-
-  # def kreeprs
-  #   uts = UserTrip.where(:trip_role => 'kreepr', :trip_id => self.id)
-  #   uts.collect{|ut| ut.user}
-  # end
 
   # def visibility_setting
   #   self.visible == true ? "private" : "public"

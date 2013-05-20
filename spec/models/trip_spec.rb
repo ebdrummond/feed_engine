@@ -3,10 +3,9 @@ require 'spec_helper'
 describe Trip do
   before do
     @owner = User.create!(username: 'phil')
-    @trip = @owner.trips.create!(:name => "Phil's Getaway", :destination => 'Munich, Germany', :start => Date.parse('2013-02-20'), :end => Date.parse('2013-02-25'))
+    @trip = @owner.trips.build(:name => "Phil's Getaway", :destination => 'Munich, Germany', :start => Date.parse('2013-02-20'), :end => Date.parse('2013-02-25'))
+    @trip.save_with_user_trip
 
-    @user = User.create!(username: 'raph')
-    @user.user_trips.create!(:trip_id => @trip.id, :trip_role => "kreepr")
   end
 
   it 'requires an owner' do
@@ -35,6 +34,7 @@ describe Trip do
 
   describe '.save_with_user_trip' do
     let(:trip) { @owner.trips.build(:name => "Something else", :destination => 'Munich, Germany', :start => Date.parse('2013-02-20'), :end => Date.parse('2013-02-25')) }
+
     it 'saves the trip' do
       expect { trip.save_with_user_trip }.to change { Trip.count }.by 1
     end
@@ -45,21 +45,29 @@ describe Trip do
   end
 
   describe '.travelers' do
-    xit 'includes all travelers' do
+    before do
+      @user = User.create!(username: 'raph')
+      @user.user_trips.create!(:trip_id => @trip.id, :trip_role => "traveler")
+    end
+
+    it 'includes all travelers' do
       expect(@trip.travelers).to include @user
     end
 
-    xit 'includes owner' do
+    it 'includes owner' do
       expect(@trip.travelers).to include @owner
     end
   end
 
-  xit 'lists its kreeprs' do
-    expect(@trip.kreeprs).to eq([@user2])
-  end
+  describe '.kreepers' do
+    before do
+      @user = User.create!(username: 'raph')
+      @user.user_trips.create!(:trip_id => @trip.id, :trip_role => "kreepr")
+    end
 
-  xit 'lists its travelers' do
-    expect(@trip.travelers).to eq([@user])
+    it 'includes all kreeprs' do
+      expect(@trip.kreeprs).to eq [@user]
+    end
   end
 
   xit 'lists its visibility setting as public' do
