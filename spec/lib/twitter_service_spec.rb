@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe TwitterService do
-  describe '.retrieve_and_store_tweets_for_user' do
+  describe '.fetch_and_store_tweets' do
     context 'with invalid token/secret' do
       before(:all) do
         user = User.create!(username: 'Phil')
@@ -30,10 +30,6 @@ describe TwitterService do
         @valid_params = { 'user_id' => @user.id,
                           'token' => '57272421-DdrlGSaASFZj1qjoqYqiSo4YDmJkDkaZOBVE5rSV4',
                           'secret' => 'INXG4Rg7mgtTr2oZQhgjf6O9UJPSPqtv4HbFWsnMg' }
-      end
-
-      let(:retrieve_and_store_tweets_for_user) do
-        TwitterService.new(@valid_params).fetch_and_store_tweets
       end
 
       it 'retrieves tweets from twitter and saves them to the database' do

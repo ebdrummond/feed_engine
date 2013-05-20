@@ -27,7 +27,7 @@ class TwitterService
   end
 
   def store_tweet(tweet)
-    Tweet.create(:tweeted_at => Chronic.parse(tweet.created_at.to_s),
+    Tweet.create(:tweeted_at => Time.at(tweet.created_at),
                  :tweet_id   => tweet.id,
                  :text       => tweet.text,
                  :user_id    => user.id)
