@@ -25,28 +25,46 @@ class Trip < ActiveRecord::Base
   end
 
   def travelers
-    uts = UserTrip.where(:trip_role => 'traveler', :trip_id => self.id)
-    uts.collect{|ut| ut.user}
+    user_trips = UserTrip.where(:trip_role => 'traveler', :trip_id => self.id)
+    user_trips.collect { |user_trip| user_trip.user }.append owner
   end
 
-  def kreeprs
-    uts = UserTrip.where(:trip_role => 'kreepr', :trip_id => self.id)
-    uts.collect{|ut| ut.user}
-  end
-
-  def visibility_setting
-    self.visible == true ? "private" : "public"
-  end
-
-  def tweets
-    start = self.start
-    ending = self.end
-    trip_user_tweets.select do |tweet|
-      tweet.tweeted_at.to_date.between?(start, ending)
+  def save_with_user_trip
+    transaction do
+      save
+      owner.user_trips.create!({:trip_id => self.id, :trip_role => 'traveler'})
+      self
     end
   end
 
-  def trip_user_tweets
-    Tweet.where(:user_id => self.users)
-  end
+  # def self.create_user_and_auth_source(auth_source_params, user_params)
+  #   User.transaction do
+  #     user = create_with_username(user_params)
+  #     user.auth_sources.create!(auth_source_params)
+  #     user
+  #   end
+  # end
+
+
+
+  # def kreeprs
+  #   uts = UserTrip.where(:trip_role => 'kreepr', :trip_id => self.id)
+  #   uts.collect{|ut| ut.user}
+  # end
+
+  # def visibility_setting
+  #   self.visible == true ? "private" : "public"
+  # end
+
+  # def tweets
+  #   start = self.start
+  #   ending = self.end
+  #   trip_user_tweets.select do |tweet|
+  #     tweet.tweeted_at.to_date.between?(start, ending)
+  #   end
+  # end
+
+  # def trip_user_tweets
+  #   Tweet.where(:user_id => self.users)
+  # end
 end

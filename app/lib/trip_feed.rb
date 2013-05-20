@@ -13,21 +13,28 @@ class TripFeed
     @notes ||= trip.notes.all
   end
 
+  private
+
   def tweets
-    @tweets ||= Tweet.where('user_id IN (?)', trip.travelers)
-                     .where(:tweeted_at => trip.start..trip.end)
-                     .all
+    @tweets ||= Tweet.for_users(travelers).in_range(trip.start, trip.end)
+    # @tweets ||= Tweet.where('user_id IN (?)', trip.travelers)
+    #                  .where(:tweeted_at => trip.start..trip.end)
   end
 
   def photos
-    @photos ||= Photo.where('user_id IN (?)', trip.travelers)
-                     .where(:taken_at => trip.start..trip.end)
-                     .all
+    @photos ||= Tweet.for_users(travelers).in_range(trip.start, trip.end)
+    # @photos ||= Photo.where('user_id IN (?)', trip.travelers)
+    #                  .where(:taken_at => trip.start..trip.end)
   end
 
   def check_ins
-    @check_ins ||= CheckIn.where('user_id IN (?)', trip.travelers)
-                          .where(:checked_in_at => trip.start..trip.end)
-                          .all
+    @check_ins ||= CheckIn.for_users(travelers).in_range(trip.start, trip.end)
+    # @check_ins ||= CheckIn.where('user_id IN (?)', trip.travelers)
+    #                       .where(:checked_in_at => trip.start..trip.end)
+  end
+
+  def travelers
+    @travelers ||= trip.travelers
   end
 end
+
