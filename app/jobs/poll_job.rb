@@ -11,7 +11,7 @@ class PollJob
 
   private
 
-  def self.poll_service(auth_sources = [])
+  def self.poll_services(auth_sources = [])
     auth_sources.each do |auth_source|
       Resque.enqueue(poll_class_for_provider(auth_source.provider),
         auth_source.poll_params)
@@ -19,6 +19,6 @@ class PollJob
   end
 
   def self.poll_class_for_provider(provider)
-    "#{provider}_job".classify.contantize
+    "#{provider}_job".classify.constantize
   end
 end

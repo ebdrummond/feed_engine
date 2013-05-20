@@ -16,7 +16,8 @@ FeedEngine::Application.routes.draw do
   put '/account', to: 'users#update', as: :update_account
 
   resources :feeds
-  resources :trips, except: [ :edit ]
+  resources :trips
+  resources :user_trips
   resources :notes, only: [ :create, :destroy ]
 
   get '/request_to_view_private_trip',
@@ -35,7 +36,7 @@ FeedEngine::Application.routes.draw do
     to: 'phil_layouts/layouts#trip_feed',
     as: 'trip_feed'
 
-  get '/user_trips',
-    to: 'phil_layouts/layouts#user_trips',
-    as: 'user_trips'
+  # get '/user_trips',
+  #   to: 'phil_layouts/layouts#user_trips',
+  #   as: 'user_trips'
 end
