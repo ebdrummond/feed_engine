@@ -44,5 +44,5 @@ FeedEngine::Application.routes.draw do
     as: 'manage_kreepings'
 
   get '/users/:username', to: 'users#show', as: 'user'
-  delete '/users', to: 'users#destroy', as: 'user'
+  delete '/users', to: 'users#destroy', as: 'delete_user'
 end
