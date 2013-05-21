@@ -33,7 +33,7 @@ end
 group :test, :development do
   gem 'sqlite3'
   gem 'rspec-rails', '~> 2.13.0'
-  # gem 'better_errors'
+  gem 'better_errors'
   gem 'binding_of_caller'
   gem 'capybara'
   gem 'dotenv-rails'

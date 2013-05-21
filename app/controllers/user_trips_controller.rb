@@ -1,12 +1,12 @@
 class UserTripsController < ApplicationController
 
-  def create
-    ut = UserTrip.new(:user_id => params[:user_id],
-                         :trip_id => params[:trip_id],
-                         :trip_role => params[:trip_role])
+  def create_kreeping
+    ut = current_user.user_trips.build(:trip_id => params[:trip_id],
+                                  :trip_role => params[:trip_role])
+
     if ut.save
       redirect_to :back,
-                  notice: "You've been added as a #{ut.trip_role} to #{ut.trip.name}!"
+                  notice: "You've been added to #{ut.trip.name} as a kreepr!"
     else
       redirect_to :back,
                   notice: "Sorry - something went wrong!"
@@ -19,6 +19,10 @@ class UserTripsController < ApplicationController
                         :trip_role => params[:trip_role])
     ut.destroy(ut)
     redirect_to trip_path(ut[0].trip),
-                notice: "You've been removed as a #{ut[0].trip_role} from #{ut[0].trip.name}."
+                notice: "#{ut.user.username} is no longer a #{ut[0].trip_role} on #{ut[0].trip.name}."
+  end
+
+  def create_traveler
+    traveler = params[:traveler]
   end
 end

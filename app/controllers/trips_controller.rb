@@ -9,6 +9,7 @@ class TripsController < ApplicationController
     @trip = current_user.trips.build(trip_params)
 
     if @trip.save
+      @trip.save_owner_as_user(current_user, @trip)
       redirect_to dashboard_path
     else
       render :new, :notice => 'Error!'
@@ -18,11 +19,17 @@ class TripsController < ApplicationController
   def show
     @trip = Trip.find(params[:id])
     @note = @trip.notes.build
-    @tweets = @trip.tweets
+
+    if !@trip.visible || current_user.authorized_to_view(@trip)
+      render :show
+    else
+      render :private
+    end
   end
 
   def edit
     @trip = Trip.find(params[:id])
+    @user_trip = @trip.user_trips.build
   end
 
   def dashboard

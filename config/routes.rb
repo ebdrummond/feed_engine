@@ -17,7 +17,10 @@ FeedEngine::Application.routes.draw do
 
   resources :feeds
 
-  resources :user_trips
+  resources :user_trips, only: [ :destroy ]
+  post '/create_kreeping', to: 'user_trips#create_kreeping'
+  post '/create_traveler', to: 'user_trips#create_traveler'
+  post '/create_kreepr', to: 'user_trips#create_kreepr'
 
   resources :trips do
     resources :notes, only: [ :create, :destroy ]

@@ -53,4 +53,8 @@ class Trip < ActiveRecord::Base
   def trip_user_tweets
     Tweet.where(:user_id => self.users)
   end
+
+  def save_owner_as_user(owner, trip)
+    owner.user_trips.create(trip_id: trip.id, trip_role: "traveler")
+  end
 end

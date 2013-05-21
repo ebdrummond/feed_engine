@@ -11,7 +11,7 @@ class User < ActiveRecord::Base
   has_many :check_ins
   has_many :user_trips
   has_many :trips
-  # , through: :user_trips
+  #, through: :user_trips
 
   validates :username, :presence => true,
                        :uniqueness => true
@@ -22,5 +22,13 @@ class User < ActiveRecord::Base
 
   def foursquare_connected?
     auth_sources.collect{|a| a.provider}.include?("foursquare")
+  end
+
+  def my_trips
+    user_trips.collect{|ut| ut.trip}
+  end
+
+  def authorized_to_view(trip)
+    my_trips.include?(trip)
   end
 end

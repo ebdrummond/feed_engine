@@ -63,8 +63,13 @@
       </div>
       <div class="ten columns">
         <h5>Add Travelers<h5>
-        <input type="text" name="end_date">
-        <%= button_to "add traveler", {:controller => 'user_trips', :action => 'create', :trip_id => @trip.id, :trip_role => "traveler", :user_id => "end_date"}, :class => "radius button small" %>
+        <%= form_tag(:controller => "user_trips", :action => "create_traveler", method: :post) do %>
+          <%= text_field_tag("username") %>
+          <%= hidden_field_tag("trip_id", @trip.id) %>
+          <div class="row" align="right">
+          <%= submit_tag("Add Traveler", :class => "radius button small") %>
+          </div>
+        <% end %>
       </div>
     </div>
   </div>
