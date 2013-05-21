@@ -1,4 +1,5 @@
 class TripsController < ApplicationController
+  respond_to :html, :json
   before_filter :require_login, except: [ :show ]
 
   def new
@@ -29,7 +30,12 @@ class TripsController < ApplicationController
 
   def edit
     @trip = Trip.find(params[:id])
-    @user_trip = @trip.user_trips.build
+  end
+
+  def update
+    @trip = Trip.find(params[:id])
+    @trip.update_attributes(params[:trip])
+    respond_with @trip
   end
 
   def dashboard

@@ -6,7 +6,7 @@
 
 <div class="row">
   <div class="twelve columns">
-    <h2><%= @trip.name %></h2>
+    <h2><%= best_in_place @trip, :name %></h2>
   </div>
 </div>
 <div class="row">
@@ -26,7 +26,7 @@
   <div class="one column">
   </div>
   <div class="eleven columns">
-    <h5><%= @trip.destination %></h5>
+    <h5><%= best_in_place @trip, :destination %></h5>
   </div>
 </div>
 <br>
@@ -36,7 +36,7 @@
   <div class="twelve columns">
     <h4>Privacy Settings</h4>
     <div class="two columns">
-      <%= @trip.visibility_setting %>
+      <%= best_in_place @trip, :visible, type: :select, collection: [[true, "private"], [false, "public"]] %>
     </div>
     <div class="eight columns">
     </div>
@@ -83,7 +83,7 @@
         <h5 align="right"><%= link_to kreepr.username, root_path %></h5>
       </div>
       <div class="eight columns">
-        <%= button_to "remove", {:controller => 'user_trips', :action => 'destroy', :trip_id => @trip.id, :trip_role => "kreepr"}, method: :delete, :class =>"radius button small" %>
+        <%= button_to "remove", {:controller => 'user_trips', :action => 'destroy', :trip_id => @trip.id, :trip_role => "kreepr", :user_id => kreepr.id}, method: :delete, :class =>"radius button small" %>
       </div>
       <% end %>
     </div>
