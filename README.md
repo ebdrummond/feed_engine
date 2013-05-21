@@ -6,7 +6,7 @@
 
 ### Kreepr (aka Feed Engine)
 
-The goal of this project was to practice consuming web service APIs as well as publishing an API. We created a Tumblr or Friendfeed-like system that lets users publish a timeline of activities that they have either created on the site or that are activity imported from another third-party site: Twitter, Foursquare or Instagram. In addition, we've provided an API for reading and writing to a user’s activity stream, and published a gem to let other application developers consume our API. The gem, Feed Burner, can be found [here]()
+The goal of this project was to practice consuming web service APIs as well as publishing an API. We created a Tumblr or Friendfeed-like system that lets users publish a timeline of activities that they have either created on the site or that are activity imported from another third-party site: Twitter, Foursquare or Instagram. In addition, we've provided an API for reading and writing to a user’s activity stream, and published a gem to let other application developers consume our API. The gem, Feed Burner, can be found [here](https://github.com/raphweiner/feed_burner)
 
 Further project requirements can be on Jumpstart Lab's [Feed Engine page](http://tutorials.jumpstartlab.com/projects/feed_engine.html).
 

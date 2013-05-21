@@ -11,15 +11,24 @@ class TripsController < ApplicationController
     if @trip.save_with_user_trip
       redirect_to dashboard_path
     else
-      render :new, :notice => 'Error!'
+      render :new, :error => 'Error!'
     end
   end
 
   def show
     @trip = Trip.find(params[:id])
     @note = @trip.notes.build
-    @tweets = []
-    # @feed_items = FeedBurner.feed(:trip_id => @trip)
+
+    # TODO: Bad place to dogfood gem (gem requires current_user, gem does not)
+    if current_user
+      ::FeedBurner.configure do |config|
+        config.api_key = current_user.api_key.to_s
+      end
+      @feed_items = ::FeedBurner.feed(:username => current_user.username,
+                                      :trip_id => @trip.id.to_s)
+    else
+      @feed_items = TripFeed.new(:trip => @trip).feed
+    end
   end
 
   def edit
