@@ -1,11 +1,11 @@
 <% feed_items.each do |feed_item| %>
   <div class="row" id="feed_item">
     <div class="two columns">
-      <%= image_tag(feed_item['user']['avatar'], size: '40x40') %>
+      <%= image_tag(feed_item.user.avatar, size: '40x40') %>
     </div>
     <div class="ten columns">
-      <%= render partial: feed_item['type'],
-                 locals: { feed_item['type'].to_sym => feed_item } %>
+      <%= render partial: feed_item.class.to_s.underscore,
+                 locals: { feed_item.class.to_s.underscore.to_sym => feed_item } %>
       <br>
       <%= render partial: 'feed_item_footer',
                  locals: { :feed_item => feed_item } %>

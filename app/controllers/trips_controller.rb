@@ -19,16 +19,7 @@ class TripsController < ApplicationController
     @trip = Trip.find(params[:id])
     @note = @trip.notes.build
 
-    # TODO: Bad place to dogfood gem (gem requires current_user, trip show does not)
-    if current_user
-      ::FeedBurner.configure do |config|
-        config.api_key = current_user.api_key.to_s
-      end
-      @feed_items = ::FeedBurner.feed(:username => current_user.username,
-                                      :trip_id => @trip.id.to_s)
-    else
-      @feed_items = TripFeed.new(:trip => @trip).feed
-    end
+    @feed_items = TripFeed.new(:trip => @trip).feed
   end
 
   def edit
@@ -38,11 +29,12 @@ class TripsController < ApplicationController
   def dashboard
     @trips = current_user.trips
     @kreepings = current_user.kreepings
+
     @feed_items = (@trips + @kreepings).inject([]) do |memo, trip|
       memo += TripFeed.new(:trip => trip).feed
     end
-    @feed_items = @feed_items.sort_by { |fi| fi.event_created_at }.reverse
-    @feed_items = JSON.parse(@feed_items.uniq.to_json)
+
+    @feed_items = @feed_items.uniq.sort_by { |fi| fi.event_created_at }.reverse
   end
 
   private
