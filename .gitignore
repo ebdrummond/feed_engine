@@ -22,3 +22,6 @@
 
 # Simplecov coverage
 /coverage
+
+# I never liked you, dump.rdb
+/.dump.rdb

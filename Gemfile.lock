@@ -119,6 +119,7 @@ GEM
     mono_logger (1.0.1)
     multi_json (1.7.3)
     multipart-post (1.2.0)
+    newrelic_rpm (3.6.0.83)
     nokogiri (1.5.9)
     oauth (0.4.7)
     oauth2 (0.8.1)
@@ -292,6 +293,7 @@ DEPENDENCIES
   instagram
   jquery-rails
   launchy
+  newrelic_rpm
   omniauth
   omniauth-foursquare
   omniauth-instagram
@@ -299,6 +301,7 @@ DEPENDENCIES
   pg
   pry
   rails (= 3.2.13)
+  redis
   resque (~> 1.24.0)
   resque-scheduler
   resque_spec (~> 0.13.0)
