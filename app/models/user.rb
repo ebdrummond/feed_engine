@@ -11,17 +11,20 @@ class User < ActiveRecord::Base
   has_many :check_ins
   has_many :user_trips
   has_many :trips
-  # , through: :user_trips
   has_one :api_key
 
   validates :username, :presence => true,
                        :uniqueness => true
 
   def instagram_connected?
-    auth_sources.collect{|a| a.provider}.include?("instagram")
+    AuthSource.exists?(:user => self, :provider => "instagram")
   end
 
   def foursquare_connected?
-    auth_sources.collect{|a| a.provider}.include?("foursquare")
+    AuthSource.exists?(:user => self, :provider => "foursquare")
+  end
+
+  def kreepings
+    UserTrip.where(:user_id => self.id, :trip_role => "kreepr").map(&:trip)
   end
 end

@@ -37,8 +37,8 @@ class TripsController < ApplicationController
 
   def dashboard
     @trips = current_user.trips
-    @kreepings = []
-    @feeds = []
+    @kreepings = current_user.kreepings
+    @feed_items = []
     # feed_items should be most recent items from all trips (you are traveler or kreepr)
   end
 
