@@ -1,12 +1,11 @@
 <% if (@trip.visible == false) || (current_user && @trip.travelers.include?(current_user)) %>
   <div class="row">
-    <center>
-      <div class="seven columns">
-        <h2 id="page headline"><%= @trip.name %></h1>
-        <h3 id="page headline"><%= "#{@trip.start} - #{@trip.end}" %></h3>
-        <h3 id="page headline"><%= @trip.destination %></h3>
-      </div>
-    </center>
+    <div class="six columns">
+      <h2 id="page headline"><%= @trip.name %></h1>
+      <h3 id="page headline"><%= "#{@trip.start} - #{@trip.end}" %></h3>
+      <h3 id="page headline"><%= @trip.destination %></h3>
+    </div>
+    <%= render partial: 'shared/map', locals: { :location => @trip.destination } %>
   </div>
 
   <div class="row">
