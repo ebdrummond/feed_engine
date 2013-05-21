@@ -16,6 +16,10 @@ class User < ActiveRecord::Base
   validates :username, :presence => true,
                        :uniqueness => true
 
+  def to_param
+    username
+  end
+
   def instagram_connected?
     AuthSource.exists?(:user_id => self.id, :provider => "instagram")
   end

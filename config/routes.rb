@@ -41,11 +41,5 @@ FeedEngine::Application.routes.draw do
     to: 'erin_layouts/layouts#manage_kreepings',
     as: 'manage_kreepings'
 
-  get '/trip_feed',
-    to: 'phil_layouts/layouts#trip_feed',
-    as: 'trip_feed'
-
-  get '/users/:id',
-    to: 'phil_layouts/layouts#profile',
-    as: 'user'
+  get '/users/:username', to: 'users#show', as: 'user'
 end
