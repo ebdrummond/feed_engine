@@ -1,9 +1,9 @@
 <div class="row">
   <div class="four columns">
-    <%= image_tag("Overly-attached-girlfriend-meme.png", :size => "400x400", :alt => "profile") %>
+    <%= image_tag(@user.avatar, :size => "400x400", :alt => "profile") %>
   </div>
   <div class="eight columns">
-    <h1 id="page_headline">eebee</h1>
+    <h1 id="page_headline"><%= @user.username %></h1>
   </div>
 </div>
 

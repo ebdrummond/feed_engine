@@ -2,6 +2,6 @@
            locals: { :type => feed_item.class.to_s.underscore, :size => "15x15" } %>
 
 <%= link_to feed_item.user.username,
-            user_path(feed_item.user.id) %>
+            user_path(feed_item.user) %>
 
 posted <%= time_ago_in_words(feed_item.event_created_at) %> ago

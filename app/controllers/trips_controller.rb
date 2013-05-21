@@ -10,7 +10,7 @@ class TripsController < ApplicationController
     @trip = current_user.trips.build(trip_params)
 
     if @trip.save_with_user_trip
-      redirect_to dashboard_path
+      redirect_to trip_path(@trip)
     else
       render :new, :error => 'Error!'
     end

@@ -17,6 +17,8 @@ FeedEngine::Application.routes.draw do
 
   get '/auth/failure', to: 'sessions#error', as: 'failure'
 
+  delete '/auth/:provider', to: 'auth_sources#destroy', as: 'auth_source'
+
   get '/dashboard', to: 'trips#dashboard', as: :dashboard
   get '/account', to: 'users#account', as: :account
   put '/account', to: 'users#update', as: :update_account
@@ -43,11 +45,6 @@ FeedEngine::Application.routes.draw do
     to: 'erin_layouts/layouts#manage_kreepings',
     as: 'manage_kreepings'
 
-  get '/trip_feed',
-    to: 'phil_layouts/layouts#trip_feed',
-    as: 'trip_feed'
-
-  get '/users/:id',
-    to: 'phil_layouts/layouts#profile',
-    as: 'user'
+  get '/users/:username', to: 'users#show', as: 'user'
+  delete '/users', to: 'users#destroy', as: 'delete_user'
 end

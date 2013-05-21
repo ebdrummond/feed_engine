@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   before_filter :require_login, except: [ :show ]
 
   def show
-    @user = User.find(params[:id])
+    @user = User.find_by_username!(params[:username])
   end
 
   def account
@@ -18,5 +18,11 @@ class UsersController < ApplicationController
     else
       render :account
     end
+  end
+
+  def destroy
+    current_user.destroy
+    logout
+    redirect_to root_path, :notice => "Account deleted"
   end
 end
