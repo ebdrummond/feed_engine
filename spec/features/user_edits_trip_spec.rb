@@ -16,8 +16,9 @@ describe 'User edit trip' do
       fill_in 'trip[end]', with: '2013-07-22'
 
       click_button 'submit'
-      expect(current_path).to eq edit_trip_path(@trip)
-      expect(page).to have_content "Trip updated!"
+      @trip.reload
+      expect(current_path).to eq trip_path(@trip)
+      expect(@trip.name).to eq 'edited trip'
     end
 
     it 'does not update the trip with invalid parameters' do

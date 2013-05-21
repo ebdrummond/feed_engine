@@ -16,7 +16,7 @@ describe 'User creates trip' do
       fill_in 'trip[end]', with: '2013-07-22'
 
       click_button 'submit'
-      expect(current_path).to eq dashboard_path
+      expect(current_path).to eq trip_path(1)
       expect(page).to have_content "Phil's birthday getaway"
     end
   end

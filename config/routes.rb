@@ -26,24 +26,13 @@ FeedEngine::Application.routes.draw do
   resources :feeds
 
   resources :user_trips, only: [ :destroy ]
+
   post '/create_traveler', to: 'user_trips#create_traveler'
   post '/create_kreepr', to: 'user_trips#create_kreepr'
 
   resources :trips do
     resources :notes, only: [ :create, :destroy ]
   end
-
-  get '/request_to_view_private_trip',
-    to: 'erin_layouts/layouts#request_to_view_private_trip',
-    as: 'request_to_view_private_trip'
-
-  get '/manage_trip',
-    to: 'erin_layouts/layouts#manage_trip',
-    as: 'manage_trip'
-
-  get '/manage_kreepings',
-    to: 'erin_layouts/layouts#manage_kreepings',
-    as: 'manage_kreepings'
 
   get '/users/:username', to: 'users#show', as: 'user'
   delete '/users', to: 'users#destroy', as: 'delete_user'
