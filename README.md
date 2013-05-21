@@ -22,14 +22,6 @@ Families love to travel together, and Traveline lets you aggregate and save thos
 
 While on the trip, any events from third-party services are automatically added and visible both within the feed for that individual trip and my aggregate feed of all my trips.
 
-#### Instructions
-
-To run locally, you must use unicorn (FeedBurner gem points to endpoint in this app):
-
-```
-unicorn --port=3000 -c config/unicorn.rb
-```
-
 #### Learning Goals
 
 * Allow users to consume various third-party APIs where they hold accounts
