@@ -22,10 +22,22 @@ module Api
       end
 
       def require_api_key
-        user_id = ApiKey.where(:key => params[:api_key]).pluck(:user_id)
-        user = User.find(user_id)
-        if user.blank?
-          respond_with '{"errors":[{"message":"Bad Authentication data","code":215}]}'.to_json
+        user = User.where(:username => params[:username]).first
+
+        if user
+          signature = params[:signature]
+
+          uri = "http://localhost:3000/api/v1/feeds/#{params[:id]}?username=#{params[:username]}&timestamp=#{params[:timestamp]}"
+          uri << "&text_only=#{params[:text_only]}" if params[:text_only]
+
+          answer = OpenSSL::HMAC.hexdigest(OpenSSL::Digest::Digest.new('sha1'), user.api_key.to_s, uri)
+
+# TODO --------------> make sure to check timestamp within X of Time.now.to_i
+
+          # unless answer == signature
+          #   respond_with '{"errors":[{"message":"Bad Authentication data","code":215}]}'.to_json
+          #   return false
+          # end
         end
       end
     end

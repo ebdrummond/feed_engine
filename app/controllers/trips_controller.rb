@@ -19,6 +19,7 @@ class TripsController < ApplicationController
     @trip = Trip.find(params[:id])
     @note = @trip.notes.build
     @tweets = []
+    # @feed_items = FeedBurner.feed(:trip_id => @trip)
   end
 
   def edit
@@ -29,6 +30,7 @@ class TripsController < ApplicationController
     @trips = current_user.trips
     @kreepings = []
     @feeds = []
+    # feed_items should be most recent items from all trips (you are traveler or kreepr)
   end
 
   private
