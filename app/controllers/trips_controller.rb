@@ -1,5 +1,4 @@
 class TripsController < ApplicationController
-  respond_to :html, :json
   before_filter :require_login, except: [ :show ]
 
   def new
@@ -34,13 +33,16 @@ class TripsController < ApplicationController
 
   def update
     @trip = Trip.find(params[:id])
-    @trip.update_attributes(params[:trip])
-    respond_with @trip
+    if @trip.update_attributes(params[:trip])
+      redirect_to :back, :notice => "Trip updated!"
+    else
+      render :edit
+    end
   end
 
   def dashboard
     @trips = current_user.trips
-    @kreepings = []
+    @kreepings = current_user.kreepings
     @feeds = Tweet.all
   end
 

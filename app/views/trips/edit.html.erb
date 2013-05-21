@@ -4,46 +4,7 @@
   </div>
 </div>
 
-<div class="row">
-  <div class="twelve columns">
-    <h2><%= best_in_place @trip, :name %></h2>
-  </div>
-</div>
-<div class="row">
-  <div class="one column">
-  </div>
-  <div class="eleven columns">
-    <h4><%= "#{@trip.start} - #{@trip.end}" %></h4>
-  </div>
-</div>
-
-<div class="row">
-  <div class="twelve columns">
-    <h4>Destination</h4>
-  </div>
-</div>
-<div class="row">
-  <div class="one column">
-  </div>
-  <div class="eleven columns">
-    <h5><%= best_in_place @trip, :destination %></h5>
-  </div>
-</div>
-<br>
-<br>
-
-<div class="row">
-  <div class="twelve columns">
-    <h4>Privacy Settings</h4>
-    <div class="two columns">
-      <%= best_in_place @trip, :visible, type: :select, collection: [[true, "private"], [false, "public"]] %>
-    </div>
-    <div class="eight columns">
-    </div>
-  </div>
-</div>
-<br>
-<br>
+<%= render :partial => "form" %>
 
 <div class="row">
   <div class="six columns">

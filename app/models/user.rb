@@ -35,4 +35,9 @@ class User < ActiveRecord::Base
   def self.validate_exists(user)
     self.find_by_username(user)
   end
+
+  def kreepings
+    uts = user_trips.where(:trip_role => "kreepr")
+    uts.collect{|ut| ut.trip }
+  end
 end

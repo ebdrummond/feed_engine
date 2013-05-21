@@ -1,18 +1,5 @@
 class UserTripsController < ApplicationController
 
-  def create_kreeping
-    ut = current_user.user_trips.build(:trip_id => params[:trip_id],
-                                       :trip_role => "kreepr")
-
-    if ut.save
-      redirect_to :back,
-                  notice: "You've been added to #{ut.trip.name} as a kreepr!"
-    else
-      redirect_to :back,
-                  notice: "Sorry - something went wrong!"
-    end
-  end
-
   def destroy
     ut = UserTrip.where(:user_id => params[:user_id],
                         :trip_id => params[:trip_id],
@@ -25,7 +12,10 @@ class UserTripsController < ApplicationController
   def create_traveler
     new_traveler = User.validate_exists(params[:username])
 
-    if new_traveler
+    if new_traveler == nil
+      redirect_to :back,
+                  notice: "This user doesn't exist!"
+    elsif !new_traveler.my_trips.include?(Trip.find(params[:trip_id]))
       ut = new_traveler.user_trips.build(:trip_id => params[:trip_id],
                                          :trip_role => "traveler")
       if ut.save
@@ -35,18 +25,21 @@ class UserTripsController < ApplicationController
         redirect_to :back,
                   notice: "Sorry - something went wrong!"
       end
-    else
+    elsif new_traveler
       redirect_to :back,
-                  notice: "This user doesn't exist!"
+                  notice: "User already on trip!"
     end
   end
 
   def create_kreepr
     new_kreepr = User.validate_exists(params[:username])
 
-    if new_kreepr
+    if new_kreepr == nil
+      redirect_to :back,
+                  notice: "This user doesn't exist!"
+    elsif !new_kreepr.my_trips.include?(Trip.find(params[:trip_id]))
       ut = new_kreepr.user_trips.build(:trip_id => params[:trip_id],
-                                       :trip_role => "kreepr")
+                                         :trip_role => "kreepr")
       if ut.save
         redirect_to :back,
                     notice: "#{ut.user.username} has been added as a kreepr to #{ut.trip.name}!"
@@ -54,9 +47,9 @@ class UserTripsController < ApplicationController
         redirect_to :back,
                   notice: "Sorry - something went wrong!"
       end
-    else
+    elsif new_kreepr
       redirect_to :back,
-                  notice: "This user doesn't exist!"
+                  notice: "User already on trip!"
     end
   end
 end
