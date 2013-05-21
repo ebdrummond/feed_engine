@@ -6,7 +6,7 @@ class TripFeed
   end
 
   def feed
-    @feed ||= aggregate.sort_by { |event| event.event_created_at }
+    @feed ||= aggregate.sort_by { |event| event.event_created_at }.reverse
   end
 
   def notes

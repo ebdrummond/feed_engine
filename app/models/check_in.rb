@@ -27,7 +27,11 @@ class CheckIn < ActiveRecord::Base
     {
       :type => :check_in, :data => { :event_created_at => checked_in_at,
                                      :text => text,
-                                     :location => location }
+                                     :location => location },
+                          :user => {
+                                     :user_id => user.id,
+                                     :username => user.username,
+                                     :avatar => user.avatar }
     }
   end
 end

@@ -26,7 +26,6 @@ class TripsController < ApplicationController
       end
       @feed_items = ::FeedBurner.feed(:username => current_user.username,
                                       :trip_id => @trip.id.to_s)
-      raise @feed_items
     else
       @feed_items = TripFeed.new(:trip => @trip).feed
     end

@@ -42,19 +42,8 @@
       <%= render :partial => 'post_note',
                  :locals => {:trip => @trip, :note => @note } %>
 
-      <% @feed_items.each do |tweet| %>
-      <div class="row" id="feed_item">
-        <div class="two columns">
-          <%= image_tag(tweet.user.avatar, :size => "100x100", :alt => "profile") %>
-        </div>
-        <div class="ten columns">
-            <p><%= tweet.text %></p>
-          <h6><a href="#"><%= tweet.user.username %></a> posted to trip <%= link_to @trip.name, trip_path(@trip) %> <%= distance_of_time_in_words(tweet.tweeted_at, Time.now) %> ago</h6>
-        </div>
-      </div>
-      <br>
-      <br>
-      <% end %>
+      <%= render :partial => 'feed_item',
+                 :locals => {:feed_items => @feed_items } %>
     </div>
   </div>
 <% else %>

@@ -27,7 +27,11 @@ class Photo < ActiveRecord::Base
     {
       :type => :photo, :data => { :event_created_at => taken_at,
                                   :url => url,
-                                  :caption => caption }
+                                  :caption => caption },
+                       :user => {
+                                  :user_id => user.id,
+                                  :username => user.username,
+                                  :avatar => user.avatar }
     }
   end
 end

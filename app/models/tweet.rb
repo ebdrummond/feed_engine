@@ -24,7 +24,11 @@ class Tweet < ActiveRecord::Base
   def serializable_hash(options = {})
     {
       :type => :tweet, :data => { :event_created_at => tweeted_at,
-                                 :text => text }
+                                  :text => text },
+                       :user => {
+                                  :user_id => user.id,
+                                  :username => user.username,
+                                  :avatar => user.avatar }
     }
   end
 end
