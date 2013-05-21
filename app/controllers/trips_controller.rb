@@ -38,8 +38,11 @@ class TripsController < ApplicationController
   def dashboard
     @trips = current_user.trips
     @kreepings = current_user.kreepings
-    @feed_items = []
-    # feed_items should be most recent items from all trips (you are traveler or kreepr)
+    @feed_items = (@trips + @kreepings).inject([]) do |memo, trip|
+      memo += TripFeed.new(:trip => trip).feed
+    end
+    @feed_items = @feed_items.sort_by { |fi| fi.event_created_at }.reverse
+    @feed_items = JSON.parse(@feed_items.uniq.to_json)
   end
 
   private
