@@ -17,11 +17,11 @@ class User < ActiveRecord::Base
                        :uniqueness => true
 
   def instagram_connected?
-    AuthSource.exists?(:user => self, :provider => "instagram")
+    AuthSource.exists?(:user_id => self.id, :provider => "instagram")
   end
 
   def foursquare_connected?
-    AuthSource.exists?(:user => self, :provider => "foursquare")
+    AuthSource.exists?(:user_id => self.id, :provider => "foursquare")
   end
 
   def kreepings
