@@ -31,4 +31,8 @@ class User < ActiveRecord::Base
   def authorized_to_view(trip)
     my_trips.include?(trip)
   end
+
+  def self.validate_exists(user)
+    self.find_by_username(user)
+  end
 end

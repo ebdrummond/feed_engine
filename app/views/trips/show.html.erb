@@ -27,7 +27,7 @@
         <% if current_user && !current_user.my_trips.include?(@trip) %>
           <%= button_to "Follow this Trip", {:controller => 'user_trips', :action => 'create_kreeping', :trip_id => @trip.id, :trip_role => "kreepr"}, :class => "radius button" %>
         <% elsif current_user && @trip.kreeprs.include?(current_user) %>
-          <%= button_to "Unfollow this Trip", {:controller => 'user_trips', :action => 'destroy', :trip_id => @trip.id, :trip_role => "kreepr"}, method: :delete, :class => "radius button" %>
+          <%= button_to "Unfollow this Trip", {:controller => 'user_trips', :action => 'destroy', :trip_id => @trip.id, :trip_role => "kreepr", :user_id => current_user.id}, method: :delete, :class => "radius button" %>
         <% end %>
       </div>
       <br>

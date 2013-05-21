@@ -54,7 +54,7 @@
         <h5 align="right"><%= link_to traveler.username, root_path %></h5>
       </div>
       <div class="eight columns">
-        <%= button_to "remove", {:controller => 'user_trips', :action => 'destroy', :trip_id => @trip.id, :trip_role => "traveler"}, method: :delete, :class =>"radius button small" %>
+        <%= button_to "remove", {:controller => 'user_trips', :action => 'destroy', :trip_id => @trip.id, :trip_role => "traveler", :user_id => traveler.id}, method: :delete, :class =>"radius button small" %>
       </div>
       <% end %>
     </div>
@@ -91,7 +91,13 @@
       </div>
       <div class="ten columns">
         <h5>Add Kreeprs<h5>
-        <input type="text" name="end_date">
+        <%= form_tag(:controller => "user_trips", :action => "create_kreepr", method: :post) do %>
+          <%= text_field_tag("username") %>
+          <%= hidden_field_tag("trip_id", @trip.id) %>
+          <div class="row" align="right">
+          <%= submit_tag("Add Kreepr", :class => "radius button small") %>
+          </div>
+        <% end %>
       </div>
     </div>
   </div>
