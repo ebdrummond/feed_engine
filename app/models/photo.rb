@@ -22,4 +22,12 @@ class Photo < ActiveRecord::Base
   def event_created_at
     taken_at
   end
+
+  def serializable_hash(options = {})
+    {
+      :type => :photo, :data => { :event_created_at => taken_at,
+                                  :url => url,
+                                  :caption => caption }
+    }
+  end
 end

@@ -19,13 +19,14 @@ class TripsController < ApplicationController
     @trip = Trip.find(params[:id])
     @note = @trip.notes.build
 
-    # TODO: Bad place to dogfood gem (gem requires current_user, gem does not)
+    # TODO: Bad place to dogfood gem (gem requires current_user, trip show does not)
     if current_user
       ::FeedBurner.configure do |config|
         config.api_key = current_user.api_key.to_s
       end
       @feed_items = ::FeedBurner.feed(:username => current_user.username,
                                       :trip_id => @trip.id.to_s)
+      raise @feed_items
     else
       @feed_items = TripFeed.new(:trip => @trip).feed
     end

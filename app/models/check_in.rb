@@ -22,4 +22,12 @@ class CheckIn < ActiveRecord::Base
   def event_created_at
     checked_in_at
   end
+
+  def serializable_hash(options = {})
+    {
+      :type => :check_in, :data => { :event_created_at => checked_in_at,
+                                     :text => text,
+                                     :location => location }
+    }
+  end
 end

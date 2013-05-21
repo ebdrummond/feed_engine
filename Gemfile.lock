@@ -70,7 +70,7 @@ GEM
       multipart-post (~> 1.1)
     faraday_middleware (0.9.0)
       faraday (>= 0.7.4, < 0.9)
-    feed_burner (0.0.2)
+    feed_burner (0.0.3)
     ffi (1.8.1)
     foreman (0.63.0)
       dotenv (>= 0.7)
@@ -105,6 +105,7 @@ GEM
     json (1.8.0)
     jwt (0.1.8)
       multi_json (>= 1.5)
+    kgio (2.8.0)
     launchy (2.3.0)
       addressable (~> 2.3)
     listen (1.1.1)
@@ -177,6 +178,7 @@ GEM
       rake (>= 0.8.7)
       rdoc (~> 3.4)
       thor (>= 0.14.6, < 2.0)
+    raindrops (0.10.0)
     rake (10.0.4)
     rb-fsevent (0.9.3)
     rb-inotify (0.9.0)
@@ -266,6 +268,10 @@ GEM
     unf (0.0.5)
       unf_ext
     unf_ext (0.0.6)
+    unicorn (4.6.2)
+      kgio (~> 2.6)
+      rack
+      raindrops (~> 0.7)
     vcr (2.4.0)
     vegas (0.1.11)
       rack (>= 1.0.0)
@@ -288,7 +294,7 @@ DEPENDENCIES
   coveralls
   database_cleaner (~> 1.0.1)
   dotenv-rails
-  feed_burner (~> 0.0.2)
+  feed_burner (~> 0.0.3)
   foreman (~> 0.63.0)
   foursquare2
   guard-rspec
@@ -316,6 +322,7 @@ DEPENDENCIES
   twitter
   twitter-text
   uglifier (>= 1.0.3)
+  unicorn
   vcr (~> 2.4.0)
   webmock (~> 1.9.0)
   zurb-foundation (~> 4.0.0)

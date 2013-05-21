@@ -16,4 +16,9 @@ class Note < ActiveRecord::Base
   def event_created_at
     created_at
   end
+
+  def serializable_hash(options = {})
+    {:type => :note, :data => { :event_created_at => created_at,
+                                :text => text } }
+  end
 end
