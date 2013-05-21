@@ -4,20 +4,15 @@ describe 'User visits a trip show page' do
   context 'after logging in' do
     before(:all) do
       user = User.create!(username: 'nick')
+      user2 = User.create!(username: 'kyle')
       login(user)
+      @trip = user2.trip.create(:name => "Phil's Getaway", :destination => 'Munich, Germany', :start => Date.parse('2013-02-20'), :end => Date.parse('2013-02-25'))
     end
 
-    it 'from dashboard' do
-      visit dashboard_path
-      click_link 'Add Trip'
-      fill_in 'trip[name]', with: "Phil's birthday getaway"
-      fill_in 'trip[destination]', with: 'Sau Paulo, Brazil'
-      fill_in 'trip[start]', with: '2013-07-15'
-      fill_in 'trip[end]', with: '2013-07-22'
-
-      click_button 'submit'
-      expect(current_path).to eq dashboard_path
-      expect(page).to have_content "Phil's birthday getaway"
+    context "with a public trip" do
+      it "takes the user to the trip show page" do
+        expect(current_path).to eq trip_path(@trip)
+      end
     end
   end
 end
