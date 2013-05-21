@@ -19,4 +19,10 @@ class UsersController < ApplicationController
       render :account
     end
   end
+
+  def destroy
+    current_user.destroy
+    logout
+    redirect_to root_path, :notice => "Account deleted"
+  end
 end

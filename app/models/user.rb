@@ -4,14 +4,14 @@ class User < ActiveRecord::Base
   attr_accessible :username,
                   :avatar
 
-  has_many :auth_sources
-  has_many :tweets
-  has_many :notes
-  has_many :photos
-  has_many :check_ins
-  has_many :user_trips
-  has_many :trips
-  has_one :api_key
+  has_many :auth_sources, :dependent => :destroy
+  has_many :tweets, :dependent => :destroy
+  has_many :notes, :dependent => :destroy
+  has_many :photos, :dependent => :destroy
+  has_many :check_ins, :dependent => :destroy
+  has_many :trips, :dependent => :destroy
+  has_many :user_trips, :dependent => :destroy
+  has_one :api_key, :dependent => :destroy
 
   validates :username, :presence => true,
                        :uniqueness => true
