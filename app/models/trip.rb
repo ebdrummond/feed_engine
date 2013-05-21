@@ -39,4 +39,8 @@ class Trip < ActiveRecord::Base
       self
     end
   end
+
+  def save_owner_as_user(owner, trip)
+    owner.user_trips.create(trip_id: trip.id, trip_role: "traveler")
+  end
 end

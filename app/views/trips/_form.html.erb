@@ -1,0 +1,32 @@
+<div class="row new_trip">
+  <div class="twelve columns">
+    <%= form_for @trip do |f| %>
+      <% if @trip.errors.any? %>
+        <h6><%= pluralize(@trip.errors.count, "error") %> prohibited this trip from being saved:</h6>
+        <% @trip.errors.full_messages.each do |msg| %>
+          <%= msg %>
+        <% end %>
+      <% end %>
+      <h4>Trip Name</h4>
+      <%= f.text_field :name, class: 'four' %>
+      <h4>Destination</h4>
+      <%= f.text_field :destination, class: 'four' %>
+      <h4>Trip Dates</h4>
+      <div class="row">
+        <%= f.text_field :start, class: 'two columns' %>
+        <div class="one column"
+          <h6>through</h6>
+        </div>
+        <%= f.text_field :end, class: 'two columns' %>
+        <div class="seven columns">
+        </div>
+      </div>
+      <h4>Private?</h4>
+      <%= f.check_box :visible %>
+      <div>
+      <br>
+      <%= f.button :submit, class: 'button' %>
+    </div>
+    <% end %>
+  </div>
+</div>

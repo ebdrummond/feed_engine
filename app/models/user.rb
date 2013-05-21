@@ -27,4 +27,21 @@ class User < ActiveRecord::Base
   def kreepings
     UserTrip.where(:user_id => self.id, :trip_role => "kreepr").map(&:trip)
   end
+
+  def my_trips
+    user_trips.collect{|ut| ut.trip}
+  end
+
+  def authorized_to_view(trip)
+    my_trips.include?(trip)
+  end
+
+  def self.validate_exists(user)
+    self.find_by_username(user)
+  end
+
+  def kreepings
+    uts = user_trips.where(:trip_role => "kreepr")
+    uts.collect{|ut| ut.trip }
+  end
 end

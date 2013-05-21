@@ -1,5 +1,6 @@
 class TripsController < ApplicationController
   before_filter :require_login, except: [ :show ]
+  before_filter :require_trip_access, only: [ :show ]
 
   def new
     @trip = Trip.new
@@ -16,7 +17,6 @@ class TripsController < ApplicationController
   end
 
   def show
-    @trip = Trip.find(params[:id])
     @note = @trip.notes.build
 
     @feed_items = TripFeed.new(:trip => @trip).feed
@@ -24,6 +24,15 @@ class TripsController < ApplicationController
 
   def edit
     @trip = Trip.find(params[:id])
+  end
+
+  def update
+    @trip = Trip.find(params[:id])
+    if @trip.update_attributes(params[:trip])
+      render :edit, :notice => "Trip updated!"
+    else
+      render :edit, :error => "Update failed"
+    end
   end
 
   def dashboard
@@ -42,5 +51,12 @@ class TripsController < ApplicationController
   def trip_params
     params[:trip].merge(:start => Chronic.parse(params[:trip][:start]),
                         :end => Chronic.parse(params[:trip][:end]))
+  end
+
+  def require_trip_access
+    @trip = Trip.find(params[:id])
+    unless !@trip.visible || current_user.authorized_to_view(@trip)
+      render :private
+    end
   end
 end
