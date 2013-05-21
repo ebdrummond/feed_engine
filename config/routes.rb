@@ -45,7 +45,7 @@ FeedEngine::Application.routes.draw do
     to: 'phil_layouts/layouts#trip_feed',
     as: 'trip_feed'
 
-  get '/profile',
+  get '/users/:id',
     to: 'phil_layouts/layouts#profile',
-    as: 'profile'
+    as: 'user'
 end

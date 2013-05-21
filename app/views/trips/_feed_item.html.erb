@@ -7,7 +7,8 @@
       <%= render partial: feed_item['type'],
                  locals: { feed_item['type'].to_sym => feed_item } %>
       <br>
-      <%= "#{link_to feed_item['user']['username'], user_path(feed_item['user']['user_id'])} posted to #{feed_item['type']} #{time_ago_in_words(feed_item['data']['event_created_at'])} ago" %>
+      <%= render partial: 'feed_item_footer',
+                 locals: { :feed_item => feed_item } %>
     </div>
   </div>
 <% end %>
