@@ -37,8 +37,8 @@ describe TripsController do
           expect(Trip.count).to eq 1
         end
 
-        it 'redirects to dashboard' do
-          expect(response).to redirect_to dashboard_path
+        it 'redirects to trip page' do
+          expect(response).to redirect_to trip_path(1)
         end
       end
 
