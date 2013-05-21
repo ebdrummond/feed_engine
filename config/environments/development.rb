@@ -35,5 +35,6 @@ FeedEngine::Application.configure do
   # Expands the lines which load the assets
   config.assets.debug = true
 
-  ENV["REDISTOGO_URL"] = 'redis://redistogo:40beff4f1a8c7660084590993b567a84@viperfish.redistogo.com:9630/' 
 end
+
+ENV["REDISTOGO_URL"] = 'redis://localhost:6379'
