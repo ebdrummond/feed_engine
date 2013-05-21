@@ -51,7 +51,7 @@ describe TripFeed do
     end
 
     it 'returns sorted notes, tweets, checkins, and photos for trip within date range' do
-      expect(@trip_feed.feed).to eq [@note, @tweet, @photo, @check_in]
+      expect(@trip_feed.feed).to eq [ @check_in, @photo, @tweet, @note]
     end
   end
 end
