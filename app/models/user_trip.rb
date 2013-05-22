@@ -9,4 +9,8 @@ class UserTrip < ActiveRecord::Base
   validates :trip_role, :presence => true,
                         :inclusion => {:in => ['traveler', 'kreepr'],
                                        :message => "%{value} is not a valid role" }
+
+  def username
+    User.find(user_id).username
+  end
 end

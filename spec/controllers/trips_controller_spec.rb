@@ -37,26 +37,23 @@ describe TripsController do
           expect(Trip.count).to eq 1
         end
 
-        it 'redirects to dashboard' do
-          expect(response).to redirect_to dashboard_path
+        it 'redirects to trip page' do
+          expect(response).to redirect_to trip_path(1)
         end
       end
 
       context 'with incorrect params does not create a new trip' do
         before(:each) do
-          post :create, {"trip" =>
-                          { "name"    => "Phil's birthday getaway",
-                            "start"   => "2013-07-15",
-                            "end"     => "2013-07-22",
-                            "visible" => "0"}}
+          controller.stub(:current_user).and_return(User.create!(username: 'phil'))
         end
 
-        it "does not create a new trip" do
-          expect(Trip.count).to eq 0
-        end
-
-        it "renders the new template" do
-          expect(response).to render_template :new
+        it "raises an error" do
+          expect { post :create, {"trip" =>
+                                    { "name"    => "Phil's birthday getaway",
+                                      "start"   => "2013-07-15",
+                                      "end"     => "2013-07-22",
+                                      "visible" => "0"}}
+          }.to raise_error ActiveRecord::RecordInvalid
         end
       end
     end

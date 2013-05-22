@@ -1,11 +1,13 @@
 source 'https://rubygems.org'
 
 gem 'rails', '3.2.13'
+gem 'redis'
 gem 'resque', '~>1.24.0', :require => 'resque/server'
 gem 'resque-scheduler', :require => 'resque_scheduler'
 gem 'foreman', '~> 0.63.0'
 gem 'jquery-rails'
 gem 'sorcery'
+gem 'newrelic_rpm'
 gem 'omniauth'
 gem 'omniauth-twitter'
 gem 'omniauth-instagram'
@@ -32,7 +34,7 @@ end
 group :test, :development do
   gem 'sqlite3'
   gem 'rspec-rails', '~> 2.13.0'
-  # gem 'better_errors'
+  #gem 'better_errors'
   gem 'binding_of_caller'
   gem 'capybara'
   gem 'dotenv-rails'

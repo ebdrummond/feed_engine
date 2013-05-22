@@ -16,6 +16,14 @@ class AuthSourcesController < ApplicationController
     end
   end
 
+  def destroy
+    auth_source = AuthSource.where(:user_id => current_user.id,
+                                   :provider => params[:provider]).first
+    auth_source.destroy
+
+    redirect_to account_path
+  end
+
   private
 
   def auth_hash

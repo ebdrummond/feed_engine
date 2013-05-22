@@ -1,14 +1,23 @@
 FeedEngine::Application.routes.draw do
 
+  namespace :api, defaults: { format: 'json' } do
+    namespace :v1 do
+      resources :feeds, only: [ :show ]
+    end
+  end
+
+  root :to => 'welcome#index'
+
   mount Resque::Server, at: "/resque"
 
   # OmniAuth
-
   get '/auth/twitter/callback', to: 'sessions#create', as: 'callback'
   get '/auth/instagram/callback', to: 'auth_sources#create', as: 'callback'
   get '/auth/foursquare/callback', to: 'auth_sources#create', as: 'callback'
 
   get '/auth/failure', to: 'sessions#error', as: 'failure'
+
+  delete '/auth/:provider', to: 'auth_sources#destroy', as: 'auth_source'
 
   get '/dashboard', to: 'trips#dashboard', as: :dashboard
   get '/account', to: 'users#account', as: :account
@@ -16,14 +25,14 @@ FeedEngine::Application.routes.draw do
 
   resources :feeds
 
-  resources :user_trips
+  resources :user_trips, only: [ :destroy ]
+
+  post '/create_traveler', to: 'user_trips#create_traveler'
+  post '/create_kreepr', to: 'user_trips#create_kreepr'
 
   resources :trips do
     resources :notes, only: [ :create, :destroy ]
   end
-
-  root :to => 'welcome#index'
-
 
   get '/request_to_view_private_trip',
     to: 'erin_layouts/layouts#request_to_view_private_trip',
@@ -44,4 +53,6 @@ FeedEngine::Application.routes.draw do
   # get '/user_trips',
   #   to: 'phil_layouts/layouts#user_trips',
   #   as: 'user_trips'
+  get '/users/:username', to: 'users#show', as: 'user'
+  delete '/users', to: 'users#destroy', as: 'delete_user'
 end

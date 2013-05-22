@@ -19,6 +19,10 @@ class FindOrCreateUser
     end
   end
 
+  # generate 10 username using index
+  # reject existing usernames
+  # take first
+
   def self.create_with_username(params)
     i = 0
     begin

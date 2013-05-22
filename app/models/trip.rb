@@ -25,32 +25,30 @@ class Trip < ActiveRecord::Base
   end
 
   def travelers
-    uts = UserTrip.where(:trip_role => 'traveler', :trip_id => self.id)
-    uts.collect{|ut| ut.user}
+    UserTrip.where(:trip_role => 'traveler', :trip_id => self).map(&:user)
   end
 
   def kreeprs
-    uts = UserTrip.where(:trip_role => 'kreepr', :trip_id => self.id)
-    uts.collect{|ut| ut.user}
+    UserTrip.where(:trip_role => 'kreepr', :trip_id => self).map(&:user)
   end
 
-  def visibility_setting
-    if self.visible == true
-      "private"
+  def save_with_user_trip
+    transaction do
+      save
+      owner.user_trips.create!(:trip_id => self.id, :trip_role => 'traveler')
+      self
+    end
+  end
+
+  def save_owner_as_user(owner, trip)
+    owner.user_trips.create(trip_id: trip.id, trip_role: "traveler")
+  end
+
+  def pretty_date_range
+    if self.start.year == self.end.year
+      "#{self.start.strftime("%B %e")} - #{self.end.strftime("%B %e, %Y")}"
     else
-      "public"
+      "#{self.start.strftime("%B %e, %Y")} - #{self.end.strftime("%B %e, %Y")}"
     end
-  end
-
-  def tweets
-    start = self.start
-    ending = self.end
-    trip_user_tweets.select do |tweet|
-      tweet.tweeted_at.to_date.between?(start, ending)
-    end
-  end
-
-  def trip_user_tweets
-    Tweet.where(:user_id => self.users)
   end
 end

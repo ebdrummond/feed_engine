@@ -12,9 +12,9 @@ http_interactions:
       User-Agent:
       - Twitter Ruby Gem 4.6.2
       Authorization:
-      - OAuth oauth_consumer_key="ATWnDZ0CeEHpqrPMtyXaig", oauth_nonce="38a9c715c013eae0d324011488d2d2ee",
-        oauth_signature="xw855sn2tlWiFpvo3to%2F%2FU8vru0%3D", oauth_signature_method="HMAC-SHA1",
-        oauth_timestamp="1369065560", oauth_token="57272421-DdrlGSaASFZj1qjoqYqiSo4YDmJkDkaZOBVE5rSV4",
+      - OAuth oauth_consumer_key="ATWnDZ0CeEHpqrPMtyXaig", oauth_nonce="dcdde7d287c1be0133b64443efffaced",
+        oauth_signature="6CWGcVo8U%2BxaqsSwRhAKAh0AeLk%3D", oauth_signature_method="HMAC-SHA1",
+        oauth_timestamp="1369163917", oauth_token="57272421-DdrlGSaASFZj1qjoqYqiSo4YDmJkDkaZOBVE5rSV4",
         oauth_version="1.0"
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
@@ -30,18 +30,18 @@ http_interactions:
       Content-Type:
       - application/json;charset=utf-8
       Date:
-      - Mon, 20 May 2013 15:59:20 GMT
+      - Tue, 21 May 2013 19:18:37 GMT
       Expires:
       - Tue, 31 Mar 1981 05:00:00 GMT
       Last-Modified:
-      - Mon, 20 May 2013 15:59:20 GMT
+      - Tue, 21 May 2013 19:18:37 GMT
       Pragma:
       - no-cache
       Server:
       - tfe
       Set-Cookie:
-      - guest_id=v1%3A136906556034541370; Domain=.twitter.com; Path=/; Expires=Wed,
-        20-May-2015 15:59:20 UTC
+      - guest_id=v1%3A136916391773074015; Domain=.twitter.com; Path=/; Expires=Thu,
+        21-May-2015 19:18:37 UTC
       - lang=en
       Status:
       - 200 OK
@@ -56,14 +56,14 @@ http_interactions:
       X-Rate-Limit-Remaining:
       - '178'
       X-Rate-Limit-Reset:
-      - '1369066459'
+      - '1369164817'
       X-Transaction:
-      - 618ba123bebceb0d
+      - 21ac51a7ff9f8cbf
       X-Xss-Protection:
       - 1; mode=block
     body:
       encoding: UTF-8
       string: '[]'
     http_version: 
-  recorded_at: Mon, 20 May 2013 15:59:21 GMT
+  recorded_at: Tue, 21 May 2013 19:18:38 GMT
 recorded_with: VCR 2.4.0

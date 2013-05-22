@@ -11,7 +11,17 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130519190540) do
+ActiveRecord::Schema.define(:version => 20130522005021) do
+
+  create_table "api_keys", :force => true do |t|
+    t.string   "key"
+    t.integer  "user_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "api_keys", ["key", "user_id"], :name => "index_api_keys_on_key_and_user_id", :unique => true
+  add_index "api_keys", ["user_id"], :name => "index_api_keys_on_user_id"
 
   create_table "auth_sources", :force => true do |t|
     t.string   "token"
@@ -31,10 +41,10 @@ ActiveRecord::Schema.define(:version => 20130519190540) do
     t.datetime "checked_in_at"
     t.string   "check_in_id"
     t.text     "text"
-    t.string   "location"
     t.integer  "user_id"
     t.datetime "created_at",    :null => false
     t.datetime "updated_at",    :null => false
+    t.text     "venue"
   end
 
   add_index "check_ins", ["check_in_id"], :name => "index_check_ins_on_check_in_id", :unique => true
@@ -93,7 +103,7 @@ ActiveRecord::Schema.define(:version => 20130519190540) do
   end
 
   add_index "user_trips", ["trip_id"], :name => "index_user_trips_on_trip_id"
-  add_index "user_trips", ["user_id"], :name => "index_user_trips_on_user_id"
+  add_index "user_trips", ["user_id", "trip_id"], :name => "index_user_trips_on_user_id_and_trip_id", :unique => true
 
   create_table "users", :force => true do |t|
     t.string   "username"

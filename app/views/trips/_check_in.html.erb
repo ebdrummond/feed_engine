@@ -1,0 +1,6 @@
+Check in: <%= link_to check_in.venue.name, check_in.venue.canonicalUrl %>
+<br>
+
+<div class="six columns">
+  <iframe width="300" height="225" frameborder="0" scrolling="no" src="http://maps.google.com/maps?f=q&source=s_q&hl=en&geocode=&q=<%= check_in.venue.location.address %>+<%= check_in.venue.location.city %>&ie=UTF8&z=12&t=m&iwloc=near&output=embed"></iframe>
+</div>

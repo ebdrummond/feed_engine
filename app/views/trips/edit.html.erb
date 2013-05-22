@@ -4,46 +4,7 @@
   </div>
 </div>
 
-<div class="row">
-  <div class="twelve columns">
-    <h2><%= @trip.name %></h2>
-  </div>
-</div>
-<div class="row">
-  <div class="one column">
-  </div>
-  <div class="eleven columns">
-    <h4><%= "#{@trip.start} - #{@trip.end}" %></h4>
-  </div>
-</div>
-
-<div class="row">
-  <div class="twelve columns">
-    <h4>Destination</h4>
-  </div>
-</div>
-<div class="row">
-  <div class="one column">
-  </div>
-  <div class="eleven columns">
-    <h5><%= @trip.destination %></h5>
-  </div>
-</div>
-<br>
-<br>
-
-<div class="row">
-  <div class="twelve columns">
-    <h4>Privacy Settings</h4>
-    <div class="two columns">
-      <%= @trip.visibility_setting %>
-    </div>
-    <div class="eight columns">
-    </div>
-  </div>
-</div>
-<br>
-<br>
+<%= render :partial => "form" %>
 
 <div class="row">
   <div class="six columns">
@@ -53,9 +14,11 @@
       <div class="four columns">
         <h5 align="right"><%= link_to traveler.username, root_path %></h5>
       </div>
-      <div class="eight columns">
-        <%= button_to "remove", {:controller => 'user_trips', :action => 'destroy', :trip_id => @trip.id, :trip_role => "traveler"}, method: :delete, :class =>"radius button small" %>
-      </div>
+      <% if current_user != traveler %>
+        <div class="eight columns">
+          <%= button_to "remove", {:controller => 'user_trips', :action => 'destroy', :trip_id => @trip.id, :trip_role => "traveler", :user_id => traveler.id}, method: :delete, :class =>"radius button small" %>
+        </div>
+      <% end %>
       <% end %>
     </div>
     <div class="row">
@@ -63,8 +26,13 @@
       </div>
       <div class="ten columns">
         <h5>Add Travelers<h5>
-        <input type="text" name="end_date">
-        <%= button_to "add traveler", {:controller => 'user_trips', :action => 'create', :trip_id => @trip.id, :trip_role => "traveler", :user_id => "end_date"}, :class => "radius button small" %>
+        <%= form_tag(:controller => "user_trips", :action => "create_traveler", method: :post) do %>
+          <%= text_field_tag("username") %>
+          <%= hidden_field_tag("trip_id", @trip.id) %>
+          <div class="row" align="right">
+          <%= submit_tag("Add Traveler", :class => "radius button small") %>
+          </div>
+        <% end %>
       </div>
     </div>
   </div>
@@ -78,7 +46,7 @@
         <h5 align="right"><%= link_to kreepr.username, root_path %></h5>
       </div>
       <div class="eight columns">
-        <%= button_to "remove", {:controller => 'user_trips', :action => 'destroy', :trip_id => @trip.id, :trip_role => "kreepr"}, method: :delete, :class =>"radius button small" %>
+        <%= button_to "remove", {:controller => 'user_trips', :action => 'destroy', :trip_id => @trip.id, :trip_role => "kreepr", :user_id => kreepr.id}, method: :delete, :class =>"radius button small" %>
       </div>
       <% end %>
     </div>
@@ -86,7 +54,13 @@
       </div>
       <div class="ten columns">
         <h5>Add Kreeprs<h5>
-        <input type="text" name="end_date">
+        <%= form_tag(:controller => "user_trips", :action => "create_kreepr", method: :post) do %>
+          <%= text_field_tag("username") %>
+          <%= hidden_field_tag("trip_id", @trip.id) %>
+          <div class="row" align="right">
+          <%= submit_tag("Add Kreepr", :class => "radius button small") %>
+          </div>
+        <% end %>
       </div>
     </div>
   </div>
@@ -98,6 +72,6 @@
 
 <div class="row">
   <div class="twelve columns">
-    <a class="alert radius button" href="#">Delete trip</a>
+    <%= button_to "Delete trip", trip_path(@trip), method: :delete, :class => "alert radius button", confirm: 'Are you sure you want to delete this trip?' %>
   </div>
 </div>
