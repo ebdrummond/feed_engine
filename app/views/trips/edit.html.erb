@@ -26,9 +26,10 @@
       </div>
       <div class="ten columns">
         <h5>Add Travelers<h5>
-        <%= form_tag(:controller => "user_trips", :action => "create_traveler", method: :post) do %>
+        <%= form_tag(:controller => "user_trips", :action => "create", method: :post) do %>
           <%= text_field_tag("username") %>
-          <%= hidden_field_tag("trip_id", @trip.id) %>
+          <%= hidden_field_tag("id", @trip.id) %>
+          <%= hidden_field_tag("trip_role", 'traveler') %>
           <div class="row" align="right">
           <%= submit_tag("Add Traveler", :class => "radius button small") %>
           </div>
@@ -54,9 +55,10 @@
       </div>
       <div class="ten columns">
         <h5>Add Kreeprs<h5>
-        <%= form_tag(:controller => "user_trips", :action => "create_kreepr", method: :post) do %>
+        <%= form_tag(:controller => "user_trips", :action => "create", method: :post) do %>
           <%= text_field_tag("username") %>
-          <%= hidden_field_tag("trip_id", @trip.id) %>
+          <%= hidden_field_tag("id", @trip.id) %>
+          <%= hidden_field_tag("trip_role", 'kreepr') %>
           <div class="row" align="right">
           <%= submit_tag("Add Kreepr", :class => "radius button small") %>
           </div>
