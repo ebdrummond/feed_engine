@@ -28,11 +28,11 @@ class User < ActiveRecord::Base
   end
 
   def travelings
-    UserTrip.where(:user_id => self.id, :trip_role => "traveler").map(&:trip)
+    user_trips.where(:trip_role => "traveler").map(&:trip)
   end
 
   def my_trips
-    kreepings && travelings
+    (kreepings + travelings).uniq
   end
 
   def authorized_to_view(trip)

@@ -30,17 +30,6 @@ describe SessionsController do
         expect(response).to redirect_to dashboard_path
       end
     end
-
-    context 'sad path' do
-      before do
-        FindOrCreateUser.stub(:from_auth_source).and_return(User.new)
-      end
-
-      it 'redirects to root' do
-        get :create
-        expect(response).to redirect_to root_path
-      end
-    end
   end
 
   describe 'GET #error' do
