@@ -1,5 +1,4 @@
 FeedEngine::Application.routes.draw do
-  root :to => 'welcome#index'
 
   mount Resque::Server, at: "/resque"
 
@@ -22,6 +21,9 @@ FeedEngine::Application.routes.draw do
   resources :trips do
     resources :notes, only: [ :create, :destroy ]
   end
+
+  root :to => 'welcome#index'
+
 
   get '/request_to_view_private_trip',
     to: 'erin_layouts/layouts#request_to_view_private_trip',

@@ -11,9 +11,9 @@ a img { border: none; }
 
 a { color: #569e8f; text-decoration: none; line-height: inherit; font-weight: bold; }
 
-a:hover { color: #2795b6; }
+a:hover { color: #116749; }
 
-a:focus { color: #2795b6; }
+a:focus { color: #116749; }
 
 p a, p a:visited { line-height: inherit; }
 
@@ -842,7 +842,7 @@ div.progress.round .meter { -webkit-border-radius: 1000px; -moz-border-radius: 1
 .sticky.fixed { float: none; }
 
 /* <nav> */
-.top-bar { background: #221e1d; min-height: 45px; line-height: 45px; margin: 0 0 0px 0; padding: 0; width: 100%; position: relative; /* Contain width to .row width */ /* First <ul> for branding, title, name, etc */ /* topbar global <ul> styles */ }
+.top-bar { background: #635f4e; min-height: 45px; line-height: 45px; margin: 0 0 0px 0; padding: 0; width: 100%; position: relative; /* Contain width to .row width */ /* First <ul> for branding, title, name, etc */ /* topbar global <ul> styles */ }
 .contain-to-grid .top-bar { max-width: 940px; margin: 0 auto; }
 .top-bar > ul .name h1 { line-height: 45px; margin: 0; }
 .top-bar > ul .name h1 a { font-weight: bold; padding: 0 22.5px; font-size: 17px !important; }
@@ -851,9 +851,9 @@ div.progress.round .meter { -webkit-border-radius: 1000px; -moz-border-radius: 1
 .top-bar ul { margin-left: 0; display: inline; height: 45px; line-height: 45px; list-style: none; /* Main Navigation links style */ /* Left Side <ul> */ /* Right Side <ul> */ }
 .top-bar ul > li { float: left; /* Dividers between navigation */ /* Put a button in an <li> but give is a class */ /* Put a search bar or text input in the bar */ /* Put login bar in the top bar */ /* Hide the triangle for breakpoint menu */ /* li.has-dropdown */ }
 .top-bar ul > li a:not(.button) { color: #eceae0; display: block; font-size: 17px; font-weight: bold; height: 45px; line-height: 45px; padding: 0 25px; }
-.top-bar ul > li:not(.name):hover, .top-bar ul > li:not(.name).active, .top-bar ul > li:not(.name):focus { background: #e9633b; }
-.top-bar ul > li:not(.name):hover a, .top-bar ul > li:not(.name).active a, .top-bar ul > li:not(.name):focus a { color: #eceae0; }
-.top-bar ul > li.divider { background: #494949; -webkit-box-shadow: 1px 0 0 rgba(255, 255, 255, 0.1); -moz-box-shadow: 1px 0 0 rgba(255, 255, 255, 0.1); box-shadow: 1px 0 0 rgba(255, 255, 255, 0.1); height: 100%; margin-right: 1px; width: 1px; }
+.top-bar ul > li:not(.name):hover, .top-bar ul > li:not(.name).active, .top-bar ul > li:not(.name):focus { background: #443601; }
+.top-bar ul > li:not(.name):hover a, .top-bar ul > li:not(.name).active a, .top-bar ul > li:not(.name):focus a { color: white; }
+.top-bar ul > li.divider { background: #494949; -webkit-box-shadow: 1px 0 0 rgba(255, 255, 255, 0.1); -moz-box-shadow: 1px 0 0 rgba(255, 255, 255, 0.1); box-shadow: 1px 0 0 rgba(255, 255, 255, 0.1); height: 100%; margin-right: 1px; width: 2px; }
 .top-bar ul > li.has-button a.button { margin: 0 11.25px; }
 .top-bar ul > li.has-button:hover, .top-bar ul > li.has-button:focus { background: #222222; }
 .top-bar ul > li.has-button:hover a, .top-bar ul > li.has-button:focus a { color: #fff; }
@@ -1267,9 +1267,9 @@ table.show-for-xlarge, table.show-for-large, table.hide-for-small, table.hide-fo
                margin-top: 100px;
                margin-bottom: 40px; }
 body{ padding-bottom: 50px;
-      background-color: #eceae0;
-      border: 60px solid;
-      border-color: #221e1d; }
+      background-color: #f0eee4;
+    /*  border: 60px solid;
+      border-color: #221e1d; */}
 #tweet{ border: 1px solid;
         padding-top: 5px;
         padding-bottom: 5px;
@@ -1292,7 +1292,7 @@ body{ padding-bottom: 50px;
 #page_headline_dashboard{font-family: 'Raleway', cursive;
                          font-size: 45px;
                          color: black; }
-.sub_body{ background-color: #eceae0; }
+.sub_body{ background-color: #f0eee4; }
 #site_header{ color: #63aa9c;
               font-size: 80px; }
 #banner{ background-color: #EED5B7;
@@ -1308,4 +1308,94 @@ body{ padding-bottom: 50px;
             padding: 15px;
             border: 2px solid;
             border-color: #black;}
+
+#feed_item_2{
+  min-height: 120px;
+  padding: 30px;
+  padding-bottom: 60px;
+  padding-left: 40px;
+  background-color: #e0ddd0;
+  color: #333333;
+  border-radius: 4px;
+  /*border: 1px solid #333333;*/
+  box-shadow: 1px 2px 5px #aca78d;
+  margin-top: 20px;
+  font-family: 'Raleway', cursive;
+  font-size: 16px;
+  font-weight: bold; }
+  .feed_item_footer {
+    display: block;
+    position: absolute;
+    bottom: 10px;
+    /*right: 40px;*/
+    font-size: 16px;
+    font-weight: normal;
+    line-height: 10px; }
+    .feed_item_footer_image {
+      vertical-align: middle;
+      margin-right: 10px;
+    }
+
+#feed_profile{
+  width: 100px;
+  height: 100px;
+  float: right;
+  border-radius: 5px;
+  border: 0px;
+  text-align: right;
+  margin-top: 30px; }
+
+#feed_link {
+  color: #386cff;
+  text-decoration: none;
+  line-height: inherit;
+  font-weight: bold; }
+
+.side_bar_2 {
+  padding: 0;
+  padding-top: 40px;
+  padding-bottom: 100px;
+  background-color: #e0ddd0;
+  width: 200px;
+  color: #569e8f; }
+  /*padding: 15px 10px 15px 20px;*/
+  /*border: 0px solid;*/
+  .side_bar_heading {
+    height: 30px;
+    color: #569e8f;
+    /*border: 0px solid #cccccc;*/
+    font-family: 'Raleway';
+    font-size: 18px;
+    padding-left: 20px; }
+    .side_bar_heading_active {
+      background-color: #569e8f;
+      height: 30px;
+      color: white;
+      font-size: 18px;
+      padding-left: 20px; }
+  .side_bar_link {
+    height: 30px;
+    color: #569e8f;
+    border: 0px solid #cccccc;
+  /*background-color: #569e8f; */
+    font-family: 'Raleway';
+    font-size: 18px;
+    padding-left: 20px; }
+    .side_bar_link:hover {
+      background-color: #a7ccc5;
+      font-size: 18px;
+      padding-left: 20px; }
+    .side_bar_link_active {
+      background-color: #569e8f;
+      height: 30px;
+      color: white;
+      font-size: 18px;
+      padding-left: 20px; }
+
+.side_bar_hr {
+  color: #a9a699;
+  background-color: #a9a699;
+  height: 2px;
+  width: 80%; }
+
 

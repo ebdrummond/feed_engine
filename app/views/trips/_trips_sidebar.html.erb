@@ -1,9 +1,28 @@
-<div id="side_bar">
-  <h5>Trips</h5>
-  <ul>
-  <% trips.each do |trip| %>
-    <li><%= link_to trip.name, trip_path(trip) %></li>
-  <% end %>
-  </ul>
-  <%= link_to 'Add Trip', new_trip_path, class: 'radius button' %>
+<div class="side_bar_heading_active">
+  <h5 style="line-height: 30px; color: white;"><a href="dashboard", style="color: rgb(255,255,255)"><font color="ffffff">DASHBOARD</font></a></h5>
 </div>
+
+
+<div class="side_bar_heading">
+  <h5 style="line-height: 30px;">TRIPS</h5>
+  <div class="side_bar_hr">
+  </div>
+</div>
+
+<br>
+<br>
+
+<div class="side_bar_link">
+  <h5 style="line-height: 30px; padding-left: 15px;"><a href="trips/fake_trip_1">Fake Trip 1</a></h5>
+</div>
+
+<div class="side_bar_link">
+  <h5 style="line-height: 30px; padding-left: 15px;"><a href="trips/fake_trip_2">Fake Trip 2</a></h5>
+</div>
+
+<% trips.each do |trip| %>
+  <div class="side_bar_link">
+    <h5 style="line-height: 30px; padding-left: 15px;"><%= link_to trip.name, trip_path(trip) %></h5>
+  </div>
+<% end %>
+
