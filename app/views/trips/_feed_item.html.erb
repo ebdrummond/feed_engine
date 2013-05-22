@@ -18,18 +18,23 @@
 <div class="row">
   <div class="two columns">
     <div id="feed_profile">
-      <%= image_tag('http://placehold.it/100x100/ffccaa/000000&text=[image]', :class => 'align-right') %>
+      <%= image_tag('profile_default.png', :class => 'align-right') %>
+      <div class="row">
+        <div class="feed_profile_text">
+          <span text-align="center"><h6><a>[username]</a></h6></span>
+        </div>
+      </div>
     </div>
   </div>
   <div class="ten columns">
     <div id="feed_item_2">
-      <div class="row" style="font-size: 18px;">"[feed text]"
+      <div class="row" style="font-size: 18px;">"This is a tweet about my trip..."
       </div>
       <div class="row">
         <div class="feed_item_footer">
 
           <%= image_tag('twitter-gray.png', :size => '40x40', :class => 'feed_item_footer_image' ) %>
-          <span style="vertical-align: center">[user] posted to trip [trip-name] __ minutes/hours ago</span>
+          <span style="vertical-align: center"><a>[user]</a> posted to trip <a>[trip-name]</a> 9 minutes ago</span>
 
         </div>
       </div>
@@ -39,19 +44,24 @@
 <div class="row">
   <div class="two columns">
     <div id="feed_profile">
-      <%= image_tag('http://placehold.it/100x100/386cff/000000&text=[image]', :class => 'align-right') %>
+      <%= image_tag('Overly-attached-girlfriend-meme.png', :class => 'align-right') %>
+      <div class="row">
+        <div class="feed_profile_text">
+          <span text-align="center"><h6><a>[username]</a></h6></span>
+        </div>
+      </div>
     </div>
   </div>
 
   <div class="ten columns">
     <div id="feed_item_2">
-      <div class="row" style="font-size: 18px;"><%= image_tag('http://placehold.it/500x500/45aa1a/000000&text=[image]') %>
+      <div class="row" style="font-size: 18px;"><%= image_tag('happy_travelers.jpg') %>
       </div>
       <div class="row">
         <div class="feed_item_footer">
 
           <%= image_tag('instagram-128.png', :size => '40x40', :class => 'feed_item_footer_image') %>
-          <span>[user] posted to trip [trip-name] 35 minutes ago</span>
+          <span><a>[username]</a> posted to trip <a>[trip-name]</a> 35 minutes ago</span>
 
         </div>
       </div>
@@ -61,7 +71,12 @@
 <div class="row">
   <div class="two columns">
     <div id="feed_profile">
-      <%= image_tag('http://placehold.it/100x100/e73e10/000000&text=[image]', :class => 'align-right') %>
+      <%= image_tag('profile_default.png', :class => 'align-right') %>
+      <div class="row">
+        <div class="feed_profile_text">
+          <span text-align="center"><h6><a>[username]</a></h6></span>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -74,7 +89,7 @@
         <div class="feed_item_footer">
 
           <%= image_tag('Foursquare-icon-gray.png', :size => '40x40', :class => 'feed_item_footer_image') %>
-          <span>[user] posted to trip [trip-name] 3 hours ago</span>
+          <span><a>[username]</a> posted to trip <a>[trip-name]</a> 3 hours ago</span>
 
         </div>
       </div>
