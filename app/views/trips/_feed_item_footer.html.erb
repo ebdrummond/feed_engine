@@ -1,12 +1,17 @@
-<%= render partial: 'shared/auth_source_image',
-           locals: { :type => feed_item.class.to_s.underscore, :size => "15x15" } %>
+<div class="row">
+  <div class="feed_item_footer">
 
-<%= link_to feed_item.user.username,
-            user_path(feed_item.user) %>
+  <%= render partial: 'shared/auth_source_image',
+             locals: { :type => feed_item.class.to_s.underscore, :size => "40x40" } %>
 
-posted
-<% if request.fullpath == dashboard_path %>
-to trip <%= link_to feed_item.trip.name, trip_path(feed_item.trip) %>
-<% else %>
- <%= time_ago_in_words(feed_item.event_created_at) %> ago
-<% end %>
+  <span style="vertical-align: center">
+  posted
+  <% if request.fullpath == dashboard_path %>
+  to trip <%= link_to feed_item.trip.name, trip_path(feed_item.trip) %>
+  <% else %>
+   <%= time_ago_in_words(feed_item.event_created_at) %> ago
+  <% end %>
+  </span>
+
+  </div>
+</div>

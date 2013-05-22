@@ -1,14 +1,29 @@
 <% feed_items.each do |feed_item| %>
-  <div class="row" id="feed_item">
+  <div class="row">
     <div class="two columns">
-      <%= image_tag(feed_item.user.avatar, size: '40x40') %>
+      <div id="feed_profile">
+        <%= image_tag(feed_item.user.avatar, size: '60x60') %>
+        <div class="row">
+          <div class="feed_profile_text">
+            <span text-align="center">
+              <h6>
+                <%= link_to feed_item.user.username, user_path(feed_item.user) %>
+              </h6>
+            </span>
+          </div>
+        </div>
+      </div>
     </div>
     <div class="ten columns">
-      <%= render partial: feed_item.class.to_s.underscore,
-                 locals: { feed_item.class.to_s.underscore.to_sym => feed_item } %>
-      <br>
-      <%= render partial: 'feed_item_footer',
-                 locals: { :feed_item => feed_item } %>
+      <div id="feed_item">
+        <%= render partial: feed_item.class.to_s.underscore,
+                   locals: { feed_item.class.to_s.underscore.to_sym => feed_item } %>
+        <br>
+        <%= render partial: 'feed_item_footer',
+                   locals: { :feed_item => feed_item } %>
+
+      </div>
     </div>
   </div>
 <% end %>
+

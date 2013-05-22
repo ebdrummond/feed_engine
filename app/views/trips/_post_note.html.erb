@@ -1,12 +1,12 @@
-<% if current_user && current_user.trips.include?(trip) %>
-  <%= simple_form_for note, :url => trip_notes_path(trip) do |f| %>
-    <fieldset>
-      <legend>What's up?</legend>
-      <%= f.input :text, :placeholder => "Write something" %>
+<div id="feed_item">
+  <% if current_user && current_user.trips.include?(trip) %>
+    <h3>Update Your Trip!</h3>
+    <%= simple_form_for note, :url => trip_notes_path(trip) do |f| %>
+      <%= f.input :text, :placeholder => "Write something", :label => false %>
       <%= f.hidden_field :trip_id, :value => trip.id %>
-      <div class="row" align="right">
-        <%= f.submit 'Post Note', :class => 'radius button' %>
+      <div class="row" align="right" style="padding-right: 50px;">
+        <%= f.submit 'Post Note', :class => 'radius button large' %>
       </div>
-    </fieldset>
+    <% end %>
   <% end %>
-<% end %>
+</div>

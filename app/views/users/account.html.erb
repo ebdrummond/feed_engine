@@ -1,12 +1,15 @@
-<div class="row">
+<div class="row" style="margin-top: 20px;">
   <div class="two columns offset-by-one">
     <%= image_tag(@user.avatar, :size => "150x150", :alt => "kreepr") %>
   </div>
-  <div class="nine columns">
+  <div class="five columns">
+    <br>
     <%= simple_form_for @user, url: account_path do |f| %>
-      <%= f.input :username %>
+      <%= f.input :username, required: false, label: "Change Username", label_html: { style: "font-family: Raleway; font-size: 20px; font-weight: bold;" }%>
       <%= f.submit 'Update Username' %>
     <% end %>
+  </div>
+  <div class="four columns">
   </div>
 </div>
 
@@ -14,57 +17,70 @@
 <br>
 
 <div class="row">
-  <div class="eleven columns offset-by-one">
-    <h3>Linked Services</h3>
-    <div class="row">
-      <div class="one column">
-        <%= image_tag(auth_source_image_file('tweet'), :size => '40x40') %>
-        <br><br>
-      </div>
-      <div class="eleven columns">
-        <h4>Twitter</h4><br>
-        <%= link_to "Disconnect", user_path,
-                                  :method => :delete %>
-        <br>
-        <small>NOTE: This result in complete account deletion</small>
-      </div>
-    </div>
-    <div class="row">
-      <div class="one column">
-        <%= image_tag(auth_source_image_file('photo'), :size => '40x40') %><br><br>
-      </div>
-      <div class="eleven columns">
-        <h4>Instagram</h4><br>
-        <% unless @auth_source_providers.include?('instagram') %>
-          <%= link_to "Connect", "/auth/instagram", :id => "connect-instagram" %>
-        <% else %>
-          <%= link_to "Disconnect", auth_source_path('instagram'),
-                                    :method => :delete %>
-        <% end %>
-      </div>
-    </div>
-    <div class="row">
-      <div class="one column">
-         <%= image_tag(auth_source_image_file('check_in'), :size => '40x40') %>
-          <br><br>
-         <br>
-      <br>
-      <br>
-      <br>
-      </div>
-      <div class="eleven columns">
-        <h4>Foursquare</h4><br>
-        <% unless @auth_source_providers.include?('foursquare') %>
-          <%= link_to "Connect", "/auth/foursquare", :id => "connect-foursquare" %>
-        <% else %>
-          <%= link_to "Disconnect", auth_source_path('foursquare'),
-                                    :method => :delete %>
+  <div class="seven columns offset-by-one">
+    <div id="feed_item">
+    <h2>Linked Services</h2>
 
-        <% end %>
+      <div class="row">
+        <div class="two columns">
+          <%= image_tag(auth_source_image_file('tweet'), style: "margin-top: 20px; margin-left: 25px;", :size => '40x40') %>
+        </div>
+        <div class="ten columns">
+          <h4>Twitter</h4>
+          <span><%= link_to "Disconnect", user_path,
+                                          :method => :delete, :class => 'radius button small', style: "background-color: #8d8473; border: 1px solid #4f4532;" %></span>
+          <br>
+          <br>
+          NOTE: This will result in complete account deletion
+        </div>
       </div>
-      Your API Key: <%= current_user.api_key.key %>
       <br>
-      <small>Use this key to authenticate your account through the Feed Burner gem!</small>
+      <div class="welcome_hr">
+      </div>
+      <div class="row">
+        <div class="two columns">
+          <%= image_tag(auth_source_image_file('photo'), style: "margin-top: 20px; margin-left: 25px", :size => '40x40') %><br><br>
+        </div>
+        <div class="ten columns">
+          <h4>Instagram</h4>
+
+          <span>
+          <% unless @auth_source_providers.include?('instagram') %>
+            <%= link_to "Connect", "/auth/instagram", :id => "connect-instagram", :class => 'radius button small' %>
+          <% else %>
+            <%= link_to "Disconnect", auth_source_path('instagram'),
+                                      :method => :delete %>
+          <% end %></span>
+        </div>
+      </div>
+      <br>
+      <div class="welcome_hr">
+      </div>
+
+      <div class="row">
+        <div class="two columns">
+           <%= image_tag(auth_source_image_file('check_in'), style: "margin-top: 20px; margin-left: 25px", :size => '40x40') %>
+        </div>
+        <div class="ten columns">
+          <h4>Foursquare</h4>
+          <span>
+          <% unless @auth_source_providers.include?('foursquare') %>
+            <%= link_to "Connect", "/auth/foursquare", :id => "connect-foursquare", :class => 'radius button small' %>
+          <% else %>
+            <%= link_to "Disconnect", auth_source_path('foursquare'),
+                                      :method => :delete %>
+          <% end %></span>
+        </div>
+      </div>
+
+      <hr>
+
+      <div class="row">
+        Your API Key: <%= current_user.api_key.key %>
+        <br>
+        <br>
+        Use this key to authenticate your account through the Feed Burner gem!
+      </div>
     </div>
   </div>
 </div>
