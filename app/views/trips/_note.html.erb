@@ -1,3 +1,3 @@
-<%= note.text %>
+<%= auto_link(note.text).html_safe %>
 <%= link_to 'Delete Note', trip_note_path(note.trip, note),
                            :method => :delete %>
