@@ -3,11 +3,8 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find_by_username!(params[:username])
-    if @user == current_user
-      all_trips
-    else
-      filtered_trips
-    end
+
+    @user == current_user ? all_trips : filtered_trips
   end
 
   def account
@@ -18,8 +15,7 @@ class UsersController < ApplicationController
     @user = current_user
 
     if @user.update_attributes(params[:user])
-      redirect_to account_path,
-                  :notice => "Updated username to #{@user.username}"
+      redirect_to account_path, :notice => "Updated username"
     else
       render :account
     end
@@ -30,6 +26,8 @@ class UsersController < ApplicationController
     logout
     redirect_to root_path, :notice => "Account deleted"
   end
+
+  private
 
   def all_trips
     @current_trips = @user.current_trips

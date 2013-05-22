@@ -1,9 +1,51 @@
 require 'spec_helper'
 
 describe UsersController do
+  describe 'GET #show' do
+    context 'happy path' do
+      before do
+        @user = User.create!(:username => 'nas')
+      end
+
+      context 'as current user' do
+        before do
+          controller.stub(:current_user).and_return(@user)
+        end
+
+        it 'assigns user' do
+          get :show, { :username => 'nas' }
+          expect(assigns(:user)).to eq @user
+        end
+
+        it 'assigns all trips' do
+          controller.should_receive(:all_trips)
+          get :show, { :username => 'nas' }
+        end
+      end
+
+      context 'as not the current user' do
+        it 'assigns user' do
+          get :show, { :username => 'nas' }
+          expect(assigns(:user)).to eq @user
+        end
+
+        it 'assigns filtered trips' do
+          controller.should_receive(:filtered_trips)
+          get :show, { :username => 'nas' }
+        end
+      end
+    end
+
+    context 'sad path' do
+      it 'throws error when user not found' do
+        expect { get :show }.to raise_error
+      end
+    end
+  end
+
   describe 'GET #account' do
     context 'as a logged in user' do
-      it 'assigns the current user to a variable' do
+      it 'assigns the current user' do
         controller.stub(:current_user).and_return('a user')
         get :account
         expect(assigns(:user)).to eq 'a user'
@@ -46,6 +88,27 @@ describe UsersController do
         put :update
         expect(response).to redirect_to root_path
       end
+    end
+  end
+
+  describe 'DELETE #destroy' do
+    before do
+      user = User.create!(:username => "Alicia")
+      controller.stub(:current_user).and_return(user)
+    end
+
+    it 'deletes the current user' do
+      expect { delete :destroy }.to change { User.count }.by -1
+    end
+
+    it 'logs out the user' do
+      controller.should_receive(:logout)
+      delete :destroy
+    end
+
+    it 'redirects to root' do
+      delete :destroy
+      expect(response).to redirect_to root_path
     end
   end
 end
