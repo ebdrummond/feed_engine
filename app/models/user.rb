@@ -16,8 +16,7 @@ class User < ActiveRecord::Base
   has_one :api_key, :dependent => :destroy
 
   validates :username, :presence => true,
-                       :uniqueness => true,
-                       :format => { :with => // }
+                       :uniqueness => true
 
   def to_param
     username
