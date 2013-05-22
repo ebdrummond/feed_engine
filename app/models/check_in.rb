@@ -1,5 +1,6 @@
 class CheckIn < ActiveRecord::Base
   extend ::UsersDatesSearchable
+  include ::EventTripFinder
 
   attr_accessible :event_created_at,
                   :check_in_id,

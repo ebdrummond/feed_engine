@@ -27,8 +27,12 @@ class User < ActiveRecord::Base
     user_trips.where(:trip_role => "kreepr").map(&:trip)
   end
 
+  def travelings
+    UserTrip.where(:user_id => self.id, :trip_role => "traveler").map(&:trip)
+  end
+
   def my_trips
-    user_trips.collect{|ut| ut.trip}
+    kreepings && travelings
   end
 
   def authorized_to_view(trip)
@@ -36,15 +40,15 @@ class User < ActiveRecord::Base
   end
 
   def current_trips
-    trips.select{|t| (t.start..t.end).cover?(Date.today)}
+    travelings.select{|t| (t.start..t.end).cover?(Date.today)}
   end
 
   def upcoming_trips
-    trips.select{|t| t.start > Date.today}
+    travelings.select{|t| t.start > Date.today}
   end
 
   def past_trips
-    trips.select{|t| t.end < Date.today}
+    travelings.select{|t| t.end < Date.today}
   end
 
   private

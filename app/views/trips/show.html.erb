@@ -14,14 +14,14 @@
       <div id="side_bar">
         <h3>Travelers</h3>
         <% @trip.travelers.each do |traveler| %>
-          <h5><a href="#"><%= traveler.username %></a></h5>
+          <h5><%= link_to traveler.username, user_path(traveler) %></h5>
         <% end %>
       </div>
       <br>
       <div id="side_bar">
         <h3>Kreeprs</h3>
         <% @trip.kreeprs.each do |kreepr| %>
-          <h5><a href="#"><%= kreepr.username %></a></h5>
+          <h5><%= link_to kreepr.username, user_path(kreepr) %></a></h5>
         <% end %>
         <% if current_user && !current_user.my_trips.include?(@trip) %>
           <%= button_to "Follow this Trip", {:controller => 'user_trips', :action => 'create', :trip_id => @trip.id, :trip_role => "kreepr", :username => current_user.username}, :class => "radius button" %>
