@@ -62,5 +62,13 @@ describe FindOrCreateUser do
         expect{ FindOrCreateUser.from_auth_source(twitter_omniauth_params) }.to change { AuthSource.count }.by 1
       end
     end
+
+    context 'with an existing username' do
+      it 'creates a new user with an incremented username' do
+        User.create!(:username => 'nick')
+        user = FindOrCreateUser.from_auth_source(twitter_omniauth_params)
+        expect(user.username).to eq 'nick_1'
+      end
+    end
   end
 end

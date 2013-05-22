@@ -19,22 +19,17 @@ class FindOrCreateUser
     end
   end
 
-  # generate 10 username using index
-  # reject existing usernames
-  # take first
-
   def self.create_with_username(params)
+    user = User.new({username: params['nickname'],
+                     avatar: params['image_href']})
     i = 0
     begin
+      user.save!
+      user
+    rescue
       i += 1
-      User.create!({username: iterate_nickname(params['nickname'], i),
-                    avatar: params['image_href']})
-    rescue => e
-      i == 10 ? raise(e) : retry
+      user.username = "#{params['nickname']}_#{i.to_s}"
+      retry
     end
-  end
-
-  def self.iterate_nickname(nickname, i)
-    i == 1 ? nickname : "#{nickname}_#{i.to_s}"
   end
 end
