@@ -31,9 +31,10 @@ FeedEngine::Application.routes.draw do
     resources :notes, only: [ :create, :destroy ]
     member do
       post '/users', to: 'user_trips#create', as: :add_user
-      delete '/users', to: 'users#destroy', as: :delete_user
+      delete '/users', to: 'user_trips#destroy', as: :delete_user
     end
   end
 
-  get '/users/:username', to: 'users#show', as: 'user'
+  get '/users/:username', to: 'users#show', as: :user
+  delete '/users', to: 'users#destroy', as: :user
 end

@@ -68,13 +68,23 @@ describe UserTripsController do
   end
 
   describe 'DELETE #destroy' do
+    before do
+      @owner = User.create!(:username => "Sussy")
+      @user = User.create!(:username => "Drummy")
+      @trip = @owner.trips.create!(:name => "Phil's Getaway", :destination => 'Munich, Germany', :start => Date.parse('2013-02-20'), :end => Date.parse('2013-02-25'))
+      @user.user_trips.create!(:trip_id => @trip.id, :trip_role => 'traveler')
+    end
+
+    it 'requires current user to be owner' do
+      delete :destroy, { :id => @trip.id, :user_id => @user.id }
+      expect(response).to redirect_to root_path
+    end
+
     it 'deletes the entry' do
-      user = User.create!(:username => "Sussy")
-      user2 = User.create!(:username => "Drummy")
-      trip = user.trips.create!(:name => "Phil's Getaway", :destination => 'Munich, Germany', :start => Date.parse('2013-02-20'), :end => Date.parse('2013-02-25'))
-      user2.user_trips.create!(:trip_id => trip.id, :trip_role => 'traveler')
+      controller.stub(:current_user).and_return(@owner)
+
       expect do
-        delete :destroy, { :id => trip.id, :user_id => user2.id }
+        delete :destroy, { :id => @trip.id, :user_id => @user.id }
       end.to change { UserTrip.count }.by -1
     end
   end

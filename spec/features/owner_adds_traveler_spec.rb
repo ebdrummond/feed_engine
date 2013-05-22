@@ -15,7 +15,7 @@ describe 'Trip owner adds traveler' do
 
         fill_in 'username', with: "eebee"
         click_button("Add Traveler")
-        expect(page).to have_content("This user doesn't exist!")
+        expect(page).to have_content("Username not found!")
       end
     end
 
