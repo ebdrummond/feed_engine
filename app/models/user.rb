@@ -32,8 +32,12 @@ class User < ActiveRecord::Base
     UserTrip.where(:user_id => self.id, :trip_role => "kreepr").map(&:trip)
   end
 
+  def travelings
+    UserTrip.where(:user_id => self.id, :trip_role => "traveler").map(&:trip)
+  end
+
   def my_trips
-    user_trips.collect{|ut| ut.trip}
+    kreepings && travelings
   end
 
   def authorized_to_view(trip)
@@ -42,16 +46,6 @@ class User < ActiveRecord::Base
 
   def self.validate_exists(user)
     self.find_by_username(user)
-  end
-
-  def kreepings
-    uts = user_trips.where(:trip_role => "kreepr")
-    uts.collect{|ut| ut.trip }
-  end
-
-  def travelings
-    uts = user_trips.where(:trip_role => "traveler")
-    uts.collect{|ut| ut.trip }
   end
 
   def current_trips
