@@ -1,23 +1,18 @@
-<div class="side_bar_heading">
-  <h5 style="line-height: 30px;">KREEPINGS</h5>
-  <div class="side_bar_hr">
+<% if kreepings.count > 0 %>
+  <div class="side_bar_heading">
+    <h5 style="line-height: 30px;">KREEPINGS</h5>
+    <div class="side_bar_hr">
+    </div>
   </div>
-</div>
 
-<br>
-<br>
-
-<div class="side_bar_link">
-  <h5 style="line-height: 30px; padding-left: 15px;"><a href="kreepins/fake_kreep_1">Fake Kreep 1</a></h5>
-</div>
-
-<div class="side_bar_link">
-  <h5 style="line-height: 30px; padding-left: 15px;"><a href="kreepins/fake_kreep_2">Fake Kreep 2</a></h5>
-</div>
+  <br>
+  <br>
+<% end %>
 
   <% kreepings.each do |trip| %>
     <div class="side_bar_link">
-      <h5 style="line-height: 30px; padding-left: 15px;"><%= link_to kreepings.name, kreeping_path(kreeping) %></h5>
+      <%= link_to kreepings.name, kreeping_path(kreeping) %>
     </div>
   <% end %>
 
+<br>

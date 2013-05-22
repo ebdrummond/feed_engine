@@ -1,101 +1,29 @@
 <% feed_items.each do |feed_item| %>
-  <!-- <div class="row" id="feed_item">
+  <div class="row">
     <div class="two columns">
-      <%= image_tag(feed_item.user.avatar, size: '40x40') %>
+      <div id="feed_profile">
+        <%= image_tag(feed_item.user.avatar, size: '60x60') %>
+        <div class="row">
+          <div class="feed_profile_text">
+            <span text-align="center">
+              <h6>
+                <%= link_to feed_item.user.username, user_path(feed_item.user) %>
+              </h6>
+            </span>
+          </div>
+        </div>
+      </div>
     </div>
     <div class="ten columns">
-      <%= render partial: feed_item.class.to_s.underscore,
-                 locals: { feed_item.class.to_s.underscore.to_sym => feed_item } %>
-      <br>
-      <%= render partial: 'feed_item_footer',
-                 locals: { :feed_item => feed_item } %>
+      <div id="feed_item">
+        <%= render partial: feed_item.class.to_s.underscore,
+                   locals: { feed_item.class.to_s.underscore.to_sym => feed_item } %>
+        <br>
+        <%= render partial: 'feed_item_footer',
+                   locals: { :feed_item => feed_item } %>
+
+      </div>
     </div>
-  </div> -->
+  </div>
 <% end %>
 
-<!-- need to add block here to loop thru and add each of the feed items -->
-<div class="row">
-  <div class="two columns">
-    <div id="feed_profile">
-      <%= image_tag('profile_default.png', :class => 'align-right') %>
-      <div class="row">
-        <div class="feed_profile_text">
-          <span text-align="center"><h6><a>[username]</a></h6></span>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="ten columns">
-    <div id="feed_item_2">
-      <div class="row" style="font-size: 18px;">"This is a tweet about my trip..."
-      </div>
-      <div class="row">
-        <div class="feed_item_footer">
-
-          <%= image_tag('twitter-gray.png', :size => '40x40', :class => 'feed_item_footer_image' ) %>
-          <span style="vertical-align: center"><a>[user]</a> posted to trip <a>[trip-name]</a> 9 minutes ago</span>
-
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-<div class="row">
-  <div class="two columns">
-    <div id="feed_profile">
-      <%= image_tag('Overly-attached-girlfriend-meme.png', :class => 'align-right') %>
-      <div class="row">
-        <div class="feed_profile_text">
-          <span text-align="center"><h6><a>[username]</a></h6></span>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="ten columns">
-    <div id="feed_item_2">
-      <div class="row" style="font-size: 18px;"><%= image_tag('happy_travelers.jpg') %>
-      </div>
-      <div class="row">
-        <div class="feed_item_footer">
-
-          <%= image_tag('instagram-128.png', :size => '40x40', :class => 'feed_item_footer_image') %>
-          <span><a>[username]</a> posted to trip <a>[trip-name]</a> 35 minutes ago</span>
-
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-<div class="row">
-  <div class="two columns">
-    <div id="feed_profile">
-      <%= image_tag('profile_default.png', :class => 'align-right') %>
-      <div class="row">
-        <div class="feed_profile_text">
-          <span text-align="center"><h6><a>[username]</a></h6></span>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="ten columns">
-    <div id="feed_item_2">
-      <div class="row" style="font-size: 18px;">
-        Chucky checked in at The Boutique
-      </div>
-      <div class="row">
-        <div class="feed_item_footer">
-
-          <%= image_tag('Foursquare-icon-gray.png', :size => '40x40', :class => 'feed_item_footer_image') %>
-          <span><a>[username]</a> posted to trip <a>[trip-name]</a> 3 hours ago</span>
-
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-
-
-<!-- end feed item block here -->

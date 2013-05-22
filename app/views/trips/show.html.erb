@@ -1,42 +1,46 @@
-<div class="row">
-  <div class="six columns">
-    <h2 id="page headline"><%= @trip.name %></h1>
-    <h3 id="page headline"><%= "#{@trip.start} - #{@trip.end}" %></h3>
-    <h3 id="page headline"><%= @trip.destination %></h3>
-  </div>
-  <%= render partial: 'shared/map', locals: { :location => @trip.destination } %>
-</div>
 
 <div class="row">
+<!--   <h2 id="page_headline_dashboard">dashboard</h2> -->
   <div class="three columns">
-    <br>
-    <div class="eleven columns offset-by-one">
-      <div id="side_bar">
-        <h3>Travelers</h3>
-        <% @trip.travelers.each do |traveler| %>
-          <h5><a href="#"><%= traveler.username %></a></h5>
-        <% end %>
-      </div>
-      <br>
-      <div id="side_bar">
-        <h3>Kreeprs</h3>
-        <% @trip.kreeprs.each do |kreepr| %>
-          <h5><a href="#"><%= kreepr.username %></a></h5>
-        <% end %>
-        <% if current_user && !current_user.my_trips.include?(@trip) %>
-          <%= button_to "Follow this Trip", {:controller => 'user_trips', :action => 'create_kreepr', :trip_id => @trip.id, :trip_role => "kreepr", :username => current_user.username}, :class => "radius button" %>
-        <% elsif current_user && @trip.kreeprs.include?(current_user) %>
-          <%= button_to "Unfollow this Trip", {:controller => 'user_trips', :action => 'destroy', :trip_id => @trip.id, :trip_role => "kreepr", :user_id => current_user.id}, method: :delete, :class => "radius button" %>
-        <% end %>
-      </div>
-      <br>
-      <% if current_user && current_user == @trip.owner %>
-        <%= button_to "Edit this trip", edit_trip_path(@trip), method: :get, :class => "radius button" %>
+    <div class="side_bar_2">
+      <%= render partial: 'trips_sidebar',
+                 locals: { trips: @trips } %>
+
+      <%= render partial: 'travelers_sidebar',
+                 locals: { travelers: @travelers } %>
+
+      <%= render partial: 'kreepings_sidebar',
+                 locals: { kreepings: @kreepings } %>
+
+      <% if current_user && !current_user.my_trips.include?(@trip) %>
+        <%= button_to "Follow this Trip", {:controller => 'user_trips', :action => 'create_kreepr', :trip_id => @trip.id, :trip_role => "kreepr", :username => current_user.username}, :class => "radius button" %>
+      <% elsif current_user && @trip.kreeprs.include?(current_user) %>
+        <%= button_to "Unfollow this Trip", {:controller => 'user_trips', :action => 'destroy', :trip_id => @trip.id, :trip_role => "kreepr", :user_id => current_user.id}, method: :delete, :class => "radius button" %>
       <% end %>
     </div>
   </div>
 
+<!--   <div class="row"> -->
+  <!-- <div class="nine columns"> -->
+    <div class="five columns" style="text-align: center; margin-top: 20px">
+      <h1 id="page headline"><%= @trip.name %></h1>
+      <h3 id="page headline"><%= @trip.pretty_date_range %></h3>
+      <h3 id="page headline"><%= @trip.destination %></h3>
+      <br>
+        <% if current_user && current_user == @trip.owner %>
+          <%= button_to "Edit Trip", edit_trip_path(@trip), method: :get, :class => "radius button small" %>
+        <% end %>
+    </div>
+    <div class="four columns">
+      <%= render partial: 'shared/map', locals: { :location => @trip.destination } %>
+    </div>
+  <!-- </div> -->
+  <!-- </div> -->
+
+    <br>
+
   <div class="nine columns">
+
     <%= render :partial => 'post_note',
                :locals => {:trip => @trip, :note => @note } %>
 

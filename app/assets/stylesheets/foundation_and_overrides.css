@@ -1280,15 +1280,11 @@ body{ padding-bottom: 50px;
         border-radius: 10px;
         font-size: 15px;
         font-weight: bold; }
-#feed_item{ -webkit-border-radius: 5px;
-            -moz-border-radius: 5px;
-            border-radius: 10px;
-            padding: 15px;
-            border: 15px solid;
-            border-color: #63aa9c;}
 #page_headline{ font-family: 'Raleway', cursive;
                 font-size: 50px;
-                color: black; }
+                color: black;
+                text-align: center;
+                margin-top: 20px }
 #page_headline_dashboard{font-family: 'Raleway', cursive;
                          font-size: 45px;
                          color: black; }
@@ -1309,10 +1305,9 @@ body{ padding-bottom: 50px;
             border: 2px solid;
             border-color: black; }
 
-#feed_item_2{
+#feed_item{
   min-height: 120px;
   padding: 30px;
-  padding-bottom: 60px;
   padding-left: 40px;
   background-color: #e0ddd0;
   color: #333333;
@@ -1335,7 +1330,9 @@ body{ padding-bottom: 50px;
       vertical-align: middle;
       margin-right: 10px;
     }
-
+#note_text {
+  height: 3em;
+}
 #feed_profile{
   width: 70px;
   height: 70px;
@@ -1367,17 +1364,16 @@ body{ padding-bottom: 50px;
   /*border: 0px solid;*/
   .side_bar_heading {
     height: 30px;
-    color: #569e8f;
+    color: #569e8f !important;
     /*border: 0px solid #cccccc;*/
     font-family: 'Raleway';
     font-size: 18px;
     padding-left: 20px; }
-    .side_bar_heading_active {
+    .active {
       background-color: #569e8f;
       height: 30px;
       color: white;
-      font-size: 18px;
-      padding-left: 20px; }
+      font-size: 18px; }
   .side_bar_link {
     height: 30px;
     color: #569e8f;
@@ -1385,11 +1381,14 @@ body{ padding-bottom: 50px;
   /*background-color: #569e8f; */
     font-family: 'Raleway';
     font-size: 18px;
-    padding-left: 20px; }
+    line-height: 30px; }
+    .side_bar_link a {
+      display: block;
+      padding-left: 40px;
+    }
     .side_bar_link:hover {
       background-color: #a7ccc5;
-      font-size: 18px;
-      padding-left: 20px; }
+      font-size: 18px; }
     .side_bar_link_active {
       background-color: #569e8f;
       height: 30px;
@@ -1402,3 +1401,9 @@ body{ padding-bottom: 50px;
   background-color: #a9a699;
   height: 2px;
   width: 80%; }
+
+.welcome_hr {
+  color: #a9a699;
+  background-color: #a9a699;
+  height: 2px;
+   }
