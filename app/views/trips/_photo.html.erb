@@ -1,2 +1,4 @@
 <%= image_tag(photo.url) %>
-Caption: <%= auto_link(photo.caption).html_safe %>
+<% if photo.caption %>
+  Caption: <%= auto_link(photo.caption).html_safe %>
+<% end %>
