@@ -1,7 +1,43 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
-#
-# Examples:
-#
-#   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
-#   Mayor.create(name: 'Emanuel', city: cities.first)
+user1 = User.create(:username => "eebee", :avatar => "https://secure.gravatar.com/avatar/1496e3ed86352ccb1a62c086b2058365?s=420&d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png")
+user2 = User.create(:username => "sussinct", :avatar => "https://secure.gravatar.com/avatar/e7f253b4d265e9928f564c80207ad5b7?s=420&d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png")
+user3 = User.create(:username => "raphie", :avatar => "https://secure.gravatar.com/avatar/fa745bc50d39d5f6ec352106273a8f51?s=420&d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png")
+user4 = User.create(:username => "phil-er-up", :avatar => "https://secure.gravatar.com/avatar/89c173a60fd20adf2e746267597dab20?s=420&d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png")
+user5 = User.create(:username => "comic-girl", :avatar => "http://splashpage.mtv.com/wp-content/uploads/2010/03/032410_guild.jpg")
+user6 = User.create(:username => "time-mag", :avatar => "https://si0.twimg.com/profile_images/3656458804/8513bad06d749c883e31b0ce70da2a95.jpeg")
+user7 = User.create(:username => "kale_lvr", :avatar => "http://2.bp.blogspot.com/-caQ42Yk_fIg/TudWOoPS-8I/AAAAAAAACBg/QKuy9y0-iV0/s1600/eat-more-kale-sticker.gif")
+user8 = User.create(:username => "irish-burrito", :avatar => "http://www.ladecostified.com/wp-content/uploads/2010/03/Ireland_flag-300x200.gif")
+user9 = User.create(:username => "no-off", :avatar => "http://www.luisbelerique.com/folio/works/tony_stark_lb.jpg")
+user10 = User.create(:username => "birder", :avatar => "http://teresamakesthings.files.wordpress.com/2012/03/birdstencil.jpg")
+user11 = User.create(:username => "mexico", :avatar => "http://www.vectors4all.net/preview/cartoon-goat-clip-art.jpg")
+user12 = User.create(:username => "canada", :avatar => "http://openclipart.org/people/StudioFibonacci/lemmling_Cartoon_moose.svg")
+user13 = User.create(:username => "marcy", :avatar => "http://s3.amazonaws.com/c3po_store_engine/images/8/large.png?1365052494")
+
+
+trip1 = user1.trips.create(:name => "Portland", :destination => "Portland, Oregon", :start => "2013-05-01", :end => "2013-05-04")
+ut1 = user2.user_trips.create(:trip_id => trip1.id, :trip_role => "traveler")
+ut2 = user10.user_trips.create(:trip_id => trip1.id, :trip_role => "traveler")
+ut3 = user13.user_trips.create(:trip_id => trip1.id, :trip_role => "kreepr")
+ut4 = user7.user_trips.create(:trip_id => trip1.id, :trip_role => "kreepr")
+
+# trip2 = user3.trips.create(:name => "Vegas Baby!", :destination => "Las Vegas, Nevada", :start => "2013-05-04", :end => "2013-05-10")
+# ut5 = user4.user_trips.create(:trip_id => trip2.id, :trip_role => "traveler")
+# ut6 = user8.user_trips.create(:trip_id => trip2.id, :trip_role => "traveler")
+# ut7 = user7.user_trips.create(:trip_id => trip2.id, :trip_role => "traveler")
+# ut8 = user11.user_trips.create(:trip_id => trip2.id, :trip_role => "kreepr")
+# ut9 = user9.user_trips.create(:trip_id => trip2.id, :trip_role => "kreepr")
+# ut10 = user2.user_trips.create(:trip_id => trip2.id, :trip_role => "kreepr")
+
+# trip3 = user12.trips.create(:name => "Oh Canada", :destination => "Saskatoon", :start => "2013-05-07", :end => "2013-05-14")
+# ut11 = user11.user_trips.create(:trip_id => trip3.id, :trip_role => "traveler")
+# ut12 = user1.user_trips.create(:trip_id => trip3.id, :trip_role => "kreepr")
+
+# trip4 = user10.trips.create(:name => "Put a bird on it!", :destination => "Estes Park, Colorado", :start => "2013-05-08", :end => "2013-05-10")
+# ut13 = user5.user_trips.create(:trip_id => trip4.id, :trip_role => "traveler")
+# ut11 = user3.user_trips.create(:trip_id => trip4.id, :trip_role => "kreepr")
+
+
+
+
+
+
+
