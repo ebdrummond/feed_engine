@@ -16,7 +16,7 @@ class SimpleFeedItem
       @location = params['location']
     end
 
-    def self.dashboard_query
+    def self.dashboard_query(offset)
       %{SELECT tweets.user_id as user_id, tweets.id as id, tweets.text as text, "tweet" as type, "" as url, "" as location, tweets.tweeted_at as action_at
       FROM users
       JOIN tweets ON users.id = tweets.user_id
@@ -44,7 +44,7 @@ class SimpleFeedItem
 
       ORDER BY action_at DESC
       LIMIT 25
-      OFFSET 0
+      OFFSET #{offset}
       }
     end
 

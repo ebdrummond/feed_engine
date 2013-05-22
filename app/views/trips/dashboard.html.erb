@@ -13,5 +13,8 @@
   <div class="nine columns">
     <%= render partial: 'feed_item',
                locals: { feed_items: @feed_items } %>
+    <%= render partial: 'pagination',
+               locals: { feed_items: @feed_items,
+                         current_page: @current_page } %>
   </div>
 </div>

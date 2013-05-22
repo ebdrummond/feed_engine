@@ -1,0 +1,9 @@
+<% if current_page == 1 %>
+  <%= link_to "Prev", request.path %>
+<% elsif current_page !=0 %>
+  <%= link_to "Prev", request.path + "?page=#{current_page - 1}", :class => "left" %>
+<% end %>
+
+<% if feed_items.count == 25 %>
+  <%= link_to "Next", request.path + "?page=#{current_page + 1}", :class => "right" %>
+<% end %>

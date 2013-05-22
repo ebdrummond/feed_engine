@@ -38,7 +38,7 @@ describe TripsController do
         end
 
         it 'redirects to dashboard' do
-          expect(response).to redirect_to dashboard_path
+          expect(response).to redirect_to trip_path(1)
         end
       end
 
@@ -67,7 +67,34 @@ describe TripsController do
   end
 
   describe 'GET #dashboard' do
-    xit 'does something' do
+    before(:each) do
+      @user = User.create!(:username => 'kyle')
+      controller.stub(:require_login).and_return(true)
+      controller.stub(:current_user).and_return(@user)
+    end
+
+    it 'assigns a trips variable' do
+      get :dashboard
+      expect(assigns(:trips)).to eq @user.trips
+    end
+
+    it 'assigns a kreepings variable' do
+      get :dashboard
+      expect(assigns(:kreepings)).to eq @user.kreepings
+    end
+
+    context 'when no page param is passed' do
+      it 'assigns a current_page variable as 0' do
+        get :dashboard
+        expect(assigns(:current_page)).to eq 0
+      end
+    end
+
+    context 'when a page param is passed' do
+      it 'assigns the current_page to the page param' do
+        get :dashboard, { :page => 1 }
+        expect(assigns(:current_page)).to eq 1
+      end
     end
   end
 
