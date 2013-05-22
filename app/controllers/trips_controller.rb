@@ -35,6 +35,12 @@ class TripsController < ApplicationController
     end
   end
 
+  def destroy
+    @trip = Trip.find(params[:id])
+    @trip.destroy
+    redirect_to dashboard_path, :notice => "Trip deleted!"
+  end
+
   def dashboard
     @trips = current_user.trips
     @kreepings = current_user.kreepings
@@ -55,7 +61,7 @@ class TripsController < ApplicationController
 
   def require_trip_access
     @trip = Trip.find(params[:id])
-    unless !@trip.visible || current_user.authorized_to_view(@trip)
+    unless !@trip.visible || (current_user && current_user.my_trips.include?(@trip))
       render :private
     end
   end

@@ -43,4 +43,12 @@ class Trip < ActiveRecord::Base
   def save_owner_as_user(owner, trip)
     owner.user_trips.create(trip_id: trip.id, trip_role: "traveler")
   end
+
+  def pretty_date_range
+    if self.start.year == self.end.year
+      "#{self.start.strftime("%B %e")} - #{self.end.strftime("%B %e, %Y")}"
+    else
+      "#{self.start.strftime("%B %e, %Y")} - #{self.end.strftime("%B %e, %Y")}"
+    end
+  end
 end

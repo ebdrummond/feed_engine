@@ -1,6 +1,6 @@
 <div class="row">
   <div class="four columns">
-    <%= image_tag(@user.avatar, :size => "400x400", :alt => "profile") %>
+    <%= image_tag(@user.avatar, :size => "100x100", :alt => "profile") %>
   </div>
   <div class="eight columns">
     <h1 id="page_headline"><%= @user.username %></h1>
@@ -13,24 +13,17 @@
   <div class="twelve columns">
     <h2>Current Trips</h2>
 
+    <% @current_trips.each do |trip| %>
       <div class="row">
-        <div class="one column">
-          <img src="http://drupal.org/files/profile_default.png" height="30" width="30" align="right">
-        </div>
-        <div class="eleven columns">
-          <h4><a href="#">La Conf Paris</a> May 7 - May 11, 2013</h4>
+        <div class="twelve">
+          <h4><%= link_to trip.name, trip_path(trip) %> <%= trip.pretty_date_range %></h4>
         </div>
       </div>
 
       <div class="twelve columns">
-        <h6><a href="#">5 fellow travelers</a> | <a href>3 kreepers</a></h6>
+        <h6><%= pluralize(trip.travelers.count, "traveler") %> | <%= pluralize(trip.kreeprs.count, "kreepr") %></h6>
       </div>
-
-    <div class="twelve columns">
-      <h4><a href="#">One Night in Bangkok</a> May 9 - May 18, 2013</h4>
-      <h6><a href="#">1 fellow travelers</a> | <a href>4 kreepers</a></h6>
-    </div>
-
+    <% end %>
   </div>
 </div>
 
@@ -39,10 +32,14 @@
 <div class="row" id="feed_item">
   <div class="twelve columns">
     <h2>Upcoming Trips</h2>
-    <div class="twelve columns">
-      <h4><a href="#">Nordic Ruby</a> June 5 - June 10, 2013</h4>
-      <h6><a href="#">3 fellow travelers</a> | <a href>7 kreepers</a></h6>
-    </div>
+
+    <% @upcoming_trips.each do |trip| %>
+      <div class="row">
+        <div class="twelve columns">
+      <h4><%= trip.name %> <%= trip.pretty_date_range %></h4>
+        </div>
+      </div>
+    <% end %>
   </div>
 </div>
 
@@ -51,9 +48,17 @@
 <div class="row" id="feed_item">
   <div class="twelve columns">
     <h2>Past Trips</h2>
-    <div class="twelve columns">
-      <h4><a href="#">Ruby Midwest</a> April 4 - April 6, 2013</h4>
-      <h6><a href="#">8 fellow travelers</a> | <a href>14 kreepers</a></h6>
-    </div>
+
+    <% @past_trips.each do |trip| %>
+      <div class="row">
+        <div class="twelve">
+          <h4><%= link_to trip.name, trip_path(trip) %> <%= trip.pretty_date_range %></h4>
+        </div>
+      </div>
+
+      <div class="twelve columns">
+        <h6><%= pluralize(trip.travelers.count, "traveler") %> | <%= pluralize(trip.kreeprs.count, "kreepr") %></h6>
+      </div>
+    <% end %>
   </div>
 </div>
