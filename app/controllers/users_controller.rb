@@ -9,6 +9,8 @@ class UsersController < ApplicationController
 
   def account
     @user = current_user
+    @auth_source_providers = AuthSource.where(:user_id => current_user.id)
+                                       .pluck(:provider)
   end
 
   def update

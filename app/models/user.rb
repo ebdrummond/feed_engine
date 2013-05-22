@@ -20,14 +20,6 @@ class User < ActiveRecord::Base
     username
   end
 
-  def instagram_connected?
-    AuthSource.exists?(:user_id => self.id, :provider => "instagram")
-  end
-
-  def foursquare_connected?
-    AuthSource.exists?(:user_id => self.id, :provider => "foursquare")
-  end
-
   def kreepings
     user_trips.where(:trip_role => "kreepr").map(&:trip)
   end
