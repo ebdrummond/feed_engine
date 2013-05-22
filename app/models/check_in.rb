@@ -25,6 +25,10 @@ class CheckIn < ActiveRecord::Base
     checked_in_at
   end
 
+  def trip
+    self.user.travelings.select{|t| (t.start..t.end).cover?(self.checked_in_at.to_date)}.first
+  end
+
   def serializable_hash(options = {})
     {
       :type => :check_in, :data => { :event_created_at => checked_in_at,

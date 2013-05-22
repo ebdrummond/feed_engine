@@ -1,5 +1,6 @@
 class Photo < ActiveRecord::Base
   extend ::UsersDatesSearchable
+  include ::EventTripFinder
 
   attr_accessible :taken_at,
                   :photo_id,

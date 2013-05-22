@@ -4,4 +4,9 @@
 <%= link_to feed_item.user.username,
             user_path(feed_item.user) %>
 
-posted <%= time_ago_in_words(feed_item.event_created_at) %> ago
+posted
+<% if request.fullpath == dashboard_path %>
+to trip <%= link_to feed_item.trip.name, trip_path(feed_item.trip) %>
+<% else %>
+ <%= time_ago_in_words(feed_item.event_created_at) %> ago
+<% end %>
