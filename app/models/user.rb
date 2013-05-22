@@ -49,15 +49,20 @@ class User < ActiveRecord::Base
     uts.collect{|ut| ut.trip }
   end
 
+  def travelings
+    uts = user_trips.where(:trip_role => "traveler")
+    uts.collect{|ut| ut.trip }
+  end
+
   def current_trips
-    trips.select{|t| (t.start..t.end).cover?(Date.today)}
+    travelings.select{|t| (t.start..t.end).cover?(Date.today)}
   end
 
   def upcoming_trips
-    trips.select{|t| t.start > Date.today}
+    travelings.select{|t| t.start > Date.today}
   end
 
   def past_trips
-    trips.select{|t| t.end < Date.today}
+    travelings.select{|t| t.end < Date.today}
   end
 end
