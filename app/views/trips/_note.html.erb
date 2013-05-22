@@ -1,1 +1,3 @@
 <%= note.text %>
+<%= link_to 'Delete Note', trip_note_path(note.trip, note),
+                           :method => :delete %>

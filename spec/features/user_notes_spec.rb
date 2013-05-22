@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe 'user posts note to trip' do
+describe 'user notes spec' do
   context 'as a logged in user' do
     before(:each) do
       @user = User.create!(:username => 'Sussy')
@@ -18,6 +18,15 @@ describe 'user posts note to trip' do
         visit trip_path(@trip)
         fill_in 'note_text', :with => 'zomg, wiesn kicks ass this year!'
         expect { click_button 'Post Note' }.to change { @user.notes.count }.by 1
+      end
+
+      it 'can delete a new note' do
+        note = @user.notes.build(:text => 'hello')
+        note.trip = @trip
+        note.save
+
+        visit trip_path(@trip)
+        expect { click_link 'Delete Note' }.to change { @user.notes.count }.by -1
       end
     end
 
