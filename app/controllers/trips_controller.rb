@@ -36,14 +36,29 @@ class TripsController < ApplicationController
   end
 
   def dashboard
+    # we would receive page param and then filter the feed items
+    @page = params[:page]
+
     @trips = current_user.trips
     @kreepings = current_user.kreepings
 
-    @feed_items = (@trips + @kreepings).inject([]) do |memo, trip|
-      memo += TripFeed.new(:trip => trip).feed
+    # all_trips = (@trips + @kreepings)
+
+    # @feed_items = all_trips.inject([]) do |memo, trip|
+    #   memo += TripFeed.new(:trip => trip).feed
+    # end
+
+    current_page = params[:page] || 0
+    offset = current_page * 25
+
+    results = ActiveRecord::Base.connection.execute(SimpleFeedItem.dashboard_query)
+
+    @feed_items = results.map do |result|
+      user = User.find(result["user_id"])
+      SimpleFeedItem.new(result.merge('user' => user))
     end
 
-    @feed_items = @feed_items.uniq.sort_by { |fi| fi.event_created_at }.reverse
+    # @feed_items = @feed_items.uniq.sort_by { |fi| fi.event_created_at }.reverse
   end
 
   private
