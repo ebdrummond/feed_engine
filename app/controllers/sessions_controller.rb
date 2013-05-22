@@ -2,7 +2,6 @@ class SessionsController < ApplicationController
   def create
     user = FindOrCreateUser.from_auth_source(auth_hash)
 
-    # TODO: user.new?
     if user.valid?
       ApiKey.create!(:user => user, :key => SecureRandom.uuid)
       auto_login(user)

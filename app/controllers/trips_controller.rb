@@ -28,6 +28,7 @@ class TripsController < ApplicationController
 
   def update
     @trip = Trip.find(params[:id])
+
     if @trip.update_attributes(params[:trip])
       render :edit, :notice => "Trip updated!"
     else
