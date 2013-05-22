@@ -1,5 +1,6 @@
 class CheckIn < ActiveRecord::Base
   extend ::UsersDatesSearchable
+  include ::EventTripFinder
 
   attr_accessible :checked_in_at,
                   :check_in_id,
@@ -23,10 +24,6 @@ class CheckIn < ActiveRecord::Base
 
   def event_created_at
     checked_in_at
-  end
-
-  def trip
-    self.user.travelings.select{|t| (t.start..t.end).cover?(self.checked_in_at.to_date)}.first
   end
 
   def serializable_hash(options = {})

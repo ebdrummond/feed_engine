@@ -1,5 +1,6 @@
 class Tweet < ActiveRecord::Base
   extend ::UsersDatesSearchable
+  include ::EventTripFinder
 
   attr_accessible :tweeted_at,
                   :tweet_id,
@@ -19,10 +20,6 @@ class Tweet < ActiveRecord::Base
 
   def event_created_at
     tweeted_at
-  end
-
-  def trip
-    self.user.travelings.select{|t| (t.start..t.end).cover?(self.tweeted_at.to_date)}.first
   end
 
   def serializable_hash(options = {})

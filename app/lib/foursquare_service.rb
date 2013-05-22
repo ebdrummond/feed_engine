@@ -29,7 +29,6 @@ class FoursquareService
                    :text => check_in.shout,
                    :venue => check_in.venue,
                    :user_id => user.id)
-    binding.pry
   end
 
   def self.client_for_user(token)
