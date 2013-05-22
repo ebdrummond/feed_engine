@@ -9,7 +9,7 @@
 
 <% @trip.travelers.each do |traveler| %>
   <div class="side_bar_link">
-    <%= link_to traveler.username, user_path(traveler) %>
+    <%= link_to traveler.username, users_path(traveler) %>
   </div>
 <% end %>
 

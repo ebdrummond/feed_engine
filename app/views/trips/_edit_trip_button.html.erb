@@ -1,0 +1,3 @@
+<% if current_user && current_user == @trip.owner %>
+  <%= button_to "Edit this trip", edit_trip_path(@trip), method: :get, :class => "radius button" %>
+<% end %>

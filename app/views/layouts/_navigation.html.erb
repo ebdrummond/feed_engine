@@ -14,7 +14,7 @@
     <ul class="left">
       <li><%= link_to 'Dashboard', dashboard_path %></li>
       <li class="divider"></li>
-      <li><%= link_to 'My Feed', user_path(current_user) %></li>
+      <li><%= link_to 'My Feed', users_path(current_user) %></li>
       <li class="divider"></li>
       <li><%= link_to image_tag(current_user.avatar, style: "vertical-align: middle; margin: 7px", size: '30x30') + current_user.username, root_path %></li>
       <li class="divider"></li>

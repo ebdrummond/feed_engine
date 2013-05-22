@@ -35,6 +35,6 @@ FeedEngine::Application.routes.draw do
     end
   end
 
-  get '/users/:username', to: 'users#show', as: :user
+  get '/users/:username', to: 'users#show', as: :users
   delete '/users', to: 'users#destroy', as: :user
 end
