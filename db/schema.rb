@@ -38,12 +38,12 @@ ActiveRecord::Schema.define(:version => 20130522005021) do
   add_index "auth_sources", ["user_id", "provider"], :name => "index_auth_sources_on_user_id_and_provider", :unique => true
 
   create_table "check_ins", :force => true do |t|
-    t.datetime "checked_in_at"
+    t.datetime "event_created_at"
     t.string   "check_in_id"
     t.text     "text"
     t.integer  "user_id"
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
     t.text     "venue"
   end
 
@@ -59,13 +59,13 @@ ActiveRecord::Schema.define(:version => 20130522005021) do
   end
 
   create_table "photos", :force => true do |t|
-    t.datetime "taken_at"
+    t.datetime "event_created_at"
     t.string   "photo_id"
     t.string   "url"
     t.text     "caption"
     t.integer  "user_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
   end
 
   add_index "photos", ["photo_id"], :name => "index_photos_on_photo_id", :unique => true
@@ -83,12 +83,12 @@ ActiveRecord::Schema.define(:version => 20130522005021) do
   end
 
   create_table "tweets", :force => true do |t|
-    t.datetime "tweeted_at", :null => false
-    t.string   "tweet_id",   :null => false
+    t.datetime "event_created_at", :null => false
+    t.string   "tweet_id",         :null => false
     t.string   "text"
-    t.integer  "user_id",    :null => false
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.integer  "user_id",          :null => false
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
   end
 
   add_index "tweets", ["tweet_id"], :name => "index_tweets_on_tweet_id", :unique => true

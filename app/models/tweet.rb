@@ -1,7 +1,7 @@
 class Tweet < ActiveRecord::Base
   extend ::UsersDatesSearchable
 
-  attr_accessible :tweeted_at,
+  attr_accessible :event_created_at,
                   :tweet_id,
                   :user_id,
                   :text
@@ -10,20 +10,12 @@ class Tweet < ActiveRecord::Base
 
   validates :tweet_id, :presence => true,
                        :uniqueness => true
-  validates :tweeted_at, :presence => true
+  validates :event_created_at, :presence => true
   validates :user_id, :presence => true
-
-  def self.event_created_at
-    :tweeted_at
-  end
-
-  def event_created_at
-    tweeted_at
-  end
 
   def serializable_hash(options = {})
     {
-      :type => :tweet, :data => { :event_created_at => tweeted_at,
+      :type => :tweet, :data => { :event_created_at => event_created_at,
                                   :text => text },
                        :user => {
                                   :user_id => user.id,

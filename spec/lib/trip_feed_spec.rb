@@ -27,24 +27,24 @@ describe TripFeed do
       @note.user = @owner
       @note.save
 
-      @tweet = Tweet.create!(:tweeted_at => Time.now,
+      @tweet = Tweet.create!(:event_created_at => Time.now,
                             :tweet_id => '12345',
                             :text => 'omg tweeting for teh win',
                             :user_id => @owner.id)
 
-      @photo = Photo.create!(:taken_at => Time.now,
+      @photo = Photo.create!(:event_created_at => Time.now,
                             :photo_id => '12345',
                             :url => 'some photo url',
                             :caption => 'caption eh',
                             :user_id => @owner.id)
 
-      @check_in = CheckIn.create!(:checked_in_at => Time.now,
+      @check_in = CheckIn.create!(:event_created_at => Time.now,
                                  :text => '12345',
                                  :check_in_id => '12345',
                                  :venue => {:a => 'omg tweeting for teh win'},
                                  :user_id => @owner.id)
 
-      @tweet2 = Tweet.create!(:tweeted_at => Time.now + 1.year ,
+      @tweet2 = Tweet.create!(:event_created_at => Time.now + 1.year ,
                               :tweet_id => '12346',
                               :text => 'omg tweeting for teh win',
                               :user_id => @owner.id)

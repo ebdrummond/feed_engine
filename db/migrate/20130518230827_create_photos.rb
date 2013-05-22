@@ -1,7 +1,7 @@
 class CreatePhotos < ActiveRecord::Migration
   def change
     create_table :photos do |t|
-      t.datetime   :taken_at
+      t.datetime   :event_created_at
       t.string     :photo_id
       t.string     :url
       t.text       :caption

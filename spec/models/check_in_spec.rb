@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe CheckIn do
   subject do
-    CheckIn.new(:checked_in_at => Time.now,
+    CheckIn.new(:event_created_at => Time.now,
                 :check_in_id => '123145',
                 :text => 'some text',
                 :venue => {:a => 'thing'},
@@ -10,7 +10,7 @@ describe CheckIn do
   end
 
   it 'requires a checked in at time' do
-    expect { subject.checked_in_at = nil }.to change { subject.valid? }.to false
+    expect { subject.event_created_at = nil }.to change { subject.valid? }.to false
   end
 
   it 'requires a check in id' do
@@ -19,7 +19,7 @@ describe CheckIn do
 
   it 'requires a unique check in id' do
     expect do
-      CheckIn.create(:checked_in_at => Time.now,
+      CheckIn.create(:event_created_at => Time.now,
         :check_in_id => '123145',
         :text => 'some text',
         :venue => {:a => 'thing'},

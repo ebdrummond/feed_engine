@@ -22,4 +22,9 @@ describe User do
   it 'responds with username for paths' do
     expect(subject.to_param).to eq 'raphael'
   end
+
+  it 'parameterizes username on validation' do
+    subject.username = "this is a frickin test"
+    expect { subject.save }.to change { subject.username }.to 'this-is-a-frickin-test'
+  end
 end

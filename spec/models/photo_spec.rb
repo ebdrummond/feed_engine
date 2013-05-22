@@ -3,7 +3,7 @@ require 'spec_helper'
 describe Photo do
   subject do
     user = User.create!(username: 'Gumby')
-    Photo.new( :taken_at => DateTime.parse('Wed Aug 29 17:12:58 +0000 2012'),
+    Photo.new( :event_created_at => DateTime.parse('Wed Aug 29 17:12:58 +0000 2012'),
                :photo_id => '1',
                :url      => 'http://www.fakeimage.com/lolz.gif',
                :caption  => 'I did it for the lulz.',
@@ -11,7 +11,7 @@ describe Photo do
   end
 
   it 'requires a taken at' do
-    expect { subject.taken_at = nil }.to change { subject.valid? }.to false
+    expect { subject.event_created_at = nil }.to change { subject.valid? }.to false
   end
 
   it 'requires a photo id' do

@@ -4,6 +4,8 @@ class User < ActiveRecord::Base
   attr_accessible :username,
                   :avatar
 
+  before_validation :parameterize_path
+
   has_many :auth_sources, :dependent => :destroy
   has_many :tweets, :dependent => :destroy
   has_many :notes, :dependent => :destroy
@@ -14,7 +16,8 @@ class User < ActiveRecord::Base
   has_one :api_key, :dependent => :destroy
 
   validates :username, :presence => true,
-                       :uniqueness => true
+                       :uniqueness => true,
+                       :format => { :with => // }
 
   def to_param
     username
@@ -42,5 +45,11 @@ class User < ActiveRecord::Base
 
   def past_trips
     trips.select{|t| t.end < Date.today}
+  end
+
+  private
+
+  def parameterize_path
+    self.username = username.parameterize
   end
 end

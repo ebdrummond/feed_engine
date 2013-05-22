@@ -20,12 +20,12 @@ class InstagramService
   end
 
   def latest_photo_id
-    user.photos.order("taken_at DESC").limit(1).pluck(:photo_id).first
+    user.photos.order("event_created_at DESC").limit(1).pluck(:photo_id).first
   end
 
   def store_photo(photo)
     caption = photo.caption.text if photo.caption
-    Photo.create(:taken_at => Time.at(photo.created_time.to_i),
+    Photo.create(:event_created_at => Time.at(photo.created_time.to_i),
                  :photo_id => photo.id,
                  :url      => photo.images.standard_resolution.url,
                  :caption  => caption,

@@ -20,11 +20,11 @@ class FoursquareService
   end
 
   def latest_check_in_timestamp
-    user.check_ins.order("checked_in_at DESC").limit(1).pluck(:checked_in_at).first || 1
+    user.check_ins.order("event_created_at DESC").limit(1).pluck(:event_created_at).first || 1
   end
 
   def store_check_in(check_in)
-    CheckIn.create(:checked_in_at => Time.at(check_in.createdAt),
+    CheckIn.create(:event_created_at => Time.at(check_in.createdAt),
                    :check_in_id => check_in.id,
                    :text => check_in.shout,
                    :venue => check_in.venue,

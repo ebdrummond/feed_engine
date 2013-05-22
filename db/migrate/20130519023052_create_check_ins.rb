@@ -1,7 +1,7 @@
 class CreateCheckIns < ActiveRecord::Migration
   def change
     create_table :check_ins do |t|
-      t.datetime   :checked_in_at
+      t.datetime   :event_created_at
       t.string     :check_in_id
       t.text       :text
       t.string     :location

@@ -1,7 +1,7 @@
 class Photo < ActiveRecord::Base
   extend ::UsersDatesSearchable
 
-  attr_accessible :taken_at,
+  attr_accessible :event_created_at,
                   :photo_id,
                   :url,
                   :caption,
@@ -11,21 +11,13 @@ class Photo < ActiveRecord::Base
 
   validates :photo_id, :presence => true,
                        :uniqueness => true
-  validates :taken_at, :presence => true
+  validates :event_created_at, :presence => true
   validates :user_id,  :presence => true
   validates :url,      :presence => true
 
-  def self.event_created_at
-    :taken_at
-  end
-
-  def event_created_at
-    taken_at
-  end
-
   def serializable_hash(options = {})
     {
-      :type => :photo, :data => { :event_created_at => taken_at,
+      :type => :photo, :data => { :event_created_at => event_created_at,
                                   :url => url,
                                   :caption => caption },
                        :user => {

@@ -46,9 +46,10 @@ describe UsersController do
   describe 'GET #account' do
     context 'as a logged in user' do
       it 'assigns the current user' do
-        controller.stub(:current_user).and_return('a user')
+        user = User.create!(:username => 'soda')
+        controller.stub(:current_user).and_return(user)
         get :account
-        expect(assigns(:user)).to eq 'a user'
+        expect(assigns(:user)).to eq user
       end
     end
 

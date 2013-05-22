@@ -1,7 +1,7 @@
 class CheckIn < ActiveRecord::Base
   extend ::UsersDatesSearchable
 
-  attr_accessible :checked_in_at,
+  attr_accessible :event_created_at,
                   :check_in_id,
                   :text,
                   :venue,
@@ -11,23 +11,15 @@ class CheckIn < ActiveRecord::Base
 
   serialize :venue, Hash
 
-  validates :checked_in_at, :presence => true
+  validates :event_created_at, :presence => true
   validates :check_in_id, :presence => true,
                           :uniqueness => true
   validates :venue, :presence => true
   validates :user_id, :presence => true
 
-  def self.event_created_at
-    :checked_in_at
-  end
-
-  def event_created_at
-    checked_in_at
-  end
-
   def serializable_hash(options = {})
     {
-      :type => :check_in, :data => { :event_created_at => checked_in_at,
+      :type => :check_in, :data => { :event_created_at => event_created_at,
                                      :text => text,
                                      :venue => venue,
                                      :location => location },

@@ -1,7 +1,7 @@
 class CreateTweets < ActiveRecord::Migration
   def change
     create_table :tweets do |t|
-      t.datetime   :tweeted_at,   :null => false
+      t.datetime   :event_created_at,   :null => false
       t.string     :tweet_id,     :null => false
       t.string     :text
 
