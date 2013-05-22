@@ -25,11 +25,11 @@ class Trip < ActiveRecord::Base
   end
 
   def travelers
-    UserTrip.where(:trip_role => 'traveler', :trip_id => self).map(&:user)
+    user_trips.where(:trip_role => 'traveler').map(&:user)
   end
 
   def kreeprs
-    UserTrip.where(:trip_role => 'kreepr', :trip_id => self).map(&:user)
+    user_trips.where(:trip_role => 'kreepr').map(&:user)
   end
 
   def save_with_user_trip
@@ -37,18 +37,6 @@ class Trip < ActiveRecord::Base
       save
       owner.user_trips.create!(:trip_id => self.id, :trip_role => 'traveler')
       self
-    end
-  end
-
-  def save_owner_as_user(owner, trip)
-    owner.user_trips.create(trip_id: trip.id, trip_role: "traveler")
-  end
-
-  def pretty_date_range
-    if self.start.year == self.end.year
-      "#{self.start.strftime("%B %e")} - #{self.end.strftime("%B %e, %Y")}"
-    else
-      "#{self.start.strftime("%B %e, %Y")} - #{self.end.strftime("%B %e, %Y")}"
     end
   end
 end

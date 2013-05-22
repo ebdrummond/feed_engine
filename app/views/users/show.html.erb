@@ -16,7 +16,7 @@
     <% @current_trips.each do |trip| %>
       <div class="row">
         <div class="twelve">
-          <h4><%= link_to trip.name, trip_path(trip) %> <%= trip.pretty_date_range %></h4>
+          <h4><%= link_to trip.name, trip_path(trip) %> <%= pretty_date_range(trip) %></h4>
         </div>
       </div>
 
@@ -36,7 +36,7 @@
     <% @upcoming_trips.each do |trip| %>
       <div class="row">
         <div class="twelve columns">
-      <h4><%= trip.name %> <%= trip.pretty_date_range %></h4>
+      <h4><%= trip.name %> <%= pretty_date_range(trip) %></h4>
         </div>
       </div>
     <% end %>
@@ -52,7 +52,7 @@
     <% @past_trips.each do |trip| %>
       <div class="row">
         <div class="twelve">
-          <h4><%= link_to trip.name, trip_path(trip) %> <%= trip.pretty_date_range %></h4>
+          <h4><%= link_to trip.name, trip_path(trip) %> <%= pretty_date_range(trip) %></h4>
         </div>
       </div>
 
