@@ -45,21 +45,30 @@ describe NotesController do
   end
 
   describe 'DELETE #destroy' do
+    before do
+      @user = User.create!(username: 'rafi')
+      @trip = @user.trips.create!(:name => "Phil's Getaway", :destination => 'Munich, Germany', :start => Date.parse('2013-02-20'), :end => Date.parse('2013-02-25'))
+      @note = @user.notes.build(:text => 'herro')
+      @note.trip = @trip
+      @note.save
+    end
+
     context 'as a logged-in user' do
       before do
-        user = User.create!(username: 'rafi')
-        @trip = user.trips.create!(:name => "Phil's Getaway", :destination => 'Munich, Germany', :start => Date.parse('2013-02-20'), :end => Date.parse('2013-02-25'))
-        @note = user.notes.build(:text => 'herro')
-        @note.trip = @trip
-        @note.save
-
-        controller.stub(:current_user).and_return(user)
+        controller.stub(:current_user).and_return(@user)
       end
 
       it 'can deleted notes' do
         expect do
           delete :destroy, { :trip_id => @trip.id, :id => @note.id }
         end.to change { Note.count }.by -1
+      end
+    end
+
+    context 'without a current user' do
+      it 'redirects to root path' do
+        delete :destroy, { :trip_id => @trip.id, :id => @note.id }
+        expect(response).to redirect_to root_path
       end
     end
   end
