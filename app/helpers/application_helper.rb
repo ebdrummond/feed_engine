@@ -1,4 +1,6 @@
 module ApplicationHelper
+  include Twitter::Autolink
+
   def auth_source_image_file(type)
     {
       'tweet' => "twitter_logo.svg",
