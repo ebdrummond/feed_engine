@@ -5,9 +5,7 @@ describe CheckIn do
     CheckIn.new(:checked_in_at => Time.now,
                 :check_in_id => '123145',
                 :text => 'some text',
-                :venue => 'some venue',
-                :location => 'location',
-                :short_url => 'url',
+                :venue => {:a => 'thing'},
                 :user_id => 1)
   end
 
@@ -24,15 +22,9 @@ describe CheckIn do
       CheckIn.create(:checked_in_at => Time.now,
         :check_in_id => '123145',
         :text => 'some text',
-        :venue => 'some venue',
-        :location => 'location',
-        :short_url => 'url',
+        :venue => {:a => 'thing'},
         :user_id => 1)
     end.to change { subject.valid? }.to false
-  end
-
-  it 'requires a location' do
-    expect { subject.location = nil }.to change { subject.valid? }.to false
   end
 
   it 'requires a user_id' do

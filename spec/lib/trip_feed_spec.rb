@@ -41,7 +41,7 @@ describe TripFeed do
       @check_in = CheckIn.create!(:checked_in_at => Time.now,
                                  :text => '12345',
                                  :check_in_id => '12345',
-                                 :location => 'omg tweeting for teh win',
+                                 :venue => {:a => 'omg tweeting for teh win'},
                                  :user_id => @owner.id)
 
       @tweet2 = Tweet.create!(:tweeted_at => Time.now + 1.year ,

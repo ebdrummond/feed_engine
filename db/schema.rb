@@ -41,12 +41,10 @@ ActiveRecord::Schema.define(:version => 20130522005021) do
     t.datetime "checked_in_at"
     t.string   "check_in_id"
     t.text     "text"
-    t.string   "location"
     t.integer  "user_id"
     t.datetime "created_at",    :null => false
     t.datetime "updated_at",    :null => false
-    t.string   "venue"
-    t.string   "short_url"
+    t.text     "venue"
   end
 
   add_index "check_ins", ["check_in_id"], :name => "index_check_ins_on_check_in_id", :unique => true
