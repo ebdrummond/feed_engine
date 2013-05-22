@@ -5,13 +5,15 @@ class CheckIn < ActiveRecord::Base
                   :check_in_id,
                   :text,
                   :location,
+                  :venue,
+                  :short_url,
                   :user_id
 
   belongs_to :user
 
+  validates :checked_in_at, :presence => true
   validates :check_in_id, :presence => true,
                           :uniqueness => true
-  validates :checked_in_at, :presence => true
   validates :location, :presence => true
   validates :user_id, :presence => true
 
@@ -27,6 +29,8 @@ class CheckIn < ActiveRecord::Base
     {
       :type => :check_in, :data => { :event_created_at => checked_in_at,
                                      :text => text,
+                                     :venue => venue,
+                                     :short_url => short_url,
                                      :location => location },
                           :user => {
                                      :user_id => user.id,

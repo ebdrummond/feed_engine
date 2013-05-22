@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130520203714) do
+ActiveRecord::Schema.define(:version => 20130522005021) do
 
   create_table "api_keys", :force => true do |t|
     t.string   "key"
@@ -45,6 +45,8 @@ ActiveRecord::Schema.define(:version => 20130520203714) do
     t.integer  "user_id"
     t.datetime "created_at",    :null => false
     t.datetime "updated_at",    :null => false
+    t.string   "venue"
+    t.string   "short_url"
   end
 
   add_index "check_ins", ["check_in_id"], :name => "index_check_ins_on_check_in_id", :unique => true
