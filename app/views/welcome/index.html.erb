@@ -1,32 +1,33 @@
-<div class="row">
-  <div class="twelve columns">
-    <center>
-    <br>
-    <br>
-    <h2>Powering Your Best Memories</h2>
-    <br>
-    <h4>And Letting Your Friends Live Vicariously</h4>
-    <br>
-    <h1>Get Your Kreep On</h1>
-    </center>
+<div id="splash">
+  <div id="splash-inner">
+    <div class="row">
+      <div class="twelve columns">
+        <br>
+        <br>
+        <h2>Globe kreeprs unite</h2>
+        <br>
+        <div class="nine">
+          <h4>Kreepr is the best way to keep track of your experiences abroad. Integrate memories from FourSquare, Twitter & Instagram all into a single travelogue.</h4>
+        </div>
+        <br>
+        <br>
+        <div class="row">
+          <div class="twelve columns">
+            <%= link_to 'Login with Twitter', '/auth/twitter', class: 'radius button large' %>
+          </div>
+        </div>
+      </div>
+    </div>
+    <span id="splash-copy">
+      "Our pool in Dubai! Jealous much?" <em>posted by</em> ebdrummond <em>on a trip to</em> Dubai.
+    </span>
   </div>
 </div>
 <br>
 <br>
-<br>
-
-<div class="row">
-  <div class="twelve columns">
-
-    <div class="row">
-      <div class="four columns">
-        <a href="http://twitter.com"><%= image_tag "twitter-gray.png", :size => "50x50", :align => "right" %></a>
-      </div>
-      <div class="four columns" align="center">
-        <%= link_to 'Login with Twitter', '/auth/twitter', class: 'radius button large expand' %>
-      </div>
-      <div class="four columns">
-      </div>
-    </div>
-  </div>
+<div id="footer-logo">
+  <center>
+    Powering your best memories.
+  </center>
+  <h1>kreepr</h1>
 </div>
