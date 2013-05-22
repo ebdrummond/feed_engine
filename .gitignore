@@ -25,3 +25,4 @@
 
 # I never liked you, dump.rdb
 /dump.rdb
+/development.sqlite3

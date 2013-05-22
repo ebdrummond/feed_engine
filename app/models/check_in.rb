@@ -4,15 +4,17 @@ class CheckIn < ActiveRecord::Base
   attr_accessible :checked_in_at,
                   :check_in_id,
                   :text,
-                  :location,
+                  :venue,
                   :user_id
 
   belongs_to :user
 
+  serialize :venue, Hash
+
+  validates :checked_in_at, :presence => true
   validates :check_in_id, :presence => true,
                           :uniqueness => true
-  validates :checked_in_at, :presence => true
-  validates :location, :presence => true
+  validates :venue, :presence => true
   validates :user_id, :presence => true
 
   def self.event_created_at
@@ -27,6 +29,7 @@ class CheckIn < ActiveRecord::Base
     {
       :type => :check_in, :data => { :event_created_at => checked_in_at,
                                      :text => text,
+                                     :venue => venue,
                                      :location => location },
                           :user => {
                                      :user_id => user.id,

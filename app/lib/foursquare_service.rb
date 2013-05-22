@@ -27,7 +27,7 @@ class FoursquareService
     CheckIn.create(:checked_in_at => Time.at(check_in.createdAt),
                    :check_in_id => check_in.id,
                    :text => check_in.shout,
-                   :location => check_in.venue.name,
+                   :venue => check_in.venue,
                    :user_id => user.id)
   end
 
