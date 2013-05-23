@@ -28,7 +28,8 @@
         <div class="ten columns">
           <h4>Twitter</h4>
           <span><%= link_to "Disconnect", user_path,
-                                          :method => :delete, :class => 'radius button small', style: "background-color: #8d8473; border: 1px solid #4f4532;" %></span>
+                                          :method => :delete,
+                                          :class => 'radius button small', style: "background-color: #8d8473; border: 1px solid #4f4532;" %></span>
           <br>
           <br>
           NOTE: This will result in complete account deletion
@@ -49,7 +50,8 @@
             <%= link_to "Connect", "/auth/instagram", :id => "connect-instagram", :class => 'radius button small' %>
           <% else %>
             <%= link_to "Disconnect", auth_source_path('instagram'),
-                                      :method => :delete %>
+                                      :method => :delete,
+                                      :class => 'radius button small', style: "background-color: #8d8473; border: 1px solid #4f4532;" %>
           <% end %></span>
         </div>
       </div>
@@ -68,7 +70,8 @@
             <%= link_to "Connect", "/auth/foursquare", :id => "connect-foursquare", :class => 'radius button small' %>
           <% else %>
             <%= link_to "Disconnect", auth_source_path('foursquare'),
-                                      :method => :delete %>
+                                      :method => :delete,
+                                      :class => 'radius button small', style: "background-color: #8d8473; border: 1px solid #4f4532;" %>
           <% end %></span>
         </div>
       </div>
@@ -79,7 +82,7 @@
         Your API Key: <%= current_user.api_key.key %>
         <br>
         <br>
-        Use this key to authenticate your account through the Feed Burner gem!
+        Use this key to authenticate your account through the Kreepr gem!
       </div>
     </div>
   </div>

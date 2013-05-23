@@ -12,7 +12,7 @@
     <div class="row">
       <% @trip.travelers.each do |traveler| %>
       <div class="four columns">
-        <h5 align="right"><%= link_to traveler.username, root_path %></h5>
+        <h5 align="right"><%= link_to traveler.username, users_path(traveler) %></h5>
       </div>
       <% if current_user != traveler %>
         <div class="eight columns">
@@ -44,7 +44,7 @@
     <div class="row">
       <% @trip.kreeprs.each do |kreepr| %>
       <div class="four columns">
-        <h5 align="right"><%= link_to kreepr.username, root_path %></h5>
+        <h5 align="right"><%= link_to kreepr.username, users_path(kreepr) %></h5>
       </div>
       <div class="eight columns">
         <%= button_to "remove", {:controller => 'user_trips', :action => 'destroy', :trip_id => @trip.id, :trip_role => "kreepr", :user_id => kreepr.id}, method: :delete, :class =>"radius button small" %>
