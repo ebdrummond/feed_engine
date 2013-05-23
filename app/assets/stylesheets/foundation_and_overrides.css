@@ -1289,6 +1289,16 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', e
   font-weight: bold;
   color: #69675b;
 }
+#alert {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+.alert-box {
+  padding: 1em !important;
+}
+.close {
+  font-size: 2.2em !important;
+}
 #footer-logo h1 {
   color: #69675b;
 }
