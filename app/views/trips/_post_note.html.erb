@@ -1,5 +1,5 @@
 <div id="feed_item">
-  <% if current_user && current_user.trips.include?(trip) %>
+  <% if current_user && current_user.travelings.include?(trip) %>
     <h3>Update Your Trip!</h3>
     <%= simple_form_for note, :url => trip_notes_path(trip) do |f| %>
       <%= f.input :text, :placeholder => "Write something", :label => false %>
