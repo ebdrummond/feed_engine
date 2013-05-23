@@ -1302,6 +1302,12 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', e
 #footer-logo h1 {
   color: #69675b;
 }
+#dash-preview {
+  background: url('/assets/dash-preview.jpg');
+  width: 990px;
+  height: 739px;
+  padding: 7em;
+}
 #user_info{ margin-top: 20px; font-size: 20px; }
 .kreepr_request a.button{ margin-right: 20px; }
 #kreepr_request{ -webkit-border-radius: 5px;
