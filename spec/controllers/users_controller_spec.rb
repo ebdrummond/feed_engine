@@ -17,8 +17,8 @@ describe UsersController do
           expect(assigns(:user)).to eq @user
         end
 
-        it 'assigns all trips' do
-          controller.should_receive(:all_trips)
+        it 'assigns trips' do
+          UserShow.should_receive(:new)
           get :show, { :username => 'nas' }
         end
       end
@@ -29,8 +29,8 @@ describe UsersController do
           expect(assigns(:user)).to eq @user
         end
 
-        it 'assigns filtered trips' do
-          controller.should_receive(:filtered_trips)
+        it 'assigns trips' do
+          UserShow.should_receive(:new)
           get :show, { :username => 'nas' }
         end
       end

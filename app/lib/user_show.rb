@@ -18,7 +18,7 @@ class UserShow
     @trips ||= if personal
       profile_user.travelings
     else
-      profile_user.travelings.select { |trip| trip.user_authorized_to_view(current_user) }
+      profile_user.travelings.select { |trip| trip.user_authorized_to_view?(current_user) }
     end
   end
 
