@@ -1,11 +1,13 @@
-<div class="side_bar_heading">
-  <h5 style="line-height: 30px;">KREEPRS</h5>
-  <div class="side_bar_hr">
+<% if kreeprs.count > 0 %>
+  <div class="side_bar_heading">
+    <h5 class="sidebar-header">KREEPRS</h5>
+    <div class="side_bar_hr">
+    </div>
   </div>
-</div>
 
 <br>
 <br>
+<% end %>
 
 <% kreeprs.each do |kreepr| %>
   <div class="side_bar_link">

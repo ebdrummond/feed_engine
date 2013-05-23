@@ -5,7 +5,7 @@
       <%= f.input :text, :placeholder => "Write something", :label => false %>
       <%= f.hidden_field :trip_id, :value => trip.id %>
       <div class="row" align="right" style="padding-right: 50px;">
-        <%= f.submit 'Post Note', :class => 'radius button large' %>
+        <%= f.submit 'Post Note', :class => 'radius button large', id: 'add_trip_button' %>
       </div>
     <% end %>
   <% end %>
