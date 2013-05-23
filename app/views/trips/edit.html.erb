@@ -9,14 +9,12 @@
 <div id="form-center">
     <h2>Travelers</h2>
       <% @trip.travelers.each do |traveler| %>
-        <h5><%= link_to traveler.username, users_path(traveler) %><h5>
+        <h5><%= link_to traveler.username, users_path(traveler) %></h5>
       <% if current_user != traveler %>
-        <div class="twelve columns">
           <%= button_to "remove", {:controller => 'user_trips', :action => 'destroy', :trip_id => @trip.id, :trip_role => "traveler", :user_id => traveler.id}, method: :delete, :class =>"radius button small", :id => "traveler-button" %>
-        </div>
       <% end %>
       <% end %>
-        <h5>Add Travelers<h5>
+        <h5>Add Travelers</h5>
         <%= form_tag(:controller => "user_trips", :action => "create", method: :post) do %>
           <%= text_field_tag("username") %>
           <%= hidden_field_tag("id", @trip.id) %>

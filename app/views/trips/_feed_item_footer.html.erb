@@ -14,10 +14,9 @@
 <span style="vertical-align: center">
 
   posted
-  <% if request.fullpath == dashboard_path %>
+  <% if request.fullpath == "/dashboard" %>
   to trip <%= link_to feed_item.trip.name, trip_path(feed_item.trip) %>
-  <% else %>
-  <%= time_ago_in_words(feed_item.event_created_at) %> ago
   <% end %>
+  <%= time_ago_in_words(feed_item.event_created_at) %> ago
 </span>
 
