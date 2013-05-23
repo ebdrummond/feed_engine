@@ -40,10 +40,7 @@ class Trip < ActiveRecord::Base
     end
   end
 
-  def self.for_user_grouped_by_date(user, params)
-    owns = where(:user_id => user.id)
-    travelings = UserTrip.where(:user_id => user.id).pluck(:trip_id).map(&:trip)
-    trips = owns + travelings
-    trips.group_by { }
+  def user_authorized_to_view(user)
+    !visible || user_trips.exists?(:user_id => user.id)
   end
 end
