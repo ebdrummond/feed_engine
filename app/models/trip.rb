@@ -39,4 +39,11 @@ class Trip < ActiveRecord::Base
       self
     end
   end
+
+  def self.for_user_grouped_by_date(user, params)
+    owns = where(:user_id => user.id)
+    travelings = UserTrip.where(:user_id => user.id).pluck(:trip_id).map(&:trip)
+    trips = owns + travelings
+    trips.group_by { }
+  end
 end

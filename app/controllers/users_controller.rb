@@ -32,14 +32,16 @@ class UsersController < ApplicationController
   private
 
   def all_trips
-    @current_trips = @user.current_trips
-    @past_trips = @user.past_trips
-    @upcoming_trips = @user.upcoming_trips
+    @trips = Trip.for_user_grouped_by_date(@user)
+    # @current_trips = @user.current_trips
+    # @past_trips = @user.past_trips
+    # @upcoming_trips = @user.upcoming_trips
   end
 
   def filtered_trips
-    @current_trips = @user.current_trips.select{|t| !t.visible || current_user && current_user.authorized_to_view(t)}
-    @past_trips = @user.past_trips.select{|t| !t.visible || current_user && current_user.authorized_to_view(t)}
-    @upcoming_trips = @user.upcoming_trips.select{|t| !t.visible || current_user && current_user.authorized_to_view(t)}
+    @trips = Trip.for_user_grouped_by_date(@user, :filter => true)
+    # @current_trips = @user.current_trips.select{|t| !t.visible || current_user && current_user.authorized_to_view(t)}
+    # @past_trips = @user.past_trips.select{|t| !t.visible || current_user && current_user.authorized_to_view(t)}
+    # @upcoming_trips = @user.upcoming_trips.select{|t| !t.visible || current_user && current_user.authorized_to_view(t)}
   end
 end
