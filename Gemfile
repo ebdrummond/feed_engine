@@ -19,6 +19,7 @@ gem 'twitter-text'
 gem 'chronic', '~> 0.9.1'
 gem 'simple_form', '~> 2.1.0'
 gem 'coveralls', require: false
+gem 'kaminari'
 
 group :assets do
   gem 'sass-rails',      '~> 3.2.3'

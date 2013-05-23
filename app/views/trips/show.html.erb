@@ -35,4 +35,9 @@
     <%= render :partial => 'feed_item',
                :locals => {:feed_items => @feed_items } %>
   </div>
+
+    <%= render :partial => 'pagination',
+               :locals => {:feed_items => @feed_items,
+                           :trip => @trip,
+                           :page => @page } %>
 </div>

@@ -18,9 +18,10 @@ class TripsController < ApplicationController
 
   def show
     @note = @trip.notes.build
-    @travelers
-    @kreeprs
-    @feed_items = TripFeed.new(:trip => @trip).feed
+    @travelers = @trip.travelers
+    @kreeprs = @trip.kreeprs
+    @page = params[:page]
+    @feed_items = TripFeed.new(:trip => @trip, :page => params[:page], :per => 5).feed
   end
 
   def edit
