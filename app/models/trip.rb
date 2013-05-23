@@ -41,6 +41,6 @@ class Trip < ActiveRecord::Base
   end
 
   def user_authorized_to_view?(user)
-    !visible || user_trips.exists?(:user_id => user.id)
+    !visible || (user && user_trips.exists?(:user_id => user.id))
   end
 end

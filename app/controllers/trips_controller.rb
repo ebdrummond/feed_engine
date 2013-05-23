@@ -44,7 +44,7 @@ class TripsController < ApplicationController
   end
 
   def dashboard
-    @trips = current_user.trips
+    @trips = current_user.travelings
     @kreepings = current_user.kreepings
 
     @feed_items = (@trips + @kreepings).inject([]) do |memo, trip|
