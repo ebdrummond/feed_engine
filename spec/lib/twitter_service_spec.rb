@@ -35,7 +35,7 @@ describe TwitterService do
       it 'retrieves tweets from twitter and saves them to the database' do
         VCR.use_cassette('twitter_service_one_new_tweet') do
           expect { TwitterService.new(@valid_params).fetch_and_store_tweets }.
-            to change { Tweet.count }.by 9
+            to change { Tweet.count }.by 10
         end
       end
 

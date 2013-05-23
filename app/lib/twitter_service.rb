@@ -23,7 +23,8 @@ class TwitterService
   end
 
   def latest_tweet_id
-    user.tweets.order('event_created_at DESC').limit(1).pluck(:tweet_id).first || 1
+    1
+    # user.tweets.order('event_created_at DESC').limit(1).pluck(:tweet_id).first || 1
   end
 
   def store_tweet(tweet)
