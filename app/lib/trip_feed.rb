@@ -1,10 +1,8 @@
 class TripFeed
-  attr_reader :trip, :page, :per
+  attr_reader :trip
 
   def initialize(params)
     @trip = params[:trip]
-    @page = params[:page]
-    @per = params[:per] || 5
   end
 
   def feed
@@ -12,7 +10,7 @@ class TripFeed
   end
 
   def notes
-    @notes ||= trip.notes.page(page).per(2).all
+    @notes ||= trip.notes.limit(5).all
   end
 
   private
@@ -22,15 +20,15 @@ class TripFeed
   end
 
   def tweets
-    @tweets ||= Tweet.page(page).per(per).for_users(travelers).in_range(trip.start, trip.end)
+    @tweets ||= Tweet.limit(5).for_users(travelers).in_range(trip.start, trip.end)
   end
 
   def photos
-    @photos ||= Photo.page(page).per(per).for_users(travelers).in_range(trip.start, trip.end)
+    @photos ||= Photo.limit(5).for_users(travelers).in_range(trip.start, trip.end)
   end
 
   def check_ins
-    @check_ins ||= CheckIn.page(page).per(per).for_users(travelers).in_range(trip.start, trip.end)
+    @check_ins ||= CheckIn.limit(5).for_users(travelers).in_range(trip.start, trip.end)
   end
 
   def travelers

@@ -1,8 +1,0 @@
-<% if feed_items.count == 2 %>
-  <% if page != '1' %>
-    <%= link_to '<- Prev page', trip_path(trip, {:page => page.to_i - 1}) %>
-  <% end %>
-  <%= link_to 'Next page ->', trip_path(trip, {:page => page.to_i + 1}) %>
-<% elsif !page.nil? || page != '1' %>
-  <%= link_to '<- Prev page', trip_path(trip, {:page => page.to_i - 1}) %>
-<% end %>

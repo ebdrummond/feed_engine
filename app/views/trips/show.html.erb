@@ -21,6 +21,7 @@
     <h3 id="page headline"><%= @trip.destination %></h3>
     <br>
   </div>
+
   <div class="four columns">
     <%= render partial: 'shared/map', locals: { :location => @trip.destination } %>
   </div>
@@ -35,9 +36,4 @@
     <%= render :partial => 'feed_item',
                :locals => {:feed_items => @feed_items } %>
   </div>
-
-    <%= render :partial => 'pagination',
-               :locals => {:feed_items => @feed_items,
-                           :trip => @trip,
-                           :page => @page } %>
 </div>

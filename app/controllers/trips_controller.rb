@@ -20,8 +20,7 @@ class TripsController < ApplicationController
     @note = @trip.notes.build
     @travelers = @trip.travelers
     @kreeprs = @trip.kreeprs
-    @page = params[:page]
-    @feed_items = TripFeed.new(:trip => @trip, :page => params[:page], :per => 5).feed
+    @feed_items = TripFeed.new(:trip => @trip).feed
   end
 
   def edit
@@ -52,7 +51,7 @@ class TripsController < ApplicationController
       memo += TripFeed.new(:trip => trip).feed
     end
 
-    @feed_items = @feed_items.uniq.sort_by { |fi| fi.event_created_at }.reverse
+    @feed_items = @feed_items.uniq.sort_by { |fi| fi.event_created_at }.reverse[0,20]
   end
 
   private
