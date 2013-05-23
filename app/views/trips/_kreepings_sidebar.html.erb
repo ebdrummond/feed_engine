@@ -11,7 +11,7 @@
 
   <% kreepings.each do |trip| %>
     <div class="side_bar_link">
-      <%= link_to kreepings.name, kreeping_path(kreeping) %>
+      <%= link_to kreepings.first.name, trip_path(trip) %>
     </div>
   <% end %>
 
