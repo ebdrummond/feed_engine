@@ -1,5 +1,5 @@
 <div class="row new_trip">
-  <div class="twelve columns">
+  <div id="form-center" >
     <%= form_for @trip do |f| %>
       <% if @trip.errors.any? %>
         <h6><%= pluralize(@trip.errors.count, "error") %> prohibited this trip from being saved:</h6>
@@ -8,16 +8,16 @@
         <% end %>
       <% end %>
       <h4>Trip Name</h4>
-      <%= f.text_field :name, class: 'four' %>
+      <%= f.text_field :name %>
       <h4>Destination</h4>
-      <%= f.text_field :destination, class: 'four' %>
+      <%= f.text_field :destination %>
       <h4>Trip Dates</h4>
       <div class="row">
-        <%= f.text_field :start, class: 'two columns' %>
+        <%= f.text_field :start, class: 'four columns' %>
         <div class="one column"
-          <h6>through</h6>
+          <h6>to</h6>
         </div>
-        <%= f.text_field :end, class: 'two columns' %>
+        <%= f.text_field :end, class: 'four columns' %>
         <div class="seven columns">
         </div>
       </div>

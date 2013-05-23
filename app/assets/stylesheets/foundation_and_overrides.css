@@ -704,7 +704,7 @@ div.alert-box a.close:hover, div.alert-box a.close:focus { opacity: 0.4; }
 .panel.callout .button { background: white; border: none; color: #2ba6cb; text-shadow: none; }
 .panel.callout .button:hover, .panel.callout .button:focus { background: rgba(255, 255, 255, 0.8); }
 .panel.radius { -webkit-border-radius: 3px; -moz-border-radius: 3px; -ms-border-radius: 3px; -o-border-radius: 3px; border-radius: 3px; }
-.site-header { margin-bottom: 10px; font-family: 'Shadows Into Light Two', cursive; font-size: 28px;}
+#site-header { margin-bottom: 0px; font-family: 'Shadows Into Light Two', cursive; font-size: 28px; color: #fff;}
 
 /* Accordion ---------------------- */
 ul.accordion { margin: 0 0 22px 0; border-bottom: 1px solid #e9e9e9; }
@@ -1489,4 +1489,10 @@ body{ padding-bottom: 50px;
 
 .50-margin {
   margin-top: 50px;
+}
+#form-center{
+  width: 400px;
+  margin-left:auto;
+  margin-right:auto;
+  display:block;
 }
