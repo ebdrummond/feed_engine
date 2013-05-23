@@ -1,0 +1,16 @@
+<div class="side_bar_heading">
+  <h5 style="line-height: 30px;">TRAVELERS</h5>
+  <div class="side_bar_hr">
+  </div>
+</div>
+
+<br>
+<br>
+
+<% @trip.travelers.each do |traveler| %>
+  <div class="side_bar_link">
+    <%= link_to traveler.username, user_path(traveler) %>
+  </div>
+<% end %>
+
+<br>

@@ -1,9 +1,21 @@
-<div id="side_bar">
-  <h5>Trips</h5>
-  <ul>
-  <% trips.each do |trip| %>
-    <li><%= link_to trip.name, trip_path(trip) %></li>
-  <% end %>
-  </ul>
-  <%= link_to 'Add Trip', new_trip_path, class: 'radius button' %>
+<div class="side_bar_heading">
+  <h5 style="line-height: 30px;">TRIPS</h5>
+  <div class="side_bar_hr">
+  </div>
 </div>
+
+<br>
+<br>
+
+<% trips.each do |trip| %>
+  <div class="side_bar_link">
+      <!-- if the current path is the same as the route for the link, add the active class -->
+      <% if request.path == trip_path(trip) %>
+        <%= link_to trip.name, trip_path(trip), :class => "active" %>
+      <% else %>
+        <%= link_to trip.name, trip_path(trip) %>
+      <% end %>
+  </div>
+<% end %>
+
+<br>
