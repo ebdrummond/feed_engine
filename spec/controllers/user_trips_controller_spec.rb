@@ -23,7 +23,7 @@ describe UserTripsController do
       it 'creates a new user trips traveler entry' do
         expect do
           post :create, { :id => @trip.id, :trip_role => 'traveler' }
-        end.to change { @user.my_trips.count }.by 1
+        end.to change { @user.all_trips.count }.by 1
 
         expect(UserTrip.first.trip_role).to eq 'traveler'
       end
@@ -31,7 +31,7 @@ describe UserTripsController do
       it 'creates a new user trips kreepr entry' do
         expect do
           post :create, { :id => @trip.id, :trip_role => 'kreepr' }
-        end.to change { @user.my_trips.count }.by 1
+        end.to change { @user.all_trips.count }.by 1
 
         expect(UserTrip.first.trip_role).to eq 'kreepr'
       end

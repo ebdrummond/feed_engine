@@ -63,7 +63,8 @@ class TripsController < ApplicationController
 
   def require_trip_access
     @trip = Trip.find(params[:id])
-    unless !@trip.visible || (current_user && current_user.my_trips.include?(@trip))
+
+    unless @trip.user_authorized_to_view?(current_user)
       render :private
     end
   end
