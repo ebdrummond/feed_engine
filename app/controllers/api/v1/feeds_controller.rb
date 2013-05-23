@@ -33,7 +33,7 @@ module Api
           answer = OpenSSL::HMAC.hexdigest(OpenSSL::Digest::Digest.new('sha1'), user.api_key.key.to_s, uri)
 
           unless answer == signature && (Time.now.to_i - params[:timestamp].to_i) < 10
-            respond_with '{"errors":[{"message":"Bad Authentication data","code":215}]}'.to_json
+            respond_with {:errors => {:message => 'Bad Authentication data', :code => 215}}.to_json
           end
         end
       end
