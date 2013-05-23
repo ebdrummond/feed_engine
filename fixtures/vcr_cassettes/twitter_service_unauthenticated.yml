@@ -12,9 +12,9 @@ http_interactions:
       User-Agent:
       - Twitter Ruby Gem 4.6.2
       Authorization:
-      - OAuth oauth_consumer_key="ATWnDZ0CeEHpqrPMtyXaig", oauth_nonce="4e26c3c78d982db26be94fa443307e66",
-        oauth_signature="BecBZ4ZebShNmJClrapdc1snHd4%3D", oauth_signature_method="HMAC-SHA1",
-        oauth_timestamp="1369163916", oauth_token="abc", oauth_version="1.0"
+      - OAuth oauth_consumer_key="ATWnDZ0CeEHpqrPMtyXaig", oauth_nonce="340d2d9fd5d43434c115d4289b118dc8",
+        oauth_signature="gfSQsWCygK7LecqGN4%2B2rMHWFlA%3D", oauth_signature_method="HMAC-SHA1",
+        oauth_timestamp="1369323064", oauth_token="abc", oauth_version="1.0"
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
   response:
@@ -25,12 +25,12 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       Date:
-      - Tue, 21 May 2013 19:18:36 UTC
+      - Thu, 23 May 2013 15:31:03 UTC
       Server:
       - tfe
       Set-Cookie:
-      - guest_id=v1%3A136916391660068071; Domain=.twitter.com; Path=/; Expires=Thu,
-        21-May-2015 19:18:36 UTC
+      - guest_id=v1%3A136932306338622338; Domain=.twitter.com; Path=/; Expires=Sat,
+        23-May-2015 15:31:03 UTC
       Strict-Transport-Security:
       - max-age=631138519
       Transfer-Encoding:
@@ -39,5 +39,5 @@ http_interactions:
       encoding: UTF-8
       string: '{"errors":[{"message":"Invalid or expired token","code":89}]}'
     http_version: 
-  recorded_at: Tue, 21 May 2013 19:18:36 GMT
+  recorded_at: Thu, 23 May 2013 15:31:04 GMT
 recorded_with: VCR 2.4.0

@@ -155,7 +155,8 @@ describe TripsController do
     context 'happy path' do
       before do
         @user = User.create!(:username => 'kyle')
-        @trip = @user.trips.create!(:name => "Phil's Getaway", :destination => 'Munich, Germany', :start => Date.parse('2013-02-20'), :end => Date.parse('2013-02-25'))
+        @trip = @user.trips.build(:name => "Phil's Getaway", :destination => 'Munich, Germany', :start => Date.parse('2013-02-20'), :end => Date.parse('2013-02-25'))
+        @trip.save_with_user_trip
       end
 
       it 'assigns trips' do
