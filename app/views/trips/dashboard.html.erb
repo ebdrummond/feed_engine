@@ -1,16 +1,20 @@
 <div class="row">
   <div class="three columns">
-    <div class="side_bar_2">
-      <%= render partial: 'trips_sidebar',
-                 locals: { trips: @trips } %>
-      <br>
-      <%= render partial: 'kreepings_sidebar',
-                 locals: { kreepings: @kreepings } %>
-    </div>
+    <% if @feed_items.count > 0 %>
+      <div class="side_bar_2">
+        <%= render partial: 'trips_sidebar',
+                   locals: { trips: @trips,
+                             feed_items: @feed_items } %>
+        <br>
+        <%= render partial: 'kreepings_sidebar',
+                   locals: { kreepings: @kreepings } %>
+      </div>
+    <% end %>
   </div>
+
   <div class="nine columns">
     <%= render partial: 'feed_item',
                locals: { feed_items: @feed_items } %>
-  </div>
+   </div>
 </div>
 

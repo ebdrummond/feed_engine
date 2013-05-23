@@ -1,21 +1,22 @@
+<% if feed_items.count > 0 %>
 <div class="side_bar_heading">
-  <h5 style="line-height: 30px;">TRIPS</h5>
+  <h5 class='sidebar-header'>TRIPS</h5>
   <div class="side_bar_hr">
   </div>
-</div>
 
-<br>
-<br>
+  <br>
+  <br>
 
-<% trips.each do |trip| %>
-  <div class="side_bar_link">
-      <!-- if the current path is the same as the route for the link, add the active class -->
-      <% if request.path == trip_path(trip) %>
-        <%= link_to trip.name, trip_path(trip), :class => "active" %>
-      <% else %>
-        <%= link_to trip.name, trip_path(trip) %>
-      <% end %>
-  </div>
+  <% trips.each do |trip| %>
+    <div class="side_bar_link">
+        <!-- if the current path is the same as the route for the link, add the active class -->
+        <% if request.path == trip_path(trip) %>
+          <%= link_to trip.name, trip_path(trip), :class => "active" %>
+        <% else %>
+          <%= link_to trip.name, trip_path(trip) %>
+        <% end %>
+    </div>
+  <% end %>
+
+  <br>
 <% end %>
-
-<br>

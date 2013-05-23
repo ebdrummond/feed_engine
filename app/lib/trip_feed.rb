@@ -10,7 +10,7 @@ class TripFeed
   end
 
   def notes
-    @notes ||= trip.notes.all
+    @notes ||= trip.notes.limit(5).all
   end
 
   private
@@ -20,15 +20,15 @@ class TripFeed
   end
 
   def tweets
-    @tweets ||= Tweet.for_users(travelers).in_range(trip.start, trip.end)
+    @tweets ||= Tweet.limit(5).for_users(travelers).in_range(trip.start, trip.end)
   end
 
   def photos
-    @photos ||= Photo.for_users(travelers).in_range(trip.start, trip.end)
+    @photos ||= Photo.limit(5).for_users(travelers).in_range(trip.start, trip.end)
   end
 
   def check_ins
-    @check_ins ||= CheckIn.for_users(travelers).in_range(trip.start, trip.end)
+    @check_ins ||= CheckIn.limit(5).for_users(travelers).in_range(trip.start, trip.end)
   end
 
   def travelers

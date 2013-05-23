@@ -31,6 +31,12 @@ describe Trip do
     expect { @trip.end = Date.parse('2013-01-01') }.to change { @trip.valid? }.to false
   end
 
+  describe '.user_authorized_to_view?' do
+    it 'determines whether a user is authorized to view a trip' do
+      expect(@trip.user_authorized_to_view?(@owner)).to be_true
+    end
+  end
+
   describe '.save_with_user_trip' do
     let(:trip) { @owner.trips.build(:name => "Something else", :destination => 'Munich, Germany', :start => Date.parse('2013-02-20'), :end => Date.parse('2013-02-25')) }
 

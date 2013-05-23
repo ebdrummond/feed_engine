@@ -1,6 +1,6 @@
 <% if kreepings.count > 0 %>
   <div class="side_bar_heading">
-    <h5 style="line-height: 30px;">KREEPINGS</h5>
+    <h5 class='sidebar-header'>KREEPINGS</h5>
     <div class="side_bar_hr">
     </div>
   </div>
@@ -11,7 +11,7 @@
 
   <% kreepings.each do |trip| %>
     <div class="side_bar_link">
-      <%= link_to kreepings.first.name, trip_path(trip) %>
+      <%= link_to trip.name, trip_path(trip) %>
     </div>
   <% end %>
 

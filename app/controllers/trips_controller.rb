@@ -18,8 +18,8 @@ class TripsController < ApplicationController
 
   def show
     @note = @trip.notes.build
-    @travelers
-    @kreeprs
+    @travelers = @trip.travelers
+    @kreeprs = @trip.kreeprs
     @feed_items = TripFeed.new(:trip => @trip).feed
   end
 
@@ -51,7 +51,7 @@ class TripsController < ApplicationController
       memo += TripFeed.new(:trip => trip).feed
     end
 
-    @feed_items = @feed_items.uniq.sort_by { |fi| fi.event_created_at }.reverse
+    @feed_items = @feed_items.uniq.sort_by { |fi| fi.event_created_at }.reverse[0,20]
   end
 
   private
@@ -63,7 +63,8 @@ class TripsController < ApplicationController
 
   def require_trip_access
     @trip = Trip.find(params[:id])
-    unless !@trip.visible || (current_user && current_user.my_trips.include?(@trip))
+
+    unless @trip.user_authorized_to_view?(current_user)
       render :private
     end
   end

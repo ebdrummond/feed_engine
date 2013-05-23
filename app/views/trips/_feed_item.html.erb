@@ -1,29 +1,46 @@
-<% feed_items.each do |feed_item| %>
-  <div class="row">
-    <div class="two columns">
-      <div id="feed_profile">
-        <%= image_tag(feed_item.user.avatar, size: '60x60') %>
-        <div class="row">
-          <div class="feed_profile_text">
-            <span text-align="center">
-              <h6>
-                <%= link_to feed_item.user.username, users_path(feed_item.user) %>
-              </h6>
-            </span>
+<% if feed_items.count < 1 %>
+  <div id="dash-preview">
+    <h1>This is your dashboard. It's more fun once you start traveling!</h1>
+    <div class="row">
+      <div class="four columns">
+      </div>
+      <div class="four columns">
+        <%= link_to "Add A Trip", new_trip_path, class: "radius button large" %>
+      </div>
+      <div class="four columns">
+      </div>
+    </div>
+  </div>
+<% else %>
+  <div class="nine columns">
+    <% feed_items.each do |feed_item| %>
+      <div class="row">
+        <div class="two columns">
+          <div id="feed_profile">
+            <%= image_tag(feed_item.user.avatar, size: '60x60') %>
+            <div class="row">
+              <div class="feed_profile_text">
+                <span text-align="center">
+                  <h6>
+                    <%= link_to feed_item.user.username, users_path(feed_item.user) %>
+                  </h6>
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="ten columns">
+          <div id="feed_item">
+            <%= render partial: feed_item.class.to_s.underscore,
+                       locals: { feed_item.class.to_s.underscore.to_sym => feed_item } %>
+            <br>
+            <%= render partial: 'feed_item_footer',
+                       locals: { :feed_item => feed_item } %>
+
           </div>
         </div>
       </div>
-    </div>
-    <div class="ten columns">
-      <div id="feed_item">
-        <%= render partial: feed_item.class.to_s.underscore,
-                   locals: { feed_item.class.to_s.underscore.to_sym => feed_item } %>
-        <br>
-        <%= render partial: 'feed_item_footer',
-                   locals: { :feed_item => feed_item } %>
-
-      </div>
-    </div>
+    <% end %>
   </div>
 <% end %>
 

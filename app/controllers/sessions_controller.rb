@@ -16,6 +16,11 @@ class SessionsController < ApplicationController
     redirect_to root_path, :error => "Error"
   end
 
+  def destroy
+    logout
+    redirect_to root_path
+  end
+
   private
 
   def auth_hash

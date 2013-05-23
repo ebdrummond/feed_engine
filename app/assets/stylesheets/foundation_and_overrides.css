@@ -704,7 +704,7 @@ div.alert-box a.close:hover, div.alert-box a.close:focus { opacity: 0.4; }
 .panel.callout .button { background: white; border: none; color: #2ba6cb; text-shadow: none; }
 .panel.callout .button:hover, .panel.callout .button:focus { background: rgba(255, 255, 255, 0.8); }
 .panel.radius { -webkit-border-radius: 3px; -moz-border-radius: 3px; -ms-border-radius: 3px; -o-border-radius: 3px; border-radius: 3px; }
-.site-header { margin-bottom: 10px;}
+.site-header { margin-bottom: 10px; font-family: 'Shadows Into Light Two', cursive; font-size: 28px;}
 
 /* Accordion ---------------------- */
 ul.accordion { margin: 0 0 22px 0; border-bottom: 1px solid #e9e9e9; }
@@ -1289,8 +1289,24 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', e
   font-weight: bold;
   color: #69675b;
 }
+#alert {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+.alert-box {
+  padding: 1em !important;
+}
+.close {
+  font-size: 2.2em !important;
+}
 #footer-logo h1 {
   color: #69675b;
+}
+#dash-preview {
+  background: url('/assets/dash-preview.jpg');
+  width: 990px;
+  height: 739px;
+  padding: 7em;
 }
 #user_info{ margin-top: 20px; font-size: 20px; }
 .kreepr_request a.button{ margin-right: 20px; }
@@ -1449,3 +1465,28 @@ body{ padding-bottom: 50px;
   background-color: #a9a699;
   height: 2px;
    }
+
+#add_trip_button {
+  font-family: "Raleway", "Helvetica";
+}
+
+#edit-trip-button {
+   margin-left: 30px;
+}
+
+.sidebar-header {
+  line-height: 30px;
+}
+
+#trip-name-date-dest {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.20-margin {
+  margin-top: 20px;
+}
+
+.50-margin {
+  margin-top: 50px;
+}

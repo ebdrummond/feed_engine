@@ -1,16 +1,15 @@
 class UserTripsController < ApplicationController
-  before_filter :require_owner, only: [ :destroy ]
   before_filter :find_user_by_username, only: [ :create ]
 
   def create
     existing = @user.user_trips.where(:trip_id => params[:id])
 
     if existing.present?
-      notice = "User already on trip!"
+      notice = "Already on trip!"
     else
       @user.user_trips.create!(:trip_id => params[:id],
                                :trip_role => params[:trip_role])
-      notice = "User added to trip"
+      notice = "Added to trip!"
     end
     redirect_to :back, notice: notice
   end
@@ -19,7 +18,7 @@ class UserTripsController < ApplicationController
     user_trip = UserTrip.where(:user_id => params[:user_id],
                                :trip_id => params[:id]).first
     user_trip.destroy
-    redirect_to :back, notice: "Removed user from trip!"
+    redirect_to :back, notice: "Removed from trip!"
   end
 
   private
@@ -29,14 +28,6 @@ class UserTripsController < ApplicationController
 
     if @user.nil?
       redirect_to :back, notice: "Username not found!"
-    end
-  end
-
-  def require_owner
-    trip = Trip.find(params[:id])
-
-    if trip.owner != current_user
-      redirect_to root_path, notice: "Restricted!"
     end
   end
 end

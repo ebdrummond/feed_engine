@@ -1,5 +1,5 @@
 <div class="side_bar_heading">
-  <h5 style="line-height: 30px;">TRAVELERS</h5>
+  <h5 class="sidebar-header">TRAVELERS</h5>
   <div class="side_bar_hr">
   </div>
 </div>
@@ -7,7 +7,7 @@
 <br>
 <br>
 
-<% @trip.travelers.each do |traveler| %>
+<% travelers.each do |traveler| %>
   <div class="side_bar_link">
     <%= link_to traveler.username, users_path(traveler) %>
   </div>

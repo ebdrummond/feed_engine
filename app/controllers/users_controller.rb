@@ -4,7 +4,7 @@ class UsersController < ApplicationController
   def show
     @user = User.find_by_username!(params[:username])
 
-    @user == current_user ? all_trips : filtered_trips
+    @trips = UserShow.new(:profile_user => @user, :current_user => current_user)
   end
 
   def account
@@ -27,19 +27,5 @@ class UsersController < ApplicationController
     current_user.destroy
     logout
     redirect_to root_path, :notice => "Account deleted"
-  end
-
-  private
-
-  def all_trips
-    @current_trips = @user.current_trips
-    @past_trips = @user.past_trips
-    @upcoming_trips = @user.upcoming_trips
-  end
-
-  def filtered_trips
-    @current_trips = @user.current_trips.select{|t| !t.visible || current_user && current_user.authorized_to_view(t)}
-    @past_trips = @user.past_trips.select{|t| !t.visible || current_user && current_user.authorized_to_view(t)}
-    @upcoming_trips = @user.upcoming_trips.select{|t| !t.visible || current_user && current_user.authorized_to_view(t)}
   end
 end
