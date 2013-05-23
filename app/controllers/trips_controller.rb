@@ -18,8 +18,8 @@ class TripsController < ApplicationController
 
   def show
     @note = @trip.notes.build
-    @travelers
-    @kreeprs
+    @travelers = @trip.travelers
+    @kreeprs = @trip.kreeprs
     @feed_items = TripFeed.new(:trip => @trip).feed
   end
 

@@ -2,8 +2,11 @@
   <div class="three columns" style="margin-top: 20px;">
     <%= image_tag(@user.avatar, :size => "100x100", :alt => "profile") %>
   </div>
-  <div class="nine columns" style="margin-top: 20px;">
+  <div class="six columns" style="margin-top: 20px;">
     <h1><%= @user.username %></h1>
+  </div>
+  <div class="three columns" style="margin-top: 50px;">
+    <%= link_to "Add a Trip", new_trip_path, :class => 'radius button large', id: 'add_trip_button' %>
   </div>
 </div>
 
@@ -36,7 +39,7 @@
     <% @upcoming_trips.each do |trip| %>
       <div class="row">
         <div class="twelve columns">
-      <h4><%= trip.name %> <%= pretty_date_range(trip) %></h4>
+          <h4><%= link_to trip.name, trip_path(trip) %> <%= pretty_date_range(trip) %></h4>
         </div>
       </div>
     <% end %>
