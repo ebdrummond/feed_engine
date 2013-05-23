@@ -6,25 +6,26 @@
 
 <br>
 
-  <div class="nine columns" id="feed_item">
-    <h2>Current Trips</h2>
+  <div class="nine columns">
+    <div id="feed_item">
+      <h2>Current Trips</h2>
 
-    <% @trips.current.each do |trip| %>
-      <div class="row">
-        <div class="nine columns">
-          <h4><%= link_to trip.name, trip_path(trip) %> <%= pretty_date_range(trip) %></h4>
+      <% @trips.current.each do |trip| %>
+        <div class="row">
+          <div class="nine columns">
+            <h4><%= link_to trip.name, trip_path(trip) %> <%= pretty_date_range(trip) %></h4>
+          </div>
         </div>
-      </div>
 
-      <div class="nine columns">
-        <h6><%= pluralize(trip.travelers.count, "traveler") %> | <%= pluralize(trip.kreeprs.count, "kreepr") %></h6>
-      </div>
-    <% end %>
-  </div>
+        <div class="nine columns">
+          <h6><%= pluralize(trip.travelers.count, "traveler") %> | <%= pluralize(trip.kreeprs.count, "kreepr") %></h6>
+        </div>
+      <% end %>
+    </div>
 
 <br>
 
-  <div class="nine columns" id="feed_item">
+  <div id="feed_item">
     <h2>Upcoming Trips</h2>
 
     <% @trips.upcoming.each do |trip| %>
@@ -38,7 +39,7 @@
 
 <br>
 
-  <div class="nine columns" id="feed_item">
+  <div id="feed_item">
     <h2>Past Trips</h2>
 
     <% @trips.past.each do |trip| %>

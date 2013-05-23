@@ -11,7 +11,7 @@ describe 'user notes spec' do
       before(:each) do
         @trip = @user.trips.build(:name => "Phil's Getaway", :destination => 'Munich, Germany', :start => Date.parse('2013-02-20'), :end => Date.parse('2013-02-25'))
 
-        @trip.save
+        @trip.save_with_user_trip
       end
 
       it 'can post a new note' do

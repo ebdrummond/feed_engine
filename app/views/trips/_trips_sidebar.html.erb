@@ -9,7 +9,6 @@
 
   <% trips.each do |trip| %>
     <div class="side_bar_link">
-        <!-- if the current path is the same as the route for the link, add the active class -->
         <% if request.path == trip_path(trip) %>
           <%= link_to trip.name, trip_path(trip), :class => "active" %>
         <% else %>
@@ -19,4 +18,5 @@
   <% end %>
 
   <br>
+</div>
 <% end %>
