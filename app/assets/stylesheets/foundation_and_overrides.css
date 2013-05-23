@@ -56,7 +56,7 @@ aside p { font-size: 13px; line-height: 1.35; font-style: italic; }
 h1, h2, h3, h4, h5, h6 { font-family: "Raleway", "Helvetica", Helvetica, Arial, sans-serif; font-weight: bold; font-style: normal; color: #222222; text-rendering: optimizeLegibility; line-height: 1.1; margin-bottom: 14px; margin-top: 14px; }
 h1 small, h2 small, h3 small, h4 small, h5 small, h6 small { font-size: 60%; color: #6f6f6f; line-height: 0; }
 
-h1 { font-size: 54px;
+h1 { font-size: 30px;
     font-family: 'Shadows Into Light Two', cursive; }
 
 h2 { font-size: 37px; }
@@ -704,7 +704,7 @@ div.alert-box a.close:hover, div.alert-box a.close:focus { opacity: 0.4; }
 .panel.callout .button { background: white; border: none; color: #2ba6cb; text-shadow: none; }
 .panel.callout .button:hover, .panel.callout .button:focus { background: rgba(255, 255, 255, 0.8); }
 .panel.radius { -webkit-border-radius: 3px; -moz-border-radius: 3px; -ms-border-radius: 3px; -o-border-radius: 3px; border-radius: 3px; }
-.site-header { margin-bottom: 10px;}
+.site-header { margin-bottom: 10px; font-family: 'Shadows Into Light Two', cursive; font-size: 28px;}
 
 /* Accordion ---------------------- */
 ul.accordion { margin: 0 0 22px 0; border-bottom: 1px solid #e9e9e9; }
@@ -1452,4 +1452,25 @@ body{ padding-bottom: 50px;
 
 #add_trip_button {
   font-family: "Raleway", "Helvetica";
+}
+
+#edit-trip-button {
+   margin-left: 30px;
+}
+
+.sidebar-header {
+  line-height: 30px;
+}
+
+#trip-name-date-dest {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.20-margin {
+  margin-top: 20px;
+}
+
+.50-margin {
+  margin-top: 50px;
 }
