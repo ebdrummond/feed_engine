@@ -6,7 +6,7 @@
     <br>
     <%= simple_form_for @user, url: account_path do |f| %>
       <%= f.input :username, required: false, label: "Change Username", label_html: { style: "font-family: Raleway; font-size: 20px; font-weight: bold;" }%>
-      <%= f.submit 'Update Username' %>
+      <%= f.submit 'Update Username', class: 'button radius small' %>
     <% end %>
   </div>
   <div class="four columns">
