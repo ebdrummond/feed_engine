@@ -27,13 +27,13 @@ module Api
         if user
           signature = params[:signature]
 
-          uri = "http://localhost:3000/api/v1/feeds/#{params[:id]}?username=#{params[:username]}&timestamp=#{params[:timestamp]}"
+          uri = "http://www.kreepr.com/api/v1/feeds/#{params[:id]}?username=#{params[:username]}&timestamp=#{params[:timestamp]}"
           uri << "&text_only=#{params[:text_only]}" if params[:text_only]
 
           answer = OpenSSL::HMAC.hexdigest(OpenSSL::Digest::Digest.new('sha1'), user.api_key.key.to_s, uri)
 
           unless answer == signature && (Time.now.to_i - params[:timestamp].to_i) < 10
-            respond_with '{"errors":[{"message":"Bad Authentication data","code":215}]}'.to_json
+            respond_with "Bad Authentication data"
           end
         end
       end
