@@ -1,7 +1,7 @@
 <div class="row">
-  <div class="three columns" class='20-margin'>
-    <%= image_tag(@user.avatar, :size => "100x100", :alt => "profile") %>
-    <h1><%= @user.username %></h1>
+  <div class="three columns" class='20-margin' align="right" id="user-show-icon">
+    <%= image_tag(@user.avatar, :size => "60x60", :alt => "profile") %>
+    <h1 id="trip-headline"><%= @user.username %></h1>
   </div>
 
 <br>
@@ -20,6 +20,7 @@
         <div class="nine columns">
           <h6><%= pluralize(trip.travelers.count, "traveler") %> | <%= pluralize(trip.kreeprs.count, "kreepr") %></h6>
         </div>
+        <br><br>
       <% end %>
     </div>
 
@@ -52,6 +53,7 @@
       <div class="nine columns">
         <h6><%= pluralize(trip.travelers.count, "traveler") %> | <%= pluralize(trip.kreeprs.count, "kreepr") %></h6>
       </div>
+      <br><br>
     <% end %>
   </div>
 </div>

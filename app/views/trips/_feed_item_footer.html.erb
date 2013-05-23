@@ -1,17 +1,23 @@
-<div class="row">
-  <div class="feed_item_footer">
+<% if feed_item.class == Photo %>
+  <br>
+  <br>
+<% elsif feed_item.class == Tweet %>
+  <br>
+<% else %>
+  <% 15.times do %>
+    <br>
+  <% end %>
+<% end %>
+<%= render partial: 'shared/auth_source_image',
+         locals: { :type => feed_item.class.to_s.underscore, :size => "40x40" } %>
 
-  <%= render partial: 'shared/auth_source_image',
-             locals: { :type => feed_item.class.to_s.underscore, :size => "40x40" } %>
+<span style="vertical-align: center">
 
-  <span style="vertical-align: center">
   posted
   <% if request.fullpath == dashboard_path %>
   to trip <%= link_to feed_item.trip.name, trip_path(feed_item.trip) %>
   <% else %>
-   <%= time_ago_in_words(feed_item.event_created_at) %> ago
+  <%= time_ago_in_words(feed_item.event_created_at) %> ago
   <% end %>
-  </span>
+</span>
 
-  </div>
-</div>

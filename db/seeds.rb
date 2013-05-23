@@ -203,7 +203,10 @@ tweet54 = Tweet.create!(:event_created_at => "2013-05-22 05:59:42", :tweet_id =>
 
 
 #Trip 7 - Chile with Erin
-trip7 = user1.trips.create!(:name => "Rod and Sarah's Wedding", :destination => "Santiago, Chile", :start => "2013-08-01", :end => "2013-08-08")
+trip7 = user1.trips.create!(:name => "Chile Wedding", :destination => "Santiago, Chile", :start => "2013-08-01", :end => "2013-08-08")
+ut36 = user1.user_trips.create!(:trip_id => trip7.id, :trip_role => "traveler")
+
 
 #Trip 8 - Leelanau with Erin
-trip8 = user1.trips.create!(:name => "Back to the Mitten", :destination => "Northport, Michigan", :start => "2013-07-20", :end => "2013-07-28")
+trip8 = user1.trips.create!(:name => "The Mitten!", :destination => "Northport, Michigan", :start => "2013-07-20", :end => "2013-07-28")
+ut37 = user1.user_trips.create!(:trip_id => trip8.id, :trip_role => "traveler")
