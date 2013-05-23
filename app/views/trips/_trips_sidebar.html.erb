@@ -1,22 +1,18 @@
-<% if feed_items.count > 0 %>
-<div class="side_bar_heading">
-  <h5 class='sidebar-header'>TRIPS</h5>
-  <div class="side_bar_hr">
-  </div>
-
-  <br>
-  <br>
+<div class="sidebar-heading">
+  TRIPS
+</div>
 
   <% trips.each do |trip| %>
-    <div class="side_bar_link">
-        <% if request.path == trip_path(trip) %>
-          <%= link_to trip.name, trip_path(trip), :class => "active" %>
-        <% else %>
-          <%= link_to trip.name, trip_path(trip) %>
-        <% end %>
-    </div>
+    <% if request.path == trip_path(trip) %>
+      <p class="trip-link"><%= link_to trip.name, trip_path(trip), :class => "active" %></p>
+    <% else %>
+      <p class="trip-link"><%= link_to trip.name, trip_path(trip) %></p>
+    <% end %>
   <% end %>
 
-  <br>
+<div class="sidebar-heading" id="second-heading">
+  KREEPINGS
 </div>
-<% end %>
+  <% kreepings.each do |trip| %>
+    <p class="trip-link"><%= link_to trip.name, trip_path(trip) %></p>
+  <% end %>

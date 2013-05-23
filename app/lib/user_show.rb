@@ -31,7 +31,7 @@ class UserShow
   end
 
   def past
-    @past ||= trips.select{|trip| trip.start < Date.today}
+    @past ||= trips.select{|trip| trip.end < Date.today}
   end
 
   private

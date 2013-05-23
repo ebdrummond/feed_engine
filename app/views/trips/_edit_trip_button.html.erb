@@ -1,13 +1,8 @@
 <% if current_user && current_user == @trip.owner %>
-<div class="side_bar_heading">
-  <h5 style="line-height: 30px;">MANAGE</h5>
-  <div class="side_bar_hr">
-  </div>
-</div>
 
-<br>
-<br>
-<br>
+<div class="sidebar-heading">
+  MANAGE
+</div>
 
   <%= button_to "Edit this trip", edit_trip_path(@trip), method: :get, :class => "radius button", :id => 'edit-trip-button' %>
 <% end %>

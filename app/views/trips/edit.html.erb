@@ -1,6 +1,6 @@
 <div class="row">
   <div class="twelve columns">
-    <h3 id="page_headline">manage trip</h3>
+    <h3 id="page_headline">Manage Trip</h3>
   </div>
 </div>
 
@@ -8,16 +8,14 @@
 
 <div id="form-center">
     <h2>Travelers</h2>
-      <ol>
       <% @trip.travelers.each do |traveler| %>
-        <li><%= link_to traveler.username, users_path(traveler) %></li>
+        <h5><%= link_to traveler.username, users_path(traveler) %><h5>
       <% if current_user != traveler %>
         <div class="twelve columns">
-          <%= button_to "remove", {:controller => 'user_trips', :action => 'destroy', :trip_id => @trip.id, :trip_role => "traveler", :user_id => traveler.id}, method: :delete, :class =>"radius button small" %>
+          <%= button_to "remove", {:controller => 'user_trips', :action => 'destroy', :trip_id => @trip.id, :trip_role => "traveler", :user_id => traveler.id}, method: :delete, :class =>"radius button small", :id => "traveler-button" %>
         </div>
       <% end %>
       <% end %>
-      </ol>
         <h5>Add Travelers<h5>
         <%= form_tag(:controller => "user_trips", :action => "create", method: :post) do %>
           <%= text_field_tag("username") %>

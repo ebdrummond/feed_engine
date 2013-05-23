@@ -2,10 +2,8 @@
   <div class="three columns">
     <div class="side_bar_2">
       <%= render partial: 'travelers_sidebar',
-           locals: { travelers: @travelers } %>
-
-      <%= render partial: 'kreeprs_sidebar',
-           locals: { kreeprs: @kreeprs } %>
+           locals: { travelers: @travelers,
+                     kreeprs: @kreeprs } %>
 
       <%= render partial: 'follow_or_unfollow',
            locals: { trip: @trip } %>
@@ -16,7 +14,7 @@
   </div>
 
   <div class="five columns" id='trip-name-date-dest'>
-    <h1 id="page headline"><%= @trip.name %></h1>
+    <h1 id="trip-headline"><%= @trip.name %></h1>
     <h3 id="page headline"><%= pretty_date_range(@trip) %></h3>
     <h3 id="page headline"><%= @trip.destination %></h3>
     <br>
@@ -30,8 +28,10 @@
 
   <div class="nine columns">
 
+  <% if current_user.travelings.include?(@trip) %>
     <%= render :partial => 'post_note',
                :locals => {:trip => @trip, :note => @note } %>
+  <% end %>
 
     <%= render :partial => 'feed_item',
                :locals => {:feed_items => @feed_items } %>

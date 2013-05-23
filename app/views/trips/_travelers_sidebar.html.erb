@@ -1,16 +1,15 @@
-<div class="side_bar_heading">
-  <h5 class="sidebar-header">TRAVELERS</h5>
-  <div class="side_bar_hr">
-  </div>
+<div class="sidebar-heading">
+  TRAVELERS
 </div>
 
-<br>
-<br>
-
 <% travelers.each do |traveler| %>
-  <div class="side_bar_link">
-    <%= link_to traveler.username, users_path(traveler) %>
-  </div>
+  <p class="trip-link"><%= link_to traveler.username, users_path(traveler) %></p>
 <% end %>
 
-<br>
+<div class="sidebar-heading">
+  KREEPRS
+</div>
+
+<% kreeprs.each do |kreepr| %>
+  <p class="trip-link"><%= link_to kreepr.username, users_path(kreepr) %></p>
+<% end %>

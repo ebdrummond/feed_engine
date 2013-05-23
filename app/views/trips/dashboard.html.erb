@@ -4,10 +4,9 @@
       <div class="side_bar_2">
         <%= render partial: 'trips_sidebar',
                    locals: { trips: @trips,
-                             feed_items: @feed_items } %>
+                             feed_items: @feed_items,
+                             kreepings: @kreepings } %>
         <br>
-        <%= render partial: 'kreepings_sidebar',
-                   locals: { kreepings: @kreepings } %>
       </div>
     <% end %>
   </div>
