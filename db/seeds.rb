@@ -147,47 +147,63 @@ tweet49 = Tweet.create!(:event_created_at => "2013-05-09 04:51:42", :tweet_id =>
 
 
 # Trip3 - Canada with Jen and Jorge
-trip3 = user12.trips.create!(:name => "Oh Canada", :destination => "Saskatoon", :start => "2013-05-07", :end => "2013-05-14")
+trip3 = user12.trips.create!(:name => "Oh Canada", :destination => "Saskatoon", :start => "2013-05-17", :end => "2013-05-21")
 ut19 = user12.user_trips.create!(:trip_id => trip3.id, :trip_role => "traveler")
 ut20 = user11.user_trips.create!(:trip_id => trip3.id, :trip_role => "traveler")
 ut21 = user1.user_trips.create!(:trip_id => trip3.id, :trip_role => "kreepr")
 
-tweet50 = Tweet.create!(:event_created_at => "2013-05-07 04:51:42", :tweet_id => "gschool102", :text => "did not expect Saskatoon to be so majestic", :user_id => user11.id)
-photo34 = Photo.create!(:event_created_at => "2013-05-07 04:52:32", :photo_id => "gschool103", :caption => "lovely Saskatoon", :user_id => user4.id, :url => "http://assets.byways.org/asset_files/000/010/499/nighttimevegas.JPG?1258553474")
+tweet50 = Tweet.create!(:event_created_at => "2013-05-17 04:51:42", :tweet_id => "gschool102", :text => "did not expect Saskatoon to be so majestic", :user_id => user11.id)
+photo34 = Photo.create!(:event_created_at => "2013-05-20 04:55:32", :photo_id => "gschool103", :url => "http://hauntednorthamerica.net/wp-content/uploads/2012/09/saskatoon.jpg", :user_id => user11.id)
+photo35 = Photo.create!(:event_created_at => "2013-05-20 04:58:32", :photo_id => "gschool104", :caption => "this happens all the time in Canada, right?", :url => "http://1.bp.blogspot.com/-KGE_cZ9icWQ/UL0935CQ_CI/AAAAAAAADKU/TSuB1iwK2MI/s1600/Street+Photography+in+Anchorage+Alaska1.jpg", :user_id => user11.id)
+tweet51 = Tweet.create!(:event_created_at => "2013-05-20 04:59:42", :tweet_id => "gschool105", :text => "@mexico, oh ALL the time", :user_id => user12.id)
+tweet52 = Tweet.create!(:event_created_at => "2013-05-18 04:59:42", :tweet_id => "gschool106", :text => "@mexico, so I get to come visit your home next, right?", :user_id => user12.id)
 
 
-# http://www.aerogreenbusinesspark.com/images/image/S'Toon.jpg
+#Trip4 - Birding with Laura and Aimee
+trip4 = user10.trips.create!(:name => "Put a bird on it!", :destination => "Estes Park, Colorado", :start => "2013-05-16", :end => "2013-05-18")
+ut22 = user5.user_trips.create!(:trip_id => trip4.id, :trip_role => "traveler")
+ut23 = user3.user_trips.create!(:trip_id => trip4.id, :trip_role => "kreepr")
+ut24 = user1.user_trips.create!(:trip_id => trip4.id, :trip_role => "kreepr")
+
+photo36 = Photo.create!(:event_created_at => "2013-05-16 04:49:32", :photo_id => "gschool107", :caption => "group birding trip!  Thanks @birder for the invite!", :user_id => user5.id, :url => "http://3.bp.blogspot.com/_OfgiAjnHA-M/TTXzUWTbhZI/AAAAAAAAADY/9A6lw69lCwE/s1600/Mico+San+Blas+3-8Mar09++444.jpg")
+photo37 = Photo.create!(:event_created_at => "2013-05-16 04:50:32", :photo_id => "gschool108", :caption => "beautiful mourning dove", :user_id => user10.id, :url => "http://tucson-bed-breakfast.com/files/2011/08/hd-birding.jpg")
+photo39 = Photo.create!(:event_created_at => "2013-05-17 04:49:32", :photo_id => "gschool109", :caption => "fellow birders", :user_id => user10.id, :url => "http://4.bp.blogspot.com/-Ln5attKwl3I/TcvOMN_q1cI/AAAAAAAADZw/J_zDKAmkPho/s1600/Birding%2BInland%2BSea.jpg")
+photo40 = Photo.create!(:event_created_at => "2013-05-18 04:49:32", :photo_id => "gschool110", :caption => "no idea what this thing is, but it's pretty!", :user_id => user5.id, :url => "http://www.twoshutterbirds.com/wp-content/uploads/2012/10/Northern-Parula.jpg")
+tweet53 = Tweet.create!(:event_created_at => "2013-05-18 04:59:42", :tweet_id => "gschool111", :text => "@comic-girl thanks for coming with me!  We should do go again soon :)", :user_id => user10.id)
 
 
-# #Trip4 - Birding with Laura and Aimee
-# trip4 = user10.trips.create!(:name => "Put a bird on it!", :destination => "Estes Park, Colorado", :start => "2013-05-08", :end => "2013-05-10")
-# ut15 = user5.user_trips.create!(:trip_id => trip4.id, :trip_role => "traveler")
-# ut16 = user3.user_trips.create!(:trip_id => trip4.id, :trip_role => "kreepr")
-# ut17 = user1.user_trips.create!(:trip_id => trip4.id, :trip_role => "kreepr")
+#Trip 5 - Japan with Marcy
+trip5 = user13.trips.create!(:name => "Konichiwa!", :destination => "Japan", :start => "2013-05-15", :end => "2013-05-21")
+ut25 = user13.user_trips.create!(:trip_id => trip5.id, :trip_role => "traveler")
+ut26 = user9.user_trips.create!(:trip_id => trip5.id, :trip_role => "kreepr")
+ut27 = user8.user_trips.create!(:trip_id => trip5.id, :trip_role => "kreepr")
+ut28 = user2.user_trips.create!(:trip_id => trip5.id, :trip_role => "kreepr")
+ut29 = user4.user_trips.create!(:trip_id => trip5.id, :trip_role => "kreepr")
+ut30 = user1.user_trips.create!(:trip_id => trip5.id, :trip_role => "kreepr")
+ut31 = user3.user_trips.create!(:trip_id => trip5.id, :trip_role => "kreepr")
+
+photo41 = Photo.create!(:event_created_at => "2013-05-17 03:49:32", :photo_id => "gschool112", :caption => "Tokyo!", :user_id => user13.id, :url => "http://3.bp.blogspot.com/-D2bYzAVCPi4/TgnJm2_mPnI/AAAAAAAAB-E/Q56v2qJWLYc/s1600/East_Shinjuku_Tokyo_Japan.jpg")
+photo42 = Photo.create!(:event_created_at => "2013-05-18 01:49:32", :photo_id => "gschool113", :caption => "so tranquil", :user_id => user13.id, :url => "http://images2.fanpop.com/image/photos/9100000/Japan-japan-9115120-1600-1200.jpg")
+photo43 = Photo.create!(:event_created_at => "2013-05-19 04:49:32", :photo_id => "gschool114", :caption => "the deer here are so docile - you can hand feed them", :user_id => user13.id, :url => "http://blog.travelreportage.com/wp-content/uploads/2010/08/NARA2.jpg")
+photo44 = Photo.create!(:event_created_at => "2013-05-20 04:49:32", :photo_id => "gschool115", :caption => "back to Tokyo!  I can't believe busy it is here!", :user_id => user13.id, :url => "http://4.bp.blogspot.com/-KjepAsvnEpM/UVSFWUUpyzI/AAAAAAAAAzE/mgFLjXeqaOg/s1600/japanese-people.jpg")
+tweet53 = Tweet.create!(:event_created_at => "2013-05-18 04:59:42", :tweet_id => "gschool116", :text => "@comic-girl thanks for coming with me!  We should do go again soon :)", :user_id => user10.id)
+
+#Trip 6 - Denver with Kyle, Phil, Raph, and Erin
+trip6 = user2.trips.create!(:name => "Happy Path", :destination => "Denver", :start => "2013-05-22", :end => "2013-05-26")
+trip6.visible = true
+trip6.save
+ut32 = user2.user_trips.create!(:trip_id => trip6.id, :trip_role => "traveler")
+ut33 = user4.user_trips.create!(:trip_id => trip6.id, :trip_role => "traveler")
+ut34 = user3.user_trips.create!(:trip_id => trip6.id, :trip_role => "traveler")
+ut35 = user1.user_trips.create!(:trip_id => trip6.id, :trip_role => "traveler")
+
+photo45 = Photo.create!(:event_created_at => "2013-05-22 04:49:32", :photo_id => "gschool117", :caption => "lovely Denver (but Boulder is better)", :user_id => user4.id, :url => "http://www.acg.org/UserFiles/image/denver/Images%20of%20Denver/DenverColorado_0%20(1).jpg")
+photo46 = Photo.create!(:event_created_at => "2013-05-22 04:59:32", :photo_id => "gschool118", :caption => "nice welcome to the town", :user_id => user3.id, :url => "http://upload.wikimedia.org/wikipedia/commons/2/22/Denver_union_station.jpg")
+tweet54 = Tweet.create!(:event_created_at => "2013-05-22 05:59:42", :tweet_id => "gschool119", :text => "excited to demo at Galvanize tomorrow with @weiner_2013 @phil_er_up3 @eebee_1", :user_id => user2.id)
 
 
-# #Trip 5 - Jamaica with Erin
-# trip5 = user1.trips.create!(:name => "Jamaica", :destination => "Kingston, Jamaica", :start => "2013-05-10", :end => "2013-05-17")
-# ut17 = user1.user_trips.create!(:trip_id => trip5.id, :trip_role => "traveler")
-# ut18 = user9.user_trips.create!(:trip_id => trip5.id, :trip_role => "kreepr")
-# ut19 = user8.user_trips.create!(:trip_id => trip5.id, :trip_role => "kreepr")
-# ut20 = user2.user_trips.create!(:trip_id => trip5.id, :trip_role => "kreepr")
-# ut21 = user4.user_trips.create!(:trip_id => trip5.id, :trip_role => "kreepr")
-# ut22 = user10.user_trips.create!(:trip_id => trip5.id, :trip_role => "kreepr")
+#Trip 7 - Chile with Erin
+trip7 = user1.trips.create!(:name => "Rod and Sarah's Wedding", :destination => "Santiago, Chile", :start => "2013-08-01", :end => "2013-08-08")
 
-
-# #Trip 6 - Denver with Kyle, Phil, Raph, and Erin
-# trip6 = user2.trips.create!(:name => "Summer Vacation", :destination => "San Francisco", :start => "2013-05-18", :end => "2013-05-25")
-# trip6.visible = true
-# trip6.save
-# ut23 = user2.user_trips.create!(:trip_id => trip6.id, :trip_role => "traveler")
-# ut24 = user4.user_trips.create!(:trip_id => trip6.id, :trip_role => "traveler")
-# ut25 = user3.user_trips.create!(:trip_id => trip6.id, :trip_role => "traveler")
-# ut26 = user1.user_trips.create!(:trip_id => trip6.id, :trip_role => "traveler")
-
-
-# #Trip 7 - Chile with Erin
-# trip7 = user1.trips.create!(:name => "Rod and Sarah's Wedding", :destination => "Santiago, Chile", :start => "2013-08-01", :end => "2013-08-08")
-
-# #Trip 8 - Leelanau with Erin
-# trip8 = user1.trips.create!(:name => "Back to the Mitten", :destination => "Northport, Michigan", :start => "2013-07-20", :end => "2013-07-28")
+#Trip 8 - Leelanau with Erin
+trip8 = user1.trips.create!(:name => "Back to the Mitten", :destination => "Northport, Michigan", :start => "2013-07-20", :end => "2013-07-28")
